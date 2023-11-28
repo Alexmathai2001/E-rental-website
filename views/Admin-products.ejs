@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+</head>
+<body class="box-border">
+    <header class="px-5 bg-[#27374D]">
+        <div class="flex justify-between py-5 ">
+             <div class="text-white text-2xl font-semibold">Logo</div>
+             <div><button><img src="/images/logout.png" alt="logout image" class="h-6 "></button></div>
+        </div>
+     </header>
+     <div class="flex ">
+        <!--leftside navigation-->
+        <div class="border-e-2  ">
+            <div class="mx-4 mt-10 mb-80">
+                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                        <div>Dashboard</div>
+                </button>
+                <button class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
+                    <div class="font-semibold">Products</div>
+                </button>
+                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Customers</div>
+                </button>
+                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Orders</div>
+                </button>
+                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Category</div>
+                </button>
+                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Settings</div>
+                </button>
+                
+            </div>
+        </div>
+        <!--rightside content-->
+        <div class="mx-7 mt-5 w-screen">
+
+            <div class=" text-2xl font-poppins font-semibold">Product management</div>
+            <!--add product button filter sort-->
+            <div class="flex justify-between my-4">
+                <div class="">
+                    <button class="bg-[#526D82] text-white px-3 py-1 font-medium rounded">+ Add product</button>
+    
+                    <form action="" class="inline">
+                        <input type="text" name="" id="" placeholder="search" class="border-2 rounded-full ps-5 ms-5">
+                    </form>
+                </div>
+
+                <div class="flex items-center">
+                    <form action=""  class="flex items-center">
+                        <div>Sort:</div>
+                        <select name="product" id="">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="All">All</option>
+                            <option value="Ascending">Product name</option>
+                            <option value="Descending">Discount</option>
+                            <option value="newest">Price</option>
+                        </select>
+
+                        <div class="ms-3">by:</div>
+                        <select name="product" id="">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="All">All</option>
+                            <option value="Ascending">A - Z</option>
+                            <option value="Descending">Z - A</option>
+                            <option value="newest">Newest first</option>
+                            <option value="oldest">Oldest first</option>
+                        </select>
+                    </form>
+                    <form action="" class="flex items-center">
+                        <div class="ms-3">Filer by:</div>
+                        <select name="filter" id="">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="All">All</option>
+                            <option value="500-1000">500-1000</option>
+                            <option value="1000-2000">1000-2000</option>
+                            <option value="2000-5000">2000-5000</option>
+                            <option value="Cutting">Cutting</option>
+                            <option value="Drilling and fastening">Drilling and fastening</option>
+                            <option value="Shaping and finishing">Shaping and finishing</option>
+                            <option value="Specialized">Specialized</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Generators">Generators</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <!--product table-->
+            <div class="h-96  mt-8 overflow-y-auto">
+                <table class="w-full text-center">
+                    <tr class="bg-[#526D82] text-white">
+                        <th class="font-semibold py-1">#</th>
+                        <th class="font-semibold py-1" class="w-1/3">Product Name</th>
+                        <th class="font-semibold py-1">Product id</th>
+                        <th class="font-semibold py-1" class="w-1/12">Price</th>
+                        <th class="font-semibold py-1">Discount</th>
+                        <th class="font-semibold py-1" class="w-1/5">Category</th>
+                        <th class="font-semibold py-1">Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Bosh Driller</td>
+                        <td>#564587</td>
+                        <td>599</td>
+                        <td>5%</td>
+                        <td>Fastening</td>
+                        <td>
+                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button><img src="images/delete.png" class="h-6" alt=""></button>
+                        </td>
+                    </tr> 
+                </table> 
+            </div>
+            <!--edit product add product pop up-->
+            <div>
+                <div class=" text-2xl font-poppins font-semibold mt-5">Add/Edit Product</div>
+                <div class="bg-[#DDE6ED] p-10">
+                    <form class="flex justify-evenly">
+                        
+                        <div class="mx-0">
+                            <div class="py-2">Add/change images</div>
+                            
+                            <div class="grid grid-cols-3 grid-rows-2 gap-4 ">
+                                <div class="grid col-start-1 col-end-3 row-start-1 row-end-3 ">
+                                    <div class="bg-white inline-block ">
+                                        <img class="h-44 content-center  m-5" src="images/circular saw.png" alt="tool image">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="bg-white inline-block">
+                                        <img class="h-16 m-5" src="images/browse-image.png" alt="browse image">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="bg-white inline-block">
+                                        <img class="h-16 m-5" src="images/browse-image.png" alt="browse image">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="pt-2">Product Description</div>
+                                
+                                    <textarea name="" id="" cols="35" rows="10" ></textarea>
+                                
+
+                        </div>
+                        
+                        <div class="p-10 ">
+                        
+                            <input type="text" name="" placeholder="Product Name" class="mt-4 p-2 w-full " id="">
+                            <div class="flex w-full justify-between">
+                                <input type="text" name="" placeholder="Brand Name" class="mt-4 p-2 w-1/2 me-1" id="">
+                                <select name=""id="" class="p-2 mt-4 w-1/2 bg-white">
+                                    <option value="" disabled selected>Category</option>
+                                    <option value="Fastening">Fastening</option>
+                                    <option value="Cutting">Cutting</option>
+                                    <option value="Power generators">Power generators</option>
+                                    <option value="Cleaning">Cleaning</option>
+                                </select>
+                            </div>
+                            
+                            <div class="flex w-full justify-between">
+                                <input type="number" name="" class="mt-4 w-1/2 p-2 me-1" placeholder="Regular Price" id="">
+                                <input type="number" name="" class="mt-4 p-2 w-1/2" placeholder="Discount percentage" id="">
+                            </div>
+                            <input type="text" name="" class="mt-4 p-2 w-full" placeholder="Tagline" id="">
+                            <div class="flex w-full justify-between">
+                                <input type="date" name="" class="mt-4 p-2" placeholder="Date" id="">
+                                <select name="" class="p-2 bg-white mt-4" id="">
+                                    <option value="" disabled selected>Stock Status</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Out of stock">Out of stock</option>
+                                </select>
+                                <select name="" class="p-2 bg-white mt-4" id="">
+                                    <option value="" disabled selected>Product Condition</option>
+                                    <option value="Like new">Like new</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Okay">Okay</option>
+                                </select>
+                            </div>
+
+                            <div class="flex justify-end  mt-36">
+                                <button type="submit" class="px-6 py-4 bg-red-500 text-white rounded ">Save Changes</button>
+                            </div>
+                            
+                        
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+        <footer class="bg-[#DDE6ED] mt-36">
+            <div class="flex justify-around pt-10  mb-10">
+                <div><a href="">About us</a></div>
+                <div><a href="">Contact us</a></div>
+                <div><a href="">Terms and conditions</a></div>
+                <div><a href="">Privacy Policy</a></div>
+            </div>
+            <div class="flex justify-center pb-2">© XYZ Studios 2023. All Rights Reserved.</div>
+        </footer>
+    
+</body>
+</html>
