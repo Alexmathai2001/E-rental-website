@@ -1,6 +1,6 @@
-const express = require('express')
-const app = express()
-const livereload = require('livereload')
+const express = require('express');
+const app = express();
+const livereload = require("livereload");
 const path = require('path')
 const connectLivereload = require("connect-livereload");
 
@@ -15,8 +15,6 @@ liveReloadServer.server.once("connection", () => {
 
 app.use(connectLivereload());
 
-app.use(connectLivereload());
-
 app.use(express.static(path.join(__dirname,'public')))
 
 app.set('view engine','ejs')
@@ -24,7 +22,15 @@ app.set('view engine','ejs')
 const PORT = 3000;
 
 app.get('/',(req,res)=>{
-  res.render('Landing-page')
+  res.render('Admin-login')
+})
+
+app.get('/Products',(req,res)=>{
+  res.render('Admin-products')
+})
+
+app.get('/Customers',(req,res)=>{
+  res.render('Admin-customers')
 })
 
 app.listen(PORT , () => {
