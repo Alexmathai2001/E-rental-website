@@ -33,6 +33,14 @@ app.get('/Customers',(req,res)=>{
   res.render('Admin-customers')
 })
 
+app.get('/Orders',(req,res)=>{
+  res.render('Admin-orders')
+})
+
+app.get('/categories',(req,res)=>{
+  res.render('Admin-categories')
+})
+
 app.listen(PORT , () => {
     console.log(`listening to port ${PORT}`);
 })
