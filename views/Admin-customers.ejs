@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customers</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 
-</head>
+<!--head-->
+<%- include("partials/head.ejs") %>
+
 <body class="box-border">
-    <header class="px-5 bg-[#27374D]">
-        <div class="flex justify-between py-5 ">
-             <div class="text-white text-2xl font-semibold">Logo</div>
-             <div><button><img src="/images/logout.png" alt="logout image" class="h-6 "></button></div>
-        </div>
-     </header>
+
+
+    <!--header-->
+    <%- include("partials/header.ejs") %>
+
+
      <div class="flex ">
         <!--leftside navigation-->
         <div class="border-e-2  ">
             <div class="mx-4 mt-10 mb-60">
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                <a href="" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                         <div>Dashboard</div>
-                </button>
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                </a>
+                <a href="/products" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                     <div>Products</div>
-                </button>
-                <button class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
+                </a>
+                <a href="/customers" class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
                     <div class="font-semibold">Customers</div>
-                </button>
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                </a>
+                <a href="/orders" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                     <div>Orders</div>
-                </button>
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                </a>
+                <a href="/categories" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                     <div>Category</div>
-                </button>
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                </a>
+                <a href="/settings" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                     <div>Settings</div>
-                </button>
+                </a>
                 
             </div>
         </div>
@@ -88,7 +84,7 @@
                 </div>
             </div>
             <!--product table-->
-            <div class="h-96  mt-8 overflow-y-auto">
+            <div class="h-[32rem]  mt-8 overflow-y-auto">
                 <table class="w-full text-center">
                     <tr class="bg-[#526D82] text-white">
                         <th class="font-semibold py-1">#</th>
@@ -107,287 +103,10 @@
                         <td>14</td>
                         <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
                         <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button onclick="updateuserinfo()"><img src="images/edit.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
-                        <td>14</td>
-                        <td><div class="bg-[#FFCECE] text-[#FF4747] px-1 rounded-full my-1">Blocked</div></td>
-                        <td>
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    
-                    
-                    
+
                     
                 </table> 
             </div>
@@ -395,44 +114,39 @@
         
         </div>
     </div>
-        <footer class="bg-[#DDE6ED] mt-3">
-            <div class="flex justify-around pt-5  mb-5">
-                <div><a href="">About us</a></div>
-                <div><a href="">Contact us</a></div>
-                <div><a href="">Terms and conditions</a></div>
-                <div><a href="">Privacy Policy</a></div>
-            </div>
-            <div class="flex justify-center pb-2">© XYZ Studios 2023. All Rights Reserved.</div>
-        </footer>
-    <!--edit product add product pop up-->
-    <div class="flex justify-center  my-10 ">
-        <div class="p-10  w-2/5 border-2 border-[#9DB2BF] rounded-md ">
-            <form action="">
-            <div class="flex justify-between mb-14">
-                <div class="font-bold text-xl">Update user info</div>
-                <button><img src="/images/close.png" class="h-4" alt="close-button"></button>
-            </div>
-            <div class="mt-4 flex justify-center">
-                <div class="opacity-70 pe-2">Email:</div>
-                <input class="px-2 border-2 rounded-full outline-none" type="text">
-            </div>
-            <div class="flex justify-center py-3">
-                <div class="opacity-70 pe-2">phone:</div>
-                <input class="px-2 border-2 rounded-full outline-none" type="text" name="" id="">
-            </div>
-            <div class="flex justify-center py-3">
-                <div class="opacity-70 pe-2">Status:</div>
-                <select class="px-2 border-2 rounded-full outline-none" name="" id="">
-                    <option value="" disabled selected>choose</option>
-                    <option value="Active">Active</option>
-                    <option value="Blocked">Blocked</option>
-                </select>
-            </div>
-            <div class="flex justify-center">
-                <button class="bg-[#27374D] px-4 py-2 rounded-full mt-4 text-white font-medium">Update</button>
-            </div>
-        </form>
-        </div> 
+    
+    <!--update user info-->
+    <div id="updateuserinfo" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 px-6 hidden">
+        <div class="flex justify-center bg-white mt-28 p-10  w-4/12 border-2 border-[#9DB2BF] rounded-md ">
+            <div class="">
+                <form action="">
+                <div class="flex justify-between mb-14">
+                    <div class="font-bold text-xl">Update user info</div>
+                    <button type="button" onclick="cancelupdateuserinfo()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <div class="opacity-70 pe-2">Email:</div>
+                    <input class="px-2 border-2 rounded-full outline-none" type="text">
+                </div>
+                <div class="flex justify-center py-3">
+                    <div class="opacity-70 pe-2">phone:</div>
+                    <input class="px-2 border-2 rounded-full outline-none" type="text" name="" id="">
+                </div>
+                <div class="flex justify-center py-3">
+                    <div class="opacity-70 pe-2">Status:</div>
+                    <select class="px-2 border-2 rounded-full outline-none" name="" id="">
+                        <option value="" disabled selected>choose</option>
+                        <option value="Active">Active</option>
+                        <option value="Blocked">Blocked</option>
+                    </select>
+                </div>
+                <div class="flex justify-center">
+                    <button class="bg-[#27374D] px-4 py-2 rounded-full mt-4 text-white font-medium">Update</button>
+                </div>
+            </form>
+            </div> 
+        </div>
     </div>
 </body>
 </html>
+<script src="/javascripts/customers.js"></script>

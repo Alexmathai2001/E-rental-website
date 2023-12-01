@@ -22,24 +22,37 @@ app.set('view engine','ejs')
 const PORT = 3000;
 
 app.get('/',(req,res)=>{
+  res.locals.title = "Login"; 
   res.render('Admin-login')
 })
 
-app.get('/Products',(req,res)=>{
+app.get('/products',(req,res)=>{
+  res.locals.title = "products"; 
+  res.locals.variable = "Product";
   res.render('Admin-products')
 })
 
-app.get('/Customers',(req,res)=>{
+app.get('/customers',(req,res)=>{
+  res.locals.title = "customers"; 
   res.render('Admin-customers')
 })
 
-app.get('/Orders',(req,res)=>{
+app.get('/orders',(req,res)=>{
+  res.locals.title = "orders"; 
   res.render('Admin-orders')
 })
 
 app.get('/categories',(req,res)=>{
+  res.locals.title = "categories"; 
+  res.locals.variable = "category";
   res.render('Admin-categories')
 })
+
+app.get('/settings',(req,res)=>{
+  res.locals.title = "settings"; 
+  res.render('Admin-settings')
+})
+
 
 app.listen(PORT , () => {
     console.log(`listening to port ${PORT}`);

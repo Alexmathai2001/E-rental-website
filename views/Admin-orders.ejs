@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 
-</head>
+<!--head-->
+<%- include("partials/head.ejs") %>
+
 <body class="box-border">
-    <header class="px-5 bg-[#27374D]">
-        <div class="flex justify-between py-5 ">
-             <div class="text-white text-2xl font-semibold">Logo</div>
-             <div><button><img src="/images/logout.png" alt="logout image" class="h-6 "></button></div>
-        </div>
-     </header>
+
+
+    <!--header-->
+    <%- include("partials/header.ejs") %>
+
+
      <div class="flex ">
         <!--leftside navigation-->
         <div class="border-e-2  ">
             <div class="mx-4 mt-10 mb-60">
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                <a href=""  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                         <div>Dashboard</div>
-                </button>
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                </a>
+                <a href="/products"  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                     <div>Products</div>
-                </button>
-                <button class="hover:bg-gray-100 mb-3 ps-4 text-left w-48 py-2 block">
+                </a>
+                <a href="/customers"  class="hover:bg-gray-100 mb-3 ps-4 text-left w-48 py-2 block">
                     <div>Customers</div>
-                </button>
-                <button class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
+                </a>
+                <a href="/orders"  class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
                     <div class="font-semibold">Orders</div>
-                </button>
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                </a>
+                <a href="/categories"  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                     <div>Category</div>
-                </button>
-                <button class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                </a>
+                <a href="/settings"  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                     <div>Settings</div>
-                </button>
+                </a>
                 
             </div>
         </div>
@@ -91,7 +87,7 @@
                 </div>
             </div>
             <!--product table-->
-            <div class="h-96  mt-8 overflow-y-auto">
+            <div class="h-[32rem]  mt-8 overflow-y-auto">
                 <table class="w-full text-center">
                     <tr class="bg-[#526D82] text-white">
                         <th class="font-semibold py-1">#</th>
@@ -106,147 +102,65 @@
                     <tr>
                         <td class=" opacity-70">1</td>
                         <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
+                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
                         <td class=" opacity-70">685479</td>
                         <td class=" opacity-70">11/06/2023</td>
                         <td class=" opacity-70">699</td>
                         <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
                         <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button onclick="editorder()"><img src="images/edit.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
                     <tr>
                         <td class=" opacity-70">1</td>
                         <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class="opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Shipped</div></td>
-                        <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3" >IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Out for delivery</div></td>
-                        <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
+                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
                         <td class=" opacity-70">685479</td>
                         <td class=" opacity-70">11/06/2023</td>
                         <td class=" opacity-70">699</td>
                         <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
                         <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button onclick="editorder()"><img src="images/edit.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
                     <tr>
                         <td class=" opacity-70">1</td>
                         <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class="opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Shipped</div></td>
-                        <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3" >IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Out for delivery</div></td>
-                        <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
+                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
                         <td class=" opacity-70">685479</td>
                         <td class=" opacity-70">11/06/2023</td>
                         <td class=" opacity-70">699</td>
                         <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
                         <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button onclick="editorder()"><img src="images/edit.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
                     <tr>
                         <td class=" opacity-70">1</td>
                         <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class="opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Shipped</div></td>
-                        <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3" >IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Out for delivery</div></td>
-                        <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
+                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
                         <td class=" opacity-70">685479</td>
                         <td class=" opacity-70">11/06/2023</td>
                         <td class=" opacity-70">699</td>
                         <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
                         <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button onclick="editorder()"><img src="images/edit.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
                     <tr>
                         <td class=" opacity-70">1</td>
                         <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class="opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Shipped</div></td>
-                        <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 w-1/3" >IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
+                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
                         <td class=" opacity-70">685479</td>
                         <td class=" opacity-70">11/06/2023</td>
                         <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] px-1 rounded-full my-1">Out for delivery</div></td>
+                        <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
                         <td class=" opacity-70">
-                            <button><img src="images/edit.png" class="h-6" alt=""></button>
+                            <button onclick="editorder()"><img src="images/edit.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
+                   
+                    
                     
                     
                     
@@ -256,23 +170,15 @@
         
         </div>
     </div>
-        <footer class="bg-[#DDE6ED] mt-3">
-            <div class="flex justify-around pt-5  mb-5">
-                <div><a href="">About us</a></div>
-                <div><a href="">Contact us</a></div>
-                <div><a href="">Terms and conditions</a></div>
-                <div><a href="">Privacy Policy</a></div>
-            </div>
-            <div class="flex justify-center pb-2">© XYZ Studios 2023. All Rights Reserved.</div>
-        </footer>
-    <!--edit product add product pop up-->
+    
+    <!--edit / update order-->
     
     
-        <div class="flex justify-center">
+        <div id="editorder" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 px-6 hidden">
             <div class="bg-slate-50 py-4 px-8">
                 <div class="flex justify-between">
                     <div class="font-semibold py-3 text-xl">Update order</div>
-                    <button><img src="/images/close.png" class="h-4" alt=""></button>
+                    <button onclick="canceleditorder()"><img src="/images/close.png" class="h-4" alt=""></button>
                 </div>
                     <div class="grid grid-cols-2 grid-rows-2 gap-3">
                         <div class="p-5 border-2 bg-white">
@@ -372,3 +278,4 @@
     </div>
 </body>
 </html>
+<script src="/javascripts/orders.js"></script>
