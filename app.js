@@ -29,7 +29,7 @@ app.get('/',(req,res)=>{
 app.get('/products',(req,res)=>{
   res.locals.title = "products"; 
   res.locals.variable = "Product";
-  res.render('Admin-products')
+  res.render('Admin/Admin-products')
 })
 
 app.get('/customers',(req,res)=>{
