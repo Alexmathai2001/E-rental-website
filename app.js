@@ -21,9 +21,9 @@ app.set('view engine','ejs')
 
 const PORT = 3000;
 
-app.get('/',(req,res)=>{
+app.get('/login',(req,res)=>{
   res.locals.title = "Login"; 
-  res.render('Admin-login')
+  res.render('Admin/Admin-login')
 })
 
 app.get('/products',(req,res)=>{
@@ -34,25 +34,32 @@ app.get('/products',(req,res)=>{
 
 app.get('/customers',(req,res)=>{
   res.locals.title = "customers"; 
-  res.render('Admin-customers')
+  res.render('Admin/Admin-customers')
 })
 
 app.get('/orders',(req,res)=>{
   res.locals.title = "orders"; 
-  res.render('Admin-orders')
+  res.render('Admin/Admin-orders')
 })
 
 app.get('/categories',(req,res)=>{
   res.locals.title = "categories"; 
   res.locals.variable = "category";
-  res.render('Admin-categories')
+  res.render('Admin/Admin-categories')
 })
 
 app.get('/settings',(req,res)=>{
   res.locals.title = "settings"; 
-  res.render('Admin-settings')
+  res.render('Admin/Admin-settings')
 })
 
+app.get("/",(req,res) => {
+  res.render('Users/login')
+})
+
+app.get("/userproducts",(req,res) => {
+  res.render('Users/products')
+})
 
 app.listen(PORT , () => {
     console.log(`listening to port ${PORT}`);
