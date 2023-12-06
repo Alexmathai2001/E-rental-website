@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <!--header section-->
     <header>
-        <div class="bg-[#27374D] px-4 py-3 flex justify-between text-white items-center font-medium">
+        <div class="bg-[#27374D] px-4 py-3 flex justify-between text-white items-center font-medium sm:px-12">
             <div>Products</div>
             <div><img src="/images/search-white.png" class="h-5" alt=""></div>
         </div>
@@ -17,75 +18,79 @@
     <!--main section-->
     <main>
         <!--container div-->
-        <div class="p-3">
-            <div class="border-2">
-                <div class="m-4 flex justify-center">
-                    <img src="/images/circular saw.png" class="h-60" alt="">
+        <div class="p-3 sm:px-8 sm:py-4">
+            <div class="lg:flex">
+                <div class="lg:text-lg">
+                    <div class="border-2">
+                        <div class="m-4 flex justify-center">
+                            <img src="/images/circular saw.png" class="h-60" alt="">
+                        </div>
+                    </div>
+                    <div class="py-2">
+                        <img src="/images/best seller.png" class="h-4" alt="">
+                    </div>
+                    <!--Product Name-->
+                    <div class="py-2 text-sm">BOSCH GBM 13 RE Professional Pistol Grip Drill (13 mm 
+                        Chuck Size, 360 W)
+                    </div>
+                    <!--price details and offer-->
+                    <div>
+                        <p><span class="text-base text-green-600 pe-1">21% off</span><span class="font-bold px-1">599/-</span><span class="text-sm opacity-50 line-through px-1">799/-</span></p>
+                    </div>
+                    <!--Buttons-->
+                    <div>
+                        <div class="flex justify-evenly py-4">
+                            <button class="bg-[#DDE6ED] py-2 px-11 sm:px-24 rounded-md lg:text-base lg:font-semibold">Add to cart</button>
+                            <button class="bg-[#27374D] text-white py-2 px-11 sm:px-24 rounded-md">Rent now</button>
+                        </div>
+                    </div>
+                    <!--features-->
+                    <div class="flex justify-between border-y-4 border-[#DDE6ED] sm:px-20 lg:px-0">
+                        <div class="py-4 flex flex-col items-center">
+                                <img src="/images/product.png" class="h-12 bg-[#DDE6ED] rounded-full p-1" alt="">
+                                <div class="text-xs pt-1">Genuine Products</div>
+                        </div>
+                        <div class="py-4 flex flex-col items-center">
+                            <img src="/images/payment.png" class="h-12 bg-[#DDE6ED] rounded-full p-1" alt="">
+                            <div class="text-xs pt-1">Genuine Products</div>
+                        </div>
+                        <div class="py-4 flex flex-col items-center">
+                            <img src="/images/payment.png" class="h-12 bg-[#DDE6ED] rounded-full p-1" alt="">
+                            <div class="text-xs pt-1">Genuine Products</div>
+                        </div>
+                        
+                    </div>
+                    <div class="py-2 text-sm">
+                        <p>Product Condition : <span class="text-green-600 font-semibold">Like new</span></p>
+                    </div>
+                    <!--no.of days-->
+                    <div class="py-2">
+                        <div class="text-lg font-semibold py-1">No. of days</div>
+        
+                        <div class="text-sm">
+                            <form action="">
+        
+                                <input type="radio" class="my-2" name="days" id="2">
+                                <label for="2">2 days</label><br>
+        
+                                <input type="radio" class="my-2" name="days" id="7">
+                                <label for="7">7 days ( <span class="opacity-50 line-through">2096/-</span> <span class="font-semibold">1800/-</span>)</label><br>
+        
+                                <input type="radio" class="my-2" name="days" id="14">
+                                <label for="14">14 days ( <span class="opacity-50 line-through">4193/-</span> <span class="font-semibold">3500/-</span>)</label><br>
+        
+                                <input type="radio" class="my-2" name="days" id="30">
+                                <label for="30">30 days ( <span class="opacity-50 line-through">8985/-</span> <span class="font-semibold">7000/-</span>)</label>
+        
+                            </form>
+                        </div>
+                        <div>
+                            <p>Total amount: <span class="font-bold">599/-</span></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="py-2">
-                <img src="/images/best seller.png" class="h-4" alt="">
-            </div>
-            <!--Product Name-->
-            <div class="py-2 text-sm">BOSCH GBM 13 RE Professional Pistol Grip Drill (13 mm 
-                Chuck Size, 360 W)
-            </div>
-            <!--price details and offer-->
-            <div>
-                <p><span class="text-base text-green-600 pe-1">21% off</span><span class="font-bold px-1">599/-</span><span class="text-sm opacity-50 line-through px-1">799/-</span></p>
-            </div>
-            <!--Buttons-->
-            <div>
-                <div class="flex justify-evenly py-4">
-                    <button class="bg-[#DDE6ED] py-2 px-11 rounded-md">Add to cart</button>
-                    <button class="bg-[#27374D] text-white py-2 px-11 rounded-md">Rent now</button>
-                </div>
-            </div>
-            <!--features-->
-            <div class="flex justify-between border-y-4 border-[#DDE6ED]">
-                <div class="py-4 flex flex-col items-center">
-                        <img src="/images/product.png" class="h-12 bg-[#DDE6ED] rounded-full p-1" alt="">
-                        <div class="text-xs pt-1">Genuine Products</div>
-                </div>
-                <div class="py-4 flex flex-col items-center">
-                    <img src="/images/product.png" class="h-12 bg-[#DDE6ED] rounded-full p-1" alt="">
-                    <div class="text-xs pt-1">Genuine Products</div>
-                </div>
-                <div class="py-4 flex flex-col items-center">
-                    <img src="/images/product.png" class="h-12 bg-[#DDE6ED] rounded-full p-1"       alt="">
-                    <div class="text-xs pt-1">Genuine Products</div>
-                </div>
-                
-            </div>
-            <div class="py-2 text-sm">
-                <p>Product Condition : <span class="text-green-600 font-semibold">Like new</span></p>
-            </div>
-            <!--no.of days-->
-            <div class="py-2">
-                <div class="text-lg font-semibold py-1">No. of days</div>
-
-                <div class="text-sm opacity-70">
-                    <form action="">
-
-                        <input type="radio" name="days" id="2">
-                        <label for="2">2 days</label><br>
-
-                        <input type="radio" name="days" id="7">
-                        <label for="7">7 days ( <span class="opacity-50 line-through">2096/-</span> <span class="font-semibold">1800/-</span>)</label><br>
-
-                        <input type="radio" name="days" id="14">
-                        <label for="14">14 days ( <span class="opacity-50 line-through">4193/-</span> <span class="font-semibold">3500/-</span>)</label><br>
-
-                        <input type="radio" name="days" id="30">
-                        <label for="30">30 days ( <span class="opacity-50 line-through">8985/-</span> <span class="font-semibold">7000/-</span>)</label>
-
-                    </form>
-                </div>
-                <div>
-                    <p>Total amount: <span class="font-bold">599/-</span></p>
-                </div>
-            </div>
-            <!--specification-->
+                <div class="lg:mx-10">
+                     <!--specification-->
             <div class="py-2">
                 <div>
                     <p class="font-semibold text-lg">Specifications</p>
@@ -138,47 +143,121 @@
                 <div>
                     <p class="font-semibold text-lg">Related Products</p>
                 </div>
-                <div class="flex my-2">
-                    <div class="border-2 p-2 me-1 flex flex-col items-center">
-                        <div>
-                            <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
+                <div class="flex justify-between my-2">
+                    <div class="flex flex-wrap">
+                        <div class="border-2 p-2 m-1 flex flex-col items-center">
+                            <div>
+                                <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
+                            </div>
+                            <div>
+                                <p class="py-1">Circular Saw</p>
+                            </div>
+                            <div>
+                                <p class="text-sm opacity-50">Bosch</p>
+                            </div>
+                            <div>
+                                <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
+                            </div>
+                            <div></div>
+                            <div></div>
                         </div>
-                        <div>
-                            <p class="py-1">Circular Saw</p>
+    
+                        <div class="border-2 p-2 m-1 flex flex-col items-center">
+                            <div>
+                                <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
+                            </div>
+                            <div>
+                                <p class="py-1">Circular Saw</p>
+                            </div>
+                            <div>
+                                <p class="text-sm opacity-50">Bosch</p>
+                            </div>
+                            <div>
+                                <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
+                            </div>
+                            <div></div>
+                            <div></div>
                         </div>
-                        <div>
-                            <p class="text-sm opacity-50">Bosch</p>
+                        <div class="border-2 p-2 m-1 flex flex-col items-center">
+                            <div>
+                                <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
+                            </div>
+                            <div>
+                                <p class="py-1">Circular Saw</p>
+                            </div>
+                            <div>
+                                <p class="text-sm opacity-50">Bosch</p>
+                            </div>
+                            <div>
+                                <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
+                            </div>
+                            <div></div>
+                            <div></div>
                         </div>
-                        <div>
-                            <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
+    
+                        <div class="border-2 p-2 m-1 flex flex-col items-center">
+                            <div>
+                                <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
+                            </div>
+                            <div>
+                                <p class="py-1">Circular Saw</p>
+                            </div>
+                            <div>
+                                <p class="text-sm opacity-50">Bosch</p>
+                            </div>
+                            <div>
+                                <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
+                            </div>
+                            <div></div>
+                            <div></div>
                         </div>
-                        <div></div>
-                        <div></div>
+                        <div class="border-2 p-2 m-1 flex flex-col items-center">
+                            <div>
+                                <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
+                            </div>
+                            <div>
+                                <p class="py-1">Circular Saw</p>
+                            </div>
+                            <div>
+                                <p class="text-sm opacity-50">Bosch</p>
+                            </div>
+                            <div>
+                                <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
+                            </div>
+                            <div></div>
+                            <div></div>
+                        </div>
+    
+                        <div class="border-2 p-2 m-1 flex flex-col items-center">
+                            <div>
+                                <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
+                            </div>
+                            <div>
+                                <p class="py-1">Circular Saw</p>
+                            </div>
+                            <div>
+                                <p class="text-sm opacity-50">Bosch</p>
+                            </div>
+                            <div>
+                                <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
+                            </div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
 
-                    <div class="border-2 p-2 me-1 flex flex-col items-center">
-                        <div>
-                            <img src="/images/circular saw.png" class="h-16 bg-[#DDE6ED] rounded-full p-2" alt="">
-                        </div>
-                        <div>
-                            <p class="py-1">Circular Saw</p>
-                        </div>
-                        <div>
-                            <p class="text-sm opacity-50">Bosch</p>
-                        </div>
-                        <div>
-                            <p><span class="font-semibold text-sm">$ 599/day</span><span class="text-green-600"> 21% off</span></p>
-                        </div>
-                        <div></div>
-                        <div></div>
-                    </div>
 
-
-                    <div class="align-middle">
-                        <p >see more</p>
+                    <div class="flex items-center">
+                        <button><span class="material-symbols-outlined p-2 border-2 rounded-full">
+                            navigate_next
+                            </span></button>
                     </div>
                 </div>
             </div>
+                </div>
+            </div>
+            
+           
         </div>
         
     </main>
