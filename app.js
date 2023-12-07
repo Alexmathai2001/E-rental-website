@@ -61,6 +61,10 @@ app.get("/userproducts",(req,res) => {
   res.render('Users/products')
 })
 
+app.get("/landing",(req,res) => {
+  res.render('Users/landing')
+})
+
 app.listen(PORT , () => {
     console.log(`listening to port ${PORT}`);
 })
