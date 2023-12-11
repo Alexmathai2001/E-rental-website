@@ -1,6 +1,6 @@
 module.exports = {
     get : (req,res) => {
        res.locals.title = "Product"; 
-        res.render('Users/products')
+        res.render('Users/product')
       }
 }
