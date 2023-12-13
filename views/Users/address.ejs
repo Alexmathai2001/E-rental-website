@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addresses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col h-screen bg-slate-50">
+    <!-- header -->
+    <%- include('partials/sub-header.ejs') %>
+    <!-- container -->
+    <div class="mx-3 mt-2 flex justify-center bg-white rounded-lg">
+        <div class="md:w-3/5 w-4/5">
+            <p class="font-poppins font-semibold md:text-xl my-5 md:mt-5 text-lg">Add your Address here</p>
+            <form action="">
+                <!-- contact details -->
+            <div class=" md:my-10 mt-5">
+                <div class="flex space-x-2 my-1 items-center">
+                    <img src="/images/phone.png" class="h-6" alt="">
+                    <p class="font-semibold text-[#526D82]">Contact Details</p>
+                </div>
+                <div class="space-y-2 md:space-y-0 md:flex md:space-x-4 md:items-center">
+                    <input type="text" class="h-10 border-[#27374D]  px-2 border-b-2 w-full" name="Full Name" placeholder="Full Name" id="">
+                    <input type="tel" class="h-10 border-[#27374D]  px-2 border-b-2 w-full" name="Contact Number" placeholder="Contact Number" id="">
+                </div>
+            </div>
+            <!-- address -->
+            <div>
+                <div class=" md:mt-10 my-5">
+                    <div class="flex space-x-2 my-1 items-center">
+                        <img src="/images/location.png" class="h-6" alt="">
+                        <p class="font-semibold text-[#526D82]">Address</p>
+                    </div>
+                    <div class="space-y-2 ">
+                        <input type="text" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" name="House no / Building name" placeholder="House no / Building name" id="">
+                        <input type="text" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" name="Road name / Area / Colony" placeholder="Road name / Area / Colony" id="">
+                        <input type="number" name="pin" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" placeholder="PIN code" id="">
+                        <div class="space-y-2 md:flex md:space-x-5 md:space-y-0 items-center">
+                            <input type="text" name="city" placeholder="City" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" id="">
+                            <select name="state" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full bg-white" id="states"></select>
+                        </div>
+                        <div class="flex justify-center pt-10">
+                            <button class="py-3 px-6 bg-yellow-600 text-white font-semibold">Save and Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="flex flex-grow"></div>
+    <footer>
+        <%- include('partials/footer.ejs') %>
+    </footer>
+    
+</body>
+</html>
+<script src="/javascripts/User/address.js"></script>

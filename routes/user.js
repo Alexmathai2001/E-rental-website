@@ -11,7 +11,8 @@ const cartcontroller = require("../controllers/User/cartController")
 const checkoutcontroller = require("../controllers/User/checkoutController")
 const myordercontroller = require("../controllers/User/myordersController")
 const myaccountcontroller = require("../controllers/User/my-accountController")
-const productlistcontroller = require('../controllers/User/product-listController')
+const ordersummartcontroller = require("../controllers/User/ordersummaryController")
+const addresscontroller = require("../controllers/User/addressController")
 
 router.get("/",logincontroller.get)
 router.get("/product",productcontroller.get)
@@ -23,6 +24,7 @@ router.get("/cart",cartcontroller.get)
 router.get("/checkout",checkoutcontroller.get)
 router.get("/myorders",myordercontroller.get)
 router.get("/myaccount",myaccountcontroller.get)
-router.get("/products",productlistcontroller.get)
+router.get("/ordersummary",ordersummartcontroller.get)
+router.get("/address",addresscontroller.get)
 
 module.exports = router
