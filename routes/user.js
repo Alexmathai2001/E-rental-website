@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const logincontroller = require("../controllers/User/loginController")
+const logincontrol = require("../controllers/User/loginControl")
 const productcontroller = require("../controllers/User/productController")
 const landingcontroller = require("../controllers/User/landingController")
 const categorycontroller = require("../controllers/User/categoryController")
@@ -13,8 +13,11 @@ const myordercontroller = require("../controllers/User/myordersController")
 const myaccountcontroller = require("../controllers/User/my-accountController")
 const ordersummartcontroller = require("../controllers/User/ordersummaryController")
 const addresscontroller = require("../controllers/User/addressController")
+const enterotpcontroller = require("../controllers/User/enterotpController")
+const newusercontroller = require("../controllers/User/newuserController")
 
-router.get("/",logincontroller.get)
+
+router.get("/login",logincontrol.get)
 router.get("/product",productcontroller.get)
 router.get("/landing",landingcontroller.get)
 router.get("/categories",categorycontroller.get)
@@ -26,5 +29,8 @@ router.get("/myorders",myordercontroller.get)
 router.get("/myaccount",myaccountcontroller.get)
 router.get("/ordersummary",ordersummartcontroller.get)
 router.get("/address",addresscontroller.get)
+router.get("/enterotp",enterotpcontroller.get)
+router.get("/newuser",newusercontroller.get)
+
 
 module.exports = router

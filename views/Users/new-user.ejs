@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
+<body class="flex flex-col h-screen bg-slate-200">
+    <div class="flex flex-grow"></div>
+    <div class="flex justify-center ">
+        <!-- container box -->
+        <div class="md:h-[40rem] h-screen md:w-3/5 w-screen border-2 rounded-xl flex shadow-lg">
+            <!-- left box -->
+            <div class="w-1/2  bg-[url('/images/bg-cover.png')] rounded-l-lg bg-cover hidden md:flex flex-col items-center text-center h-full">
+                <p class="text-white font-semibold text-2xl mt-14  px-8">Why invest in tools you use once? <br> <span class="text-sm font-normal">Rent the best for your project, and let us <br> take care of the rest.</span></p>
+            </div>
+            <!-- right box -->
+            <div class="py-10 px-[2rem] md:w-1/2 w-full bg-white rounded-r-lg">
+                <div class="flex flex-col h-full">
+                    <div>
+                        <p class="my-1 font-semibold text-xl">Hmm... you looks like new here</p>
+                        <p class="text-gray-500 text-sm">Don't worry, we got you covered</p>
+                        <form action="" class="my-4 space-y-5">
+                            <div>
+                                <p class="text-sm ms-2 text-gray-500">Your Fullname</p>
+                                <input type="text" name="" class="bg-white py-2 w-full rounded-full border-2 px-3 text-sm" required id="">
+                            </div>
+                            <div>
+                                <p class="text-sm ms-2 text-gray-500">Phone no</p>
+                                <div class="bg-white py-2 rounded-full w-full border-2 px-5 text-sm flex justify-between">
+                                    <input type="text" class="bg-white w-2/3 outline-none" value="9400354724">
+                                    <a class="text-xs text-blue-500" href="">change</a>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-sm ms-2 text-gray-500">Email</p>
+                                <input type="text" name="" class="bg-white py-2 w-full rounded-full border-2 px-3 text-sm" required id="">
+                            </div>
+                            <div>
+                                <p class="text-sm ms-2 text-gray-500">Gender</p>
+                                <div class="text-sm flex justify-around my-3">
+                                    <div>
+                                        <input type="radio" name="gender" id="male">
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="gender" id="female">
+                                        <label for="female">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    <div class="flex flex-grow"></div>
+                    <div>
+                        <p class="text-xs text-gray-500 my-1 ps-2">By continuing,you agree to website's <a class="text-blue-600" href="">terms and conditions</a></p>
+                        <button class="w-full bg-blue-500 rounded-full text-white text-sm py-2 font-medium">Continue</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="flex-grow"></div>
+
+
+    
+</body>
+</html>
+
+<script src="/javascripts/User/enterotp.js"></script>
