@@ -16,10 +16,10 @@
         <div class="border-e-2  ">
             <div class="mx-4 mt-10 mb-80">
                 
-                <a href="" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                <a href="dashboard" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
                         <div>Dashboard</div>
                 </a>
-                <a href="" class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
+                <a href="products" class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
                     <div class="font-semibold">Products</div>
                 </a>
                 <a href="customers" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
@@ -152,48 +152,58 @@
                     </tr>
                    
                 </table> 
-            </div>
+            </div> 
             <!--edit product add product pop up-->
             <section id="section1" class="hidden">
-                <div id="section">
-                    <div class=" text-2xl font-poppins font-semibold mt-5">Add/Edit Product</div>
+                <div id="section" class="w-full">
+                <div class=" text-2xl font-poppins font-semibold mt-5">Add/Edit Product</div>
                 <div class="bg-white p-3 border-2">
                     <form class="flex justify-evenly">
                         
                         <div class="mx-0">
                             <div class="py-2">Add/change images</div>
                             
-                            <div class="grid grid-cols-3 grid-rows-2 gap-4 border-2">
-                                <div class="grid col-start-1 col-end-3 row-start-1 row-end-3 ">
-                                    <div class="bg-white inline-block ">
-                                        <img class="h-44 content-center  m-5" src="/images/circular saw.png" alt="tool image">
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <div class="bg-white inline-block">
-                                        <img class="h-16 m-5" src="/images/browse-image.png" alt="browse image">
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <div class="bg-white inline-block">
-                                        <img class="h-16 m-5" src="/images/browse-image.png" alt="browse image">
-                                    </div>
-                                </div>
+                            <div class=" gap-4 border-2">
+                                <div class="flex items-center justify-center">
+                                    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+                                        <div class="mt-4">
+                                            <img id="imagePreview" class="hidden max-w-full h-auto" alt="Image Preview">
+                                        </div>
+                                        <label for="fileInput" class="block text-sm font-medium text-gray-700">
+                                          Choose an image
+                                        </label>
+                                        <div class="mt-1 flex items-center">
+                                          <input
+                                            id="fileInput"
+                                            type="file"
+                                            class="hidden"
+                                            accept="image/*"
+                                            onchange="previewImage(this)"
+                                          >
+                                          <label for="fileInput" class="cursor-pointer min-w-[4rem] px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+                                            Select Image
+                                          </label>
+                                          <span id="fileName" class="ml-2 text-gray-500"></span>
+                                        </div>
+                                        
+                                      </div>
+                                    <span id="fileName" class="ml-2"></span>
+                                  </div>
+                                  
+                                
                                 
                             </div>
-                            <div class="pt-2">Product Description</div>
-                                
-                                    <textarea name="" id="" cols="35" rows="10" class="border-2" ></textarea>
+                            
                                 
 
                         </div>
                         
                         <div class="p-10 ">
                         
-                            <input type="text" name="" placeholder="Product Name" class="mt-4 p-2 w-full " id="">
+                            <input type="text" name="" placeholder="Product Name" class="rounded-full mt-4 p-2 w-full " id="">
                             <div class="flex w-full justify-between">
-                                <input type="text" name="" placeholder="Brand Name" class="mt-4 p-2 w-1/2 me-1" id="">
-                                <select name=""id="" class="p-2 mt-4 w-1/2 bg-white opacity-50 outline-none">
+                                <input type="text" name="" placeholder="Brand Name" class="mt-4 p-2 w-1/2 me-1 rounded-full" id="">
+                                <select name=""id="" class="rounded-full p-2 mt-4 w-1/2 bg-white opacity-50 outline-none">
                                     <option value="" disabled selected>Category</option>
                                     <option value="Fastening">Fastening</option>
                                     <option value="Cutting">Cutting</option>
@@ -203,23 +213,46 @@
                             </div>
                             
                             <div class="flex w-full justify-between">
-                                <input type="number" name="" class="mt-4 w-1/2 p-2 me-1" placeholder="Regular Price" id="">
-                                <input type="number" name="" class="mt-4 p-2 w-1/2" placeholder="Discount percentage" id="">
+                                <input type="number" name="" class="rounded-full mt-4 w-1/2 p-2 me-1" placeholder="Regular Price" id="">
+                                <input type="number" name="" class="rounded-full mt-4 p-2 w-1/2" placeholder="Discount percentage" id="">
                             </div>
-                            <input type="text" name="" class="mt-4 p-2 w-full" placeholder="Tagline" id="">
+                            <input type="text" name="" class="rounded-full mt-4 p-2 w-full" placeholder="Tagline" id="">
                             <div class="flex w-full justify-between">
-                                <input type="date" name="" class="mt-4 p-2 opacity-50 " placeholder="Date" id="">
-                                <select name="" class="p-2 bg-white mt-4 opacity-50" id="">
+                                <input type="date" name="" class="rounded-full mt-4 p-2 opacity-50 " placeholder="Date" id="">
+                                <select name="" class="p-2 rounded-full bg-white mt-4 opacity-50" id="">
                                     <option value="" disabled selected>Stock Status</option>
                                     <option value="Available">Available</option>
                                     <option value="Out of stock">Out of stock</option>
                                 </select>
-                                <select name="" class="p-2 bg-white mt-4 opacity-50 outline-none" id="">
+                                <select name="" class="p-2 bg-white rounded-full mt-4 opacity-50 outline-none" id="">
                                     <option value="" disabled selected>Product Condition</option>
                                     <option value="Like new">Like new</option>
                                     <option value="Good">Good</option>
                                     <option value="Okay">Okay</option>
                                 </select>
+                            </div>
+                           <div class="flex justify-between">
+                                <p class=" font-medium mt-2">Features</p>
+                            
+                           </div>
+                            <div class="w-full flex mt-2">
+                                <input type="text" name="" class="rounded-full w-1/2 p-2 me-1" placeholder="key" id="">
+                                <input type="text" name="" class="rounded-full w-1/2 p-2 me-1" placeholder="value" id="">
+                            </div>
+                            <div class="w-full flex mt-2">
+                                <input type="text" name="" class="rounded-full w-1/2 p-2 me-1" placeholder="key" id="">
+                                <input type="text" name="" class="rounded-full w-1/2 p-2 me-1" placeholder="value" id="">
+                            </div>
+                            <div class="w-full flex mt-2">
+                                <input type="text" name="" class="rounded-full w-1/2 p-2 me-1" placeholder="key" id="">
+                                <input type="text" name="" class="rounded-full w-1/2 p-2 me-1" placeholder="value" id="">
+                            </div>
+                            <div id="newspace">
+
+                            </div>
+                            
+                            <div class="mt-2 flex justify-end">
+                                <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-xs font-semibold" type="button" onclick="addmoreinput()">Add more</button>
                             </div>
 
                             <div class="flex justify-end  mt-36">

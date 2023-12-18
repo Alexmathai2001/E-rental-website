@@ -15,6 +15,7 @@ const ordersummartcontroller = require("../controllers/User/ordersummaryControll
 const addresscontroller = require("../controllers/User/addressController")
 const enterotpcontroller = require("../controllers/User/enterotpController")
 const newusercontroller = require("../controllers/User/newuserController")
+const aboutuscontroller = require("../controllers/User/aboutusController")
 
 
 router.get("/login",logincontrol.get)
@@ -31,6 +32,7 @@ router.get("/ordersummary",ordersummartcontroller.get)
 router.get("/address",addresscontroller.get)
 router.get("/enterotp",enterotpcontroller.get)
 router.get("/newuser",newusercontroller.get)
+router.get("/aboutus",aboutuscontroller.get)
 
 
 module.exports = router
