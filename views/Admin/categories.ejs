@@ -152,22 +152,22 @@
     <div  id="editpopup" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 hidden">
         <div class="flex justify-center bg-white mt-28  border-2 border-[#9DB2BF] py-10 w-4/12  rounded-md ">
             <div class="">
-                <form action="">
+                <form action="/admin/categories" method="post">
                 <div class="flex justify-between mb-14">
                     <div class="font-bold text-xl">Add/Edit Categories</div>
                     <button type="button" onclick="canceleditpopup()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
                 </div>
                 <div class="mt-4 flex justify-center">
                     <div class="opacity-70 pe-2">Category Name:</div>
-                    <input class="px-2 border-2 rounded-full outline-none" type="text">
+                    <input class="px-2 border-2 rounded-full outline-none" name="categoryname" type="text">
                 </div>
             
                 <div class="flex justify-center py-3">
                     <div class="opacity-70 pe-2">Status:</div>
-                    <select class="px-2 border-2 rounded-full outline-none bg-white" name="" id="">
+                    <select class="px-2 border-2 rounded-full outline-none bg-white" name="status" id="">
                         <option value="" disabled selected>choose</option>
-                        <option value="Active">List</option>
-                        <option value="Blocked">Unlist</option>
+                        <option value="true">List</option>
+                        <option value="false">Unlist</option>
                     </select>
                 </div>
                 <div class="flex justify-center">
@@ -178,7 +178,7 @@
         </div>
     </div>
 
-    <%- include("partials/delete-popup.ejs") %>
+    <%- include("partials/delete-category-popup.ejs") %>
 
     
 </body>

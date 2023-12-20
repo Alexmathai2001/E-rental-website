@@ -1,3 +1,5 @@
+
+
 module.exports = {
     get : (req,res) => {
         res.locals.title = 'Address'

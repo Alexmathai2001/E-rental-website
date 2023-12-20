@@ -21,43 +21,44 @@
                     <div>
                         <p class="my-1 font-semibold text-xl">Hmm... you looks like new here</p>
                         <p class="text-gray-500 text-sm">Don't worry, we got you covered</p>
-                        <form action="" class="my-4 space-y-5">
+                        <form action="/user/newuser" method="post" class="my-4 space-y-5">
                             <div>
                                 <p class="text-sm ms-2 text-gray-500">Your Fullname</p>
-                                <input type="text" name="" class="bg-white py-2 w-full rounded-full border-2 px-3 text-sm" required id="">
+                                <input type="text" name="fullname" class="bg-white py-2 w-full rounded-full border-2 px-3 text-sm" required id="">
                             </div>
                             <div>
                                 <p class="text-sm ms-2 text-gray-500">Phone no</p>
                                 <div class="bg-white py-2 rounded-full w-full border-2 px-5 text-sm flex justify-between">
-                                    <input type="text" class="bg-white w-2/3 outline-none" value="9400354724">
+                                    <input type="text" name="phone" class="bg-white w-2/3 outline-none" >
                                     <a class="text-xs text-blue-500" href="">change</a>
                                 </div>
                             </div>
                             <div>
                                 <p class="text-sm ms-2 text-gray-500">Email</p>
-                                <input type="text" name="" class="bg-white py-2 w-full rounded-full border-2 px-3 text-sm" required id="">
+                                <input type="text" name="email" class="bg-white py-2 w-full rounded-full border-2 px-3 text-sm" required id="">
                             </div>
                             <div>
                                 <p class="text-sm ms-2 text-gray-500">Gender</p>
                                 <div class="text-sm flex justify-around my-3">
                                     <div>
-                                        <input type="radio" name="gender" id="male">
+                                        <input type="radio" name="gender" value="male" id="male">
                                         <label for="male">Male</label>
                                     </div>
                                     <div>
-                                        <input type="radio" name="gender" id="female">
+                                        <input type="radio" name="gender" value="female" id="female">
                                         <label for="female">Female</label>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        
                         
                     </div>
                     <div class="flex flex-grow"></div>
                     <div>
                         <p class="text-xs text-gray-500 my-1 ps-2">By continuing,you agree to website's <a class="text-blue-600" href="">terms and conditions</a></p>
-                        <button class="w-full bg-blue-500 rounded-full text-white text-sm py-2 font-medium">Continue</button>
+                        <button type="submit" class="w-full bg-blue-500 rounded-full text-white text-sm py-2 font-medium">Continue</button>
                     </div>
+                </form>
                 </div>
             </div>
 

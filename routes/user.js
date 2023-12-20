@@ -31,7 +31,10 @@ router.get("/myaccount",myaccountcontroller.get)
 router.get("/ordersummary",ordersummartcontroller.get)
 router.get("/address",addresscontroller.get)
 router.get("/enterotp",enterotpcontroller.get)
+
 router.get("/newuser",newusercontroller.get)
+router.post("/newuser",newusercontroller.post)
+
 router.get("/aboutus",aboutuscontroller.get)
 
 

@@ -24,12 +24,14 @@ function addmoreinput(){
     firstinput.type = "text"
     firstinput.className = "rounded-full w-1/2 p-2 me-1"
     firstinput.placeholder = "key"
+    firstinput.name = "attribute"
     newdiv.appendChild(firstinput)
 
     let secondinput = document.createElement("input")
     secondinput.type = "text"
     secondinput.className = "rounded-full w-1/2 p-2 me-1"
     secondinput.placeholder = "value"
+    secondinput.name = "property"
     newdiv.appendChild(secondinput)
 }
 

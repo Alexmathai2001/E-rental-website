@@ -10,10 +10,16 @@ const settingcontroller = require("../controllers/Admin/settingController")
 const dashboardcontroller = require("../controllers/Admin/dashboardController")
 
 router.get('/login',logincontroller.get)
+
 router.get('/products',productcontroller.get)
+router.post('/products',productcontroller.post)
+
 router.get('/customers',customercontroller.get)
 router.get('/orders',ordercontroller.get)
+
 router.get('/categories',categorycontroller.get)
+router.post('/categories',categorycontroller.post)
+
 router.get('/settings',settingcontroller.get)
 router.get('/dashboard',dashboardcontroller.get)
 
