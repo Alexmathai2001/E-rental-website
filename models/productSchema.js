@@ -13,7 +13,9 @@ const productSchema = mongoose.Schema({
     stockstatus : String,
     productcondition : String,
     productdescription : String,
-    imageurl : String
+    avatar : String,
+    imageurl : String,
+    cloudinaryid : String
 })
 
 module.exports = mongoose.model('product',productSchema)

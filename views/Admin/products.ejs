@@ -102,7 +102,7 @@
                         <th class="font-semibold py-1" class="w-1/5">Category</th>
                         <th class="font-semibold py-1">Action</th>
                     </tr>
-                    <% product.forEach((data) => { %>
+                    <% products.forEach((data) => { %>
                         <tr>
                             <td class="text-sm"><%= data.serialnumber %></td>
 
@@ -128,7 +128,7 @@
                 <div id="section" class="w-full">
                 <div class=" text-2xl font-poppins font-semibold mt-5">Add/Edit Product</div>
                 <div class="bg-white p-3 border-2">
-                    <form method="post" action="/admin/products" class="flex justify-evenly">
+                    <form method="post" action="/admin/products" enctype="multipart/form-data" class="flex justify-evenly">
                         
                         <div class="mx-0">
                             <div class="py-2">Add/change images</div>
@@ -139,19 +139,18 @@
                                         <div class="mt-4">
                                             <img id="imagePreview" class="hidden max-w-full h-auto" alt="Image Preview">
                                         </div>
-                                        <label for="fileInput" class="block text-sm font-medium text-gray-700">
-                                          Choose an image
-                                        </label>
+                                        
                                         <div class="mt-1 flex items-center">
                                           <input
                                             id="fileInput"
                                             type="file"
+                                            name="productimage"
                                             class="hidden"
                                             accept="image/*"
                                             onchange="previewImage(this)"
                                           >
                                           <label for="fileInput" class="cursor-pointer min-w-[4rem] px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
-                                            Select Image
+                                            Upload Image
                                           </label>
                                           <span id="fileName" class="ml-2 text-gray-500"></span>
                                         </div>
@@ -175,10 +174,9 @@
                                 <input type="text" required name="brandname" placeholder="Brand Name" class="mt-4 p-2 w-1/2 me-1 rounded-full" id="">
                                 <select name="category"id="" required class="rounded-full p-2 mt-4 w-1/2 bg-white opacity-50 outline-none">
                                     <option value="" disabled selected>Category</option>
-                                    <option value="Fastening">Fastening</option>
-                                    <option value="Cutting">Cutting</option>
-                                    <option value="Power generators">Power generators</option>
-                                    <option value="Cleaning">Cleaning</option>
+                                    <% categories.forEach((category) => { %>
+                                    <option value="<%= category.categoryname %>" class="capitalize"><%= category.categoryname %></option>
+                                    <% }) %>
                                 </select>
                             </div>
                             

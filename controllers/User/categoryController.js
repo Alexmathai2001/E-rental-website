@@ -1,10 +1,10 @@
-const productmodel = require('../../models/productSchema')
+const categorymodel = require('../../models/categorySchema')
 
 module.exports = {
     get :async (req,res) => {
         res.locals.title = "Category";
-        let products = await productmodel.find()
-        console.log(products);
-        res.render('Users/categories',{products})
+        let categories = await categorymodel.find()
+        console.log(categories);
+        res.render('Users/categories',{categories})
     }
 }

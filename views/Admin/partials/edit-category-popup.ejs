@@ -1,0 +1,49 @@
+<div  id="editpopup" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 hidden">
+    <div class="flex justify-center bg-white mt-28  border-2 border-[#9DB2BF] py-10 w-4/12  rounded-md ">
+        <div class="max-h-[15rem]">
+            <form action="/admin/categories" id="category-form" enctype="multipart/form-data" method="post">
+            <div class="flex justify-between mb-8">
+                <div class="font-bold text-xl">Edit Category</div>
+                <button type="button" onclick="canceleditpopup()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
+            </div>
+            <div class="flex items-start">
+                <label for="category-name" class="text-sm text-gray-500 font-medium mt-1 me-2">Category Name :</label>
+                <div>
+                    <input type="text" name="categoryname" id="category-name" class="rounded-lg border-2 px-3 h-8 ">
+                    <span id="category-error" class=" text-xs mt-2 text-red-500 hidden">Error message here</span>
+                </div>
+            </div>
+
+            <div class="space-x-16 mt-4">
+                <label for="status" class="text-sm text-gray-500 font-medium">Status :</label>
+                <select class="rounded-lg border-2 px-3 h-8 text-gray-500" name="status" id="status">
+                    <option value="Listed">List</option>
+                    <option value="Unlisted">Unlist</option>
+                </select>
+            </div>
+            <div class="space-x-3 mt-4 flex">
+                <label for="fileInput" class="text-sm text-gray-500 font-medium">Image Upload : </label>
+                <div>
+                    <label for="fileInput" id="image-upload" class="cursor-pointer max--w-[15rem] px-8 py-2 text-sm bg-gray-500 text-white rounded-md hover:bg-gray-700">
+                        Upload
+                    </label>
+                    <span id="upload-error" class="hidden text-xs text-red-500 mt-2 block">upload error message</span>
+                </div>
+                <input
+                id="fileInput"
+                type="file"
+                name="categoryimage"
+                class="hidden"
+                accept="image/*"
+                onchange="imagedone()"
+                >
+                
+            </div>
+            
+            <div class="flex justify-end">
+                <button id="category-submit" class="bg-yellow-600 w-36 py-1 rounded-lg mt-4 text-white font-medium">Save changes</button>
+            </div>
+        </form>
+        </div> 
+    </div>
+</div>
