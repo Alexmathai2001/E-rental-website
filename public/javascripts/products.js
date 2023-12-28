@@ -37,7 +37,7 @@ function addmoreinput(){
 
 function previewImage(input) {
     const fileInput = input.files[0];
-
+    
     // Display the file name
     document.getElementById('fileName').textContent = fileInput.name;
 

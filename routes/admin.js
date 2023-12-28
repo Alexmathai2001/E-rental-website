@@ -18,8 +18,10 @@ router.post('/products',productcontroller.post)
 router.get('/customers',customercontroller.get)
 router.get('/orders',ordercontroller.get)
 
+//category routes
 router.get('/categories',categorycontroller.get)
 router.post('/categories',categorycontroller.post)
+router.get('/categories/edit/:id',categorycontroller.getEdit)
 
 router.get('/settings',settingcontroller.get)
 router.get('/dashboard',dashboardcontroller.get)

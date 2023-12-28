@@ -39,5 +39,11 @@ module.exports = {
             console.error('Outer error in post method:', outerError);
             res.status(500).send('Internal Server Error');
         }
-    }
+    },
+    getEdit: async function(req,res){
+        let itemId = req.params.id.trim()
+        console.log(itemId);
+         let item = await category.findById(itemId)
+         res.json({item})
+       },
 }

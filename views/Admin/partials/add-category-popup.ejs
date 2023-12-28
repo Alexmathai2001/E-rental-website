@@ -1,10 +1,10 @@
-<div  id="editpopup" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 hidden">
+<div  id="add-popup" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 hidden">
     <div class="flex justify-center bg-white mt-28  border-2 border-[#9DB2BF] py-10 w-4/12  rounded-md ">
-        <div class="max-h-[15rem]">
+        <div class="">
             <form action="/admin/categories" id="category-form" enctype="multipart/form-data" method="post">
             <div class="flex justify-between mb-8">
                 <div class="font-bold text-xl">Add Category</div>
-                <button type="button" onclick="canceleditpopup()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
+                <button type="button" onclick="CancelAddPopup()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
             </div>
             <div class="flex items-start">
                 <label for="category-name" class="text-sm text-gray-500 font-medium mt-1 me-2">Category Name :</label>
@@ -24,6 +24,7 @@
             <div class="space-x-3 mt-4 flex">
                 <label for="fileInput" class="text-sm text-gray-500 font-medium">Image Upload : </label>
                 <div>
+                    <img id="imagePreview" class="hidden w-64 h-40 border-2 p-1 border-black mb-2" alt="Image Preview">
                     <label for="fileInput" id="image-upload" class="cursor-pointer max--w-[15rem] px-8 py-2 text-sm bg-gray-500 text-white rounded-md hover:bg-gray-700">
                         Upload
                     </label>
@@ -35,7 +36,7 @@
                 name="categoryimage"
                 class="hidden"
                 accept="image/*"
-                onchange="imagedone()"
+                onchange="previewImage(this)"
                 >
                 
             </div>

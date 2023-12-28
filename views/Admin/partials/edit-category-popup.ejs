@@ -9,16 +9,17 @@
             <div class="flex items-start">
                 <label for="category-name" class="text-sm text-gray-500 font-medium mt-1 me-2">Category Name :</label>
                 <div>
-                    <input type="text" name="categoryname" id="category-name" class="rounded-lg border-2 px-3 h-8 ">
+                    <input type="text" name="categoryname" id="categoryname" class="rounded-lg border-2 px-3 h-8 ">
                     <span id="category-error" class=" text-xs mt-2 text-red-500 hidden">Error message here</span>
+                    <span id="category-name"></span>
                 </div>
             </div>
 
             <div class="space-x-16 mt-4">
                 <label for="status" class="text-sm text-gray-500 font-medium">Status :</label>
-                <select class="rounded-lg border-2 px-3 h-8 text-gray-500" name="status" id="status">
+                <select class="rounded-lg border-2 px-3 h-8 text-gray-500"  name="category-status"  id="category-status">
                     <option value="Listed">List</option>
-                    <option value="Unlisted">Unlist</option>
+                    <option value="Unlisted">Unlisted</option>
                 </select>
             </div>
             <div class="space-x-3 mt-4 flex">
