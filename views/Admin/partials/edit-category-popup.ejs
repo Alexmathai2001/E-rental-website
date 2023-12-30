@@ -1,7 +1,7 @@
 <div  id="editpopup" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 hidden">
     <div class="flex justify-center bg-white mt-28  border-2 border-[#9DB2BF] py-10 w-4/12  rounded-md ">
-        <div class="max-h-[15rem]">
-            <form action="/admin/categories" id="category-form" enctype="multipart/form-data" method="post">
+        <div class="">
+            <form action="/admin/categories/update" id="category-form" enctype="multipart/form-data" method="put">
             <div class="flex justify-between mb-8">
                 <div class="font-bold text-xl">Edit Category</div>
                 <button type="button" onclick="canceleditpopup()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
@@ -23,26 +23,28 @@
                 </select>
             </div>
             <div class="space-x-3 mt-4 flex">
-                <label for="fileInput" class="text-sm text-gray-500 font-medium">Image Upload : </label>
+                <label for="editfileInput" class="text-sm text-gray-500 font-medium">Image Upload : </label>
                 <div>
-                    <label for="fileInput" id="image-upload" class="cursor-pointer max--w-[15rem] px-8 py-2 text-sm bg-gray-500 text-white rounded-md hover:bg-gray-700">
+                    <img id="image-Preview" src="/images/aboutus-bg.png" class=" w-64 h-40 border-2 p-1 border-black mb-2" alt="Image Preview">
+                    <span id="testspan"></span>
+                    <label for="editfileInput" id="image-edit-upload" class="cursor-pointer max--w-[15rem] px-8 py-2 text-sm bg-gray-500 text-white rounded-md hover:bg-gray-700">
                         Upload
                     </label>
                     <span id="upload-error" class="hidden text-xs text-red-500 mt-2 block">upload error message</span>
                 </div>
                 <input
-                id="fileInput"
+                id="editfileInput"
                 type="file"
-                name="categoryimage"
+                name="editcategoryimage"
                 class="hidden"
                 accept="image/*"
-                onchange="imagedone()"
+                onchange="editpreviewimage(this)"
                 >
                 
             </div>
             
             <div class="flex justify-end">
-                <button id="category-submit" class="bg-yellow-600 w-36 py-1 rounded-lg mt-4 text-white font-medium">Save changes</button>
+                <button id="category-submit"  class="bg-yellow-600 w-36 py-1 rounded-lg mt-4 text-white font-medium">Save changes</button>
             </div>
         </form>
         </div> 

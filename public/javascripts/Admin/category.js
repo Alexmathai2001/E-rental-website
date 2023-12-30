@@ -1,10 +1,7 @@
-function deletepopup(){
-    document.getElementById("deletepopup").style.display="flex";
-}
+
 function canceldeletepopup(){
     document.getElementById("deletepopup").style.display="none";
 }
-
 function addcategory(){
     document.getElementById('add-popup').style.display = "flex"
 }
@@ -15,26 +12,45 @@ function canceleditpopup(){
     document.getElementById('editpopup').style.display = "none";
 }
 
+
+
+
 function previewImage(input){
     imagedone();
     const fileInput = input.files[0];
-
     // Display the image preview
     const imagePreview = document.getElementById('imagePreview');
     imagePreview.classList.remove('hidden');
-
-
     const reader = new FileReader();
     reader.onload = function (e) {
       imagePreview.src = e.target.result;
     };
-
     reader.readAsDataURL(fileInput);
 }
 
+function editpreviewimage(input){
+    imageEditDone()
+    const fileInput = input.files[0];
+    // Display the image preview
+    const image_Preview = document.getElementById('image-Preview');
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      image_Preview.src = e.target.result;
+    };
+    reader.readAsDataURL(fileInput);
+}
+
+
 function imagedone(){
-    document.getElementById('image-upload').style.backgroundColor ="rgb(22 163 74 / var(--tw-bg-opacity))"
-    document.getElementById('image-upload').textContent = 'Upload Successfull !!!'
+    let imageupload = document.getElementById('image-upload')
+    imageupload.style.backgroundColor ="rgb(22 163 74 / var(--tw-bg-opacity))"
+    imageupload.textContent = 'Upload Successfull !!!'
+}
+function imageEditDone(){
+    let image_edit_upload = document.getElementById('image-edit-upload')
+    image_edit_upload.style.backgroundColor ="rgb(22 163 74 / var(--tw-bg-opacity))"
+    image_edit_upload.textContent = 'Upload Successfull !!!'
+
 }
 
 
@@ -50,7 +66,7 @@ var form = document.getElementById('category-form').addEventListener('submit',fu
     if (categoryname.value.trim() === '') {
         categoryerror.textContent = "Category name cannot be empty"
         categoryerror.style.display = "block"
-    }else if(document.getElementById('image-upload').textContent !== 'Done'){
+    }else if(document.getElementById('image-upload').textContent !== 'Upload Successfull !!!'){
         categoryerror.style.display = 'none'
         imageUploadError.textContent = 'Upload an image'
         imageUploadError.style.display = "block"
@@ -63,16 +79,18 @@ var form = document.getElementById('category-form').addEventListener('submit',fu
 
 async function editpopup(element){
     try {
+        let imagePreview = document.getElementById('image-Preview');
+        let categoryname = document.getElementById('categoryname')
+        let categoryStatus = document.getElementById('category-status')
         const categoryId = element.id
         const response = await fetch(`/admin/categories/edit/${categoryId}`);
         const data = await response.json();
-        const itemId = data.item._id;
-        const categoryName = data.item.categoryname;
-        const status = data.item.showstatus;
-        console.log(status);
-        const imageUrl = data.item.imageUrl;
-        let categoryname = document.getElementById('categoryname')
-        let categoryStatus = document.getElementById('category-status')
+        const categoryName = data.categoryname;
+        const status = data.showstatus;
+        const imageUrl = data.categoryimgurl;
+        imagePreview.src = imageUrl
+        console.log(imageUrl);
+        console.log(imagePreview)
         categoryname.value = categoryName
         categoryStatus.value = status
 
@@ -83,5 +101,11 @@ async function editpopup(element){
     }
 }
 
-
+async function deletepopup(element){
+    let deletecategoryname = document.getElementById('deletecategoryname')
+    document.getElementById("deletepopup").style.display="flex";
+    const list = element.id.split("-");
+    document.getElementById('deleteId').value=list[0]
+    deletecategoryname.textContent = list[1]
+}
 

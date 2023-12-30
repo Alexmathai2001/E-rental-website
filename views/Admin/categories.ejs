@@ -41,11 +41,16 @@
             <div class=" text-2xl font-semibold">Category management</div>
             <!--add product button filter sort-->
             <div class="flex justify-between my-4">
-                <div class="">
+                <div class="flex space-x-4">
                     <button onclick="addcategory()" class="bg-[#526D82] text-white px-3 py-1 font-medium rounded">+ Add Category</button>
     
-                    <form action="" class="inline">
-                        <input type="text" name="" id="" placeholder="search" class="border-2 rounded-full ps-5 ms-5">
+                    <form action="/admin/categories/search" method="post" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="categorySearch" id="" placeholder="Search by Category name.. ">
+                            <button type="submit" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
                     </form>
                 </div>
 
@@ -70,17 +75,14 @@
                             <option value="oldest">Oldest first</option>
                         </select>
                     </form>
-                    <form action="" class="flex items-center">
+                    <!--category filter-->
+                    <form action="" method="post" id="categoryfilter" class="flex items-center">
                         <div class="ms-3">Filer by:</div>
                         <select name="filter" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
                             <option value="" disabled selected>Choose</option>
                             <option value="All">All</option>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="shipped">Shipped</option>
-                            <option value="out for delivery">Out for delivery</option>
-                            <option value="delivered">delivered</option>
-                            <option value="returned">returned</option>
-                            
+                            <option value="Listed">Listed</option>
+                            <option value="Unlisted">Unlisted</option>
                         </select>
                     </form>
                 </div>
@@ -110,7 +112,7 @@
                               %></div></td>
                         <td class=" opacity-70">
                             <button onclick="editpopup(this)" id=" <%= data._id %> "><img src="/images/edit.png" class="h-6" alt=""></button>
-                            <button onclick="deletepopup()"><img src="/images/delete.png" class="h-6" alt=""></button>
+                            <button id="<%= data._id %>-<%= data.categoryname %>" onclick="deletepopup(this)"><img src="/images/delete.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
                     <% }) %>             
@@ -126,7 +128,7 @@
     <%- include('partials/edit-category-popup.ejs') %>
 
     <!--delete category popup-->
-    <%- include("partials/delete-category-popup.ejs") %>
+    <%- include("partials/delete-category-popup.ejs",{}) %>
 
     
 </body>
