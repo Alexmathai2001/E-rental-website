@@ -41,6 +41,55 @@ module.exports = {
         let item = await category.findById(itemId)
         res.json(item)
     },
+    postEdit: async function(req,res){
+        
+        try {
+            upload.single('editcategoryimage')(req, res, async (err) => {
+                if (err) {
+                    console.error('Error uploading file:', err);
+                    return res.status(500).send('File upload failed');
+                }
+                try {
+                    let categoryId = req.body.Id.trim()
+                    console.log(categoryId)
+                    let categoryForEdit = await category.findById(categoryId);
+                    console.log(categoryForEdit)
+                    let result
+                    if(req.file){
+                        console.log('file found');
+                        await cloudinary.uploader.destroy(categoryForEdit.cloudinaryId);
+                        result = await cloudinary.uploader.upload(req.file.path)
+                      }
+                      let reviseddata = {}
+                      if(req.file){
+                        console.log('file found');
+                        console.log(req.body.editcategory_status);
+                        reviseddata = {
+                            categoryname: req.body.editcategory_name||categoryForEdit.editcategory_name,
+                            showstatus: req.body.editcategory_status || categoryForEdit.editcategory_status,
+                            categoryimgurl : result.secure_url || categoryForEdit.categoryimgurl,
+                            cloudinaryId:result.public_id || categoryForEdit.cloudinaryId
+                          }
+                      }else{
+                        console.log('file not found');
+                        console.log(req.body.editcategory_name);
+                        reviseddata =  {
+                            categoryname: req.body.editcategory_name||categoryForEdit.editcategory_name,
+                            showstatus: req.body.editcategory_status || categoryForEdit.editcategory_status
+                        }
+                      }
+                      await category.findByIdAndUpdate(categoryId, reviseddata);
+                    res.redirect('/admin/categories');
+                } catch (productError) {
+                    console.error('Error creating/saving product:', productError);
+                    res.status(500).send('Error creating/saving product');
+                }
+            });
+            } catch (outerError) {
+                console.error('Outer error in post method:', outerError);
+                res.status(500).send('Internal Server Error');
+            }
+    },
     postDelete: async function(req,res){
         let idfordelete = req.body.deleteId
         let DeleteCategory =  await category.findByIdAndDelete(idfordelete);

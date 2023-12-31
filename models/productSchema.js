@@ -7,6 +7,7 @@ const productSchema = mongoose.Schema({
     productid : mongoose.Schema.Types.Mixed,
     category : String,
     regularprice : Number,
+    saleprice : Number,
     discountpercentage : Number,
     bestseller : Boolean,
     creationdate : Date,

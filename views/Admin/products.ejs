@@ -106,11 +106,11 @@
                         <tr>
                             <td class="text-sm"><%= data.serialnumber %></td>
 
-                            <td class="text-sm"><%= data.productname %></td>
+                            <td class="text-sm capitalize"><%= data.productname %></td>
                             <td class="text-gray-400 text-sm">#<%= data.productid %></td>
                             <td class="text-sm"><%= data.regularprice %></td>
                             <td class="text-sm"><%= data.discountpercentage %>%</td>
-                            <td class="text-sm"><%= data.category %></td>
+                            <td class="text-sm capitalize"><%= data.category %></td>
                             <td>
                                 <button onclick="scrollToSection('section1')"><img src="/images/edit.png" class="h-6" alt=""></button>
                                 <button onclick="deletepopup()"><img src="/images/delete.png" class="h-6" alt=""></button>
@@ -152,23 +152,13 @@
                                           <label for="fileInput" class="cursor-pointer min-w-[4rem] px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
                                             Upload Image
                                           </label>
-                                          <span id="fileName" class="ml-2 text-gray-500"></span>
                                         </div>
-                                        
                                       </div>
                                     <span id="fileName" class="ml-2"></span>
                                   </div>
-                                  
-                                
-                                
                             </div>
-                            
-                                
-
                         </div>
-                        
                         <div class="p-10 ">
-                        
                             <input type="text" required name="productname" placeholder="Product Name" class="rounded-full mt-4 p-2 w-full " id="">
                             <div class="flex w-full justify-between">
                                 <input type="text" required name="brandname" placeholder="Brand Name" class="mt-4 p-2 w-1/2 me-1 rounded-full" id="">

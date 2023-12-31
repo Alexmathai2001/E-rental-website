@@ -57,12 +57,14 @@ function imageEditDone(){
 //validation
 var form = document.getElementById('category-form').addEventListener('submit',function(event){
     event.preventDefault();
-
     var categoryname = document.getElementById('category-name')
     var categoryerror = document.getElementById('category-error')
     var submit = document.getElementById('category-submit')
     var imageUploadError = document.getElementById('upload-error')
+    categoryValidation(categoryname,categoryerror,submit,imageUploadError)
 
+})
+function categoryValidation(categoryname,categoryerror,submit,imageUploadError){
     if (categoryname.value.trim() === '') {
         categoryerror.textContent = "Category name cannot be empty"
         categoryerror.style.display = "block"
@@ -74,14 +76,43 @@ var form = document.getElementById('category-form').addEventListener('submit',fu
         submit.textContent = 'Saving...'
         document.getElementById('category-form').submit();
     }
+}
+
+//editvalidation
+var form = document.getElementById('editcategory-form').addEventListener('submit',function(event){
+    event.preventDefault();
+    var categoryname = document.getElementById('editcategory-name')
+    var categoryerror = document.getElementById('editcategory-error')
+    var submit = document.getElementById('editcategory-submit')
+    var imageUploadError = document.getElementById('editupload-error')
+    var uploadimage = document.getElementById('image-Preview')
+    editcategoryValidation(categoryname,categoryerror,submit,imageUploadError,uploadimage)
+
 })
+
+function editcategoryValidation(categoryname,categoryerror,submit,imageUploadError,uploadimage){
+    console.log(`uploaded image info is ${uploadimage.src}`);
+    if (categoryname.value.trim() === '') {
+        categoryerror.textContent = "Category name cannot be empty"
+        categoryerror.style.display = "block"
+    }else if( uploadimage.src === ''){
+        categoryerror.style.display = 'none'
+        imageUploadError.textContent = 'Upload an image'
+        imageUploadError.style.display = "block"
+    }else{
+        submit.textContent = 'Saving...'
+        document.getElementById('editcategory-form').submit();
+    }
+}
 
 
 async function editpopup(element){
     try {
         let imagePreview = document.getElementById('image-Preview');
-        let categoryname = document.getElementById('categoryname')
-        let categoryStatus = document.getElementById('category-status')
+        let categoryname = document.getElementById('editcategory-name')
+        let categoryStatus = document.getElementById('editcategory_status')
+        let sampleinput = document.getElementById('Id')
+        sampleinput.value = element.id;
         const categoryId = element.id
         const response = await fetch(`/admin/categories/edit/${categoryId}`);
         const data = await response.json();

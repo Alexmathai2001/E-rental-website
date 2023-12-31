@@ -30,6 +30,9 @@ module.exports = {
                     
                     const count = await Product.countDocuments();
                     const nextSerialNumber = count + 1;
+                    let discountamount = (req.body.discount * req.body.regularprice)/100
+                    let saleamount = (req.body.regularprice - discountamount)
+                    console.log(saleamount)
                     
                     const newProduct =new Product( {
                         serialnumber: nextSerialNumber,
@@ -38,6 +41,7 @@ module.exports = {
                         productid: `PROD-${Math.floor(10000 + Math.random() * 900000)}`,
                         category : req.body.category,
                         regularprice : req.body.regularprice,
+                        saleprice : Math.round(saleamount),
                         discountpercentage : req.body.discount,
                         bestseller : req.body.bestseller,
                         creationdate : Date.now(),
@@ -47,23 +51,7 @@ module.exports = {
                         cloudinaryid : result.public_id
                     })
                     await newProduct.save();
-                    const category_name = req.body.category;
-                    let test =await category.findOne({categoryname: category_name})
-                    console.log(test)
-                    addproducts(test)
-                    async function addproducts(test) {
-                        console.log(test);
-                        if (test) {
-                            // Push the new product to the products array within the category
-                            await test.products.push(newProduct);
-                            console.log("test");
                     
-                            // Save the updated category object to the database
-                            await test.save()
-                        } else {
-                            console.log('Category not found');
-                        }
-                    }
                     
                     res.redirect('/admin/products');
                 }catch (productError) {
