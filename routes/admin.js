@@ -16,6 +16,7 @@ router.get('/login',logincontroller.get)
 router.get('/products',productcontroller.get)
 router.post('/products',productcontroller.post)
 router.post('/products/delete',productcontroller.postDelete)
+router.get('/products/edit/:id',productcontroller.getEdit)
 
 router.get('/customers',customercontroller.get)
 router.get('/orders',ordercontroller.get)

@@ -1,0 +1,124 @@
+<div  id="edit-product-popup" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 hidden">
+    <div class="flex justify-center bg-white  border-2 border-[#9DB2BF] py-10 w-fit px-10  rounded-md ">
+        <div class="">
+            <form action="/admin/products" id="editproduct-form" enctype="multipart/form-data" method="post">
+            <div class="flex justify-between mb-8">
+                <div class="font-bold text-xl">Edit Product</div>
+                <button type="button" onclick="CancelEditPopup()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
+            </div>
+            <div class="flex justify-center">
+                <div class="flex items-center space-x-3">
+                    <input type="text" name="" hidden id="Id">
+                    <!--productname-->
+                    <div class="flex items-start">
+                        <label for="editproductname" class="text-sm text-gray-500 font-medium mt-1 me-2">Product Name :</label>
+                        <div>
+                            <input type="text" required name="editproductname" id="editproductname" class="rounded-lg border-2 px-3 h-8 text-sm">
+                        </div>
+                    </div>
+                    <!--brandname-->
+                    <div class="flex items-start">
+                        <label for="editbrandname" class="text-sm text-gray-500 font-medium mt-1 me-2">Brand Name :</label>
+                        <div>
+                            <input type="text" name="editbrandname" required id="editbrandname" class="rounded-lg border-2 px-3 h-8 ms-3 text-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between space-x-5 mt-4">
+                <div>
+                    <!--category-->
+                    <select name="editcategory" id="editcategory" required class="rounded-lg border-2 px-3 h-8 ms-9 text-sm w-60">
+                        <option value="" disabled selected>Category</option>
+                        <% categories.forEach((category) => { %>
+                        <option value="<%= category.categoryname %>" class="capitalize"><%= category.categoryname %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <!--regular price-->
+                    <input type="number" required placeholder="Regular Price" name="editregularprice" id="editregularprice" class="rounded-lg border-2 px-3 h-8 w-60 text-sm">
+                </div>
+                <div>
+                    <!--discount percentage-->
+                    <input type="number" required placeholder="Discount Percentage" name="editdiscountpercentage" id="editdiscountpercentage" class="rounded-lg border-2 px-3 h-8 w-60 text-sm">
+                </div>
+            </div>
+            <div class="flex justify-between space-x-5 mt-4">
+                <select name="editbestseller" required class="rounded-lg border-2 px-3 h-8 ms-9 text-sm w-60" id="editbestseller">
+                    <option value="" disabled selected>bestseller</option>
+                    <option value="true">yes</option>
+                    <option value="false">no</option>
+                </select>
+                <select name="editstockstatus" class="rounded-lg border-2 px-3 h-8 ms-9 text-sm w-60" id="editstockstatus">
+                    <option value="Available">Available</option>
+                    <option value="Out of stock">Out of stock</option>
+                </select>
+                <select name="editproductcondition" class="rounded-lg border-2 px-3 h-8 ms-9 text-sm w-60" id="editproductcondition">
+                    <option value="Like new">Like new</option>
+                    <option value="Good">Good</option>
+                    <option value="Okay">Okay</option>
+                </select>
+            </div>
+            <!--product specification-->
+            <p class="my-3 font-semibold flex justify-center">Product Specifications</p>
+            <div class="flex justify-around">
+                <div class="flex space-x-5">
+                    <input type="text" name="heading1" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="editheading1">
+                    <input type="text" name="content1" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="editcontent1">
+                </div>
+            </div>
+            <div class="flex justify-around mt-2">
+                <div class="flex space-x-5">
+                    <input type="text" name="heading2" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="editheading2">
+                    <input type="text" name="content2" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="editcontent2">
+                </div>
+            </div>
+            <div class="flex justify-around mt-2">
+                <div class="flex space-x-5">
+                    <input type="text" name="heading3" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="editheading3">
+                    <input type="text" name="content3" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="editcontent3">
+                </div>
+            </div>
+            <div class="flex justify-around mt-2">
+                <div class="flex space-x-5">
+                    <input type="text" name="heading4" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="editheading4">
+                    <input type="text" name="content4" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="editcontent4">
+                </div>
+            </div>
+            <div class="flex justify-around mt-2">
+                <div class="flex space-x-5">
+                    <input type="text" name="heading5" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="editheading5">
+                    <input type="text" name="content5" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="editcontent5">
+                </div>
+            </div>
+
+            <!--image upload-->
+            <div class="flex justify-center">
+                <div class="space-x-3 mt-4 flex">
+                    <div>
+                        <img id="editimagePreview" class=" w-64 h-40 border-2 p-1 border-black mb-2" alt="Image Preview">
+                        <label for="editfileInput" id="edit-image-upload" class="cursor-pointer max--w-[15rem] px-8 py-2 text-sm bg-gray-500 text-white rounded-md hover:bg-gray-700">
+                            Upload Image
+                        </label>
+                    </div>
+                    <input
+                    id="editfileInput"
+                    type="file"
+                    name="editproductimage"
+                    class="hidden"
+                    accept="image/*"
+                    onchange="editpreviewimage(this)"
+                    >
+                    
+                </div>
+            </div>
+
+            
+            <div class="flex justify-end">
+                <button id="editproduct-submit" class="bg-yellow-600 w-36 py-1 rounded-lg mt-4 text-white font-medium">Save changes</button>
+            </div>
+        </form>
+        </div> 
+    </div>
+</div>

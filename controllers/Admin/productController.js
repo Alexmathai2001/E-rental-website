@@ -64,5 +64,10 @@ module.exports = {
         let DeleteProduct =  await Product.findByIdAndDelete(idfordelete);
         cloudinary.uploader.destroy(DeleteProduct.cloudinaryId)
         res.redirect('/admin/products');
+    },
+    getEdit: async function(req,res){
+        let itemId = req.params.id
+        let item = await Product.findById(itemId)
+        res.json(item)
     }
 }

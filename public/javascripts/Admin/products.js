@@ -10,31 +10,45 @@ function canceldeletepopup(){
 function showPopup() {
     document.getElementById('add-product-popup').style.display = "flex"
 }
+
+async function ShowEditPopup(element){
+    let productname = document.getElementById('editproductname')
+    let brandname = document.getElementById('editbrandname')
+    let category = document.getElementById('editcategory')
+    let regularprice = document.getElementById('editregularprice')
+    let discount = document.getElementById('editdiscountpercentage')
+    let bestseller = document.getElementById('editbestseller')
+    let stockstatus = document.getElementById('editstockstatus')
+    let productcondition = document.getElementById('editproductcondition')
+    let imagePreview = document.getElementById('editimagePreview');
+    let sampleinput = document.getElementById('Id')
+    sampleinput.value = element.id
+    let productid = element.id
+    const response = await fetch(`/admin/products/edit/${productid}`)
+    const data = await response.json()
+    productname.value = data.productname
+    brandname.value = data.brandname
+    category.value = data.category
+    regularprice.value = data.regularprice
+    discount.value = data.discountpercentage
+    bestseller.value = data.bestseller
+    stockstatus.value = data.stockstatus
+    productcondition.value = data.productcondition
+    imagePreview.src = data.imageurl
+    document.getElementById('edit-product-popup').style.display = "flex"
+}
+
+function CancelEditPopup(){
+    document.getElementById('edit-product-popup').style.display = "none"
+}
+
 function CancelproductPopup(){
     document.getElementById('add-product-popup').style.display = "none"
 }
 
 var form = document.getElementById('product-form').addEventListener('submit',function(event){
     event.preventDefault();
-    
-    let productname = document.getElementById('productname').value
-    let brandname = document.getElementById('brandname').value
-    let category = document.getElementById('category').value
-    let regularprice = document.getElementById('regularprice').value
-    let discount = document.getElementById('discountpercentage').value
-    let bestseller = document.getElementById('bestseller').value
-    let stockstatus = document.getElementById('stockstatus').value
-    let productcondition = document.getElementById('productcondition').value
-    let heading1 = document.getElementById('heading1').value
-    let content1 = document.getElementById('content1').value
-    let heading2 = document.getElementById('heading2').value
-    let content2 = document.getElementById('content2').value
-    let heading3 = document.getElementById('heading3').value
-    let content3 = document.getElementById('content3').value
-    let heading4 = document.getElementById('heading4').value
-    let content4 = document.getElementById('content4').value
-    let heading5 = document.getElementById('heading5').value
-    let content5 = document.getElementById('content5').value
+
     let imageupload = document.getElementById('image-upload')
     let imageUploadError = document.getElementById('upload-error')
     let submit = document.getElementById('product-submit')
@@ -61,6 +75,26 @@ function previewImage(input){
       imagePreview.src = e.target.result;
     };
     reader.readAsDataURL(fileInput);
+}
+
+function editpreviewimage(input){
+    imageEditDone()
+    const fileInput = input.files[0];
+    // Display the image preview
+    const image_Preview = document.getElementById('editimagePreview');
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      image_Preview.src = e.target.result;
+    };
+    reader.readAsDataURL(fileInput);
+}
+
+function imageEditDone(){
+    alert("gello")
+    let image_edit_upload = document.getElementById('edit-image-upload')
+    image_edit_upload.style.backgroundColor ="rgb(22 163 74 / var(--tw-bg-opacity))"
+    image_edit_upload.textContent = 'Upload Successfull !!!'
+
 }
 
 function imagedone(){

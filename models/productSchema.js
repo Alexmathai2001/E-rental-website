@@ -13,7 +13,7 @@ const productSchema = mongoose.Schema({
     creationdate : Date,
     stockstatus : String,
     productcondition : String,
-    productdescription : String,
+    productspecification : String,
     avatar : String,
     imageurl : String,
     cloudinaryid : String
