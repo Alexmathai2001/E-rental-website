@@ -6,10 +6,8 @@
 
 <body class="box-border">
 
-
     <!--header-->
     <%- include("partials/header.ejs") %>
-
 
      <div class="flex ">
         <!--leftside navigation-->
@@ -43,11 +41,16 @@
             <div class=" text-2xl font-poppins font-semibold">Product management</div>
             <!--add product button filter sort-->
             <div class="flex justify-between my-4">
-                <div class="">
-                    <button onclick="scrollToSection('section1')" class="bg-[#526D82] text-white px-3 py-1 font-medium rounded">+ Add product</button>
+                <div class="flex space-x-4">
+                    <button onclick="showPopup()" class="bg-[#526D82] text-white px-3 py-1 font-medium rounded">Add product</button>
     
-                    <form action="" class="inline">
-                        <input type="text" name="" id="" placeholder="search" class="border-2 rounded-full ps-5 ms-5">
+                    <form action="/admin/categories/search" method="post" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="categorySearch" id="" placeholder="Search by Product name... ">
+                            <button type="submit" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
                     </form>
                 </div>
 
@@ -113,126 +116,18 @@
                             <td class="text-sm capitalize"><%= data.category %></td>
                             <td>
                                 <button onclick="scrollToSection('section1')"><img src="/images/edit.png" class="h-6" alt=""></button>
-                                <button onclick="deletepopup()"><img src="/images/delete.png" class="h-6" alt=""></button>
+                                <button id="<%- data._id  %>-<%- data.productname %>" onclick="deletepopup(this)"><img src="/images/delete.png" class="h-6" alt=""></button>
                             </td>
                         </tr>
                     <% }) %>
-                    
-                    
-                    
-                   
                 </table> 
             </div> 
-            <!--edit product add product pop up-->
-            <section id="section1" class="hidden">
-                <div id="section" class="w-full">
-                <div class=" text-2xl font-poppins font-semibold mt-5">Add/Edit Product</div>
-                <div class="bg-white p-3 border-2">
-                    <form method="post" action="/admin/products" enctype="multipart/form-data" class="flex justify-evenly">
-                        
-                        <div class="mx-0">
-                            <div class="py-2">Add/change images</div>
-                            
-                            <div class=" gap-4">
-                                <div class="flex items-center justify-center">
-                                    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-                                        <div class="mt-4">
-                                            <img id="imagePreview" class="hidden w-64 h-40" alt="Image Preview">
-                                        </div>
-                                        
-                                        <div class="mt-1 flex items-center">
-                                          <input
-                                            id="fileInput"
-                                            type="file"
-                                            name="productimage"
-                                            class="hidden"
-                                            accept="image/*"
-                                            onchange="previewImage(this)"
-                                          >
-                                          <label for="fileInput" class="cursor-pointer min-w-[4rem] px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
-                                            Upload Image
-                                          </label>
-                                        </div>
-                                      </div>
-                                    <span id="fileName" class="ml-2"></span>
-                                  </div>
-                            </div>
-                        </div>
-                        <div class="p-10 ">
-                            <input type="text" required name="productname" placeholder="Product Name" class="rounded-full mt-4 p-2 w-full " id="">
-                            <div class="flex w-full justify-between">
-                                <input type="text" required name="brandname" placeholder="Brand Name" class="mt-4 p-2 w-1/2 me-1 rounded-full" id="">
-                                <select name="category"id="" required class="rounded-full p-2 mt-4 w-1/2 bg-white opacity-50 outline-none">
-                                    <option value="" disabled selected>Category</option>
-                                    <% categories.forEach((category) => { %>
-                                    <option value="<%= category.categoryname %>" class="capitalize"><%= category.categoryname %></option>
-                                    <% }) %>
-                                </select>
-                            </div>
-                            
-                            <div class="flex w-full justify-between">
-                                <input type="number" required name="regularprice" class="rounded-full mt-4 w-1/2 p-2 me-1" placeholder="Regular Price" id="">
-                                <input type="number" name="discount" class="rounded-full mt-4 p-2 w-1/2" placeholder="Discount percentage" id="">
-                            </div>
-                            
-                            <div class="flex w-full justify-between">
-                                <!--date here-->
-                                <select name="bestseller" class="p-2 rounded-full bg-white mt-4 opacity-50" id="">
-                                    <option value="" disabled selected>bestseller</option>
-                                    <option value="true">yes</option>
-                                    <option value="false">no</option>
-                                </select>
-                                <select name="stockstatus" class="p-2 rounded-full bg-white mt-4 opacity-50" id="">
-                                    <option value="" disabled selected>Stock Status</option>
-                                    <option value="Available">Available</option>
-                                    <option value="Out of stock">Out of stock</option>
-                                </select>
-                                <select name="productcondition" class="p-2 bg-white rounded-full mt-4 opacity-50 outline-none" id="">
-                                    <option value="" disabled selected>Product Condition</option>
-                                    <option value="Like new">Like new</option>
-                                    <option value="Good">Good</option>
-                                    <option value="Okay">Okay</option>
-                                </select>
-                            </div>
-                           <div class="flex justify-between">
-                                <p class=" font-medium mt-2">Features</p>
-                            
-                           </div>
-                            <div class="w-full flex mt-2">
-                                <input type="text" name="attribute" class="rounded-full w-1/2 p-2 me-1" placeholder="key" id="">
-                                <input type="text" name="property" class="rounded-full w-1/2 p-2 me-1" placeholder="value" id="">
-                            </div>
-                            <div class="w-full flex mt-2">
-                                <input type="text" name="attribute" class="rounded-full w-1/2 p-2 me-1" placeholder="key" id="">
-                                <input type="text" name="property" class="rounded-full w-1/2 p-2 me-1" placeholder="value" id="">
-                            </div>
-                            <div class="w-full flex mt-2">
-                                <input type="text" name="attribute" class="rounded-full w-1/2 p-2 me-1" placeholder="key" id="">
-                                <input type="text" name="property" class="rounded-full w-1/2 p-2 me-1" placeholder="value" id="">
-                            </div>
-                            <div id="newspace">
-
-                            </div>
-                            
-                            <div class="mt-2 flex justify-end">
-                                <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-xs font-semibold" type="button" onclick="addmoreinput()">Add more</button>
-                            </div>
-
-                            <div class="flex justify-end  mt-36">
-                                <button type="submit" class="px-6 py-4 bg-red-500 text-white rounded ">Save Changes</button>
-                            </div>
-                            
-                        
-                        </div>
-                    </form>
-                </div>
-                </div>
-            </section>
-        
         </div>
     </div>
     
     <%- include("partials/delete-product-popup.ejs") %>
+    <%- include("partials/add-product-popup.ejs") %>
+
 </body>
 </html>
-<script src="/javascripts/products.js"></script>
+<script src="/javascripts/Admin/products.js"></script>

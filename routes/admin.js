@@ -12,8 +12,10 @@ const dashboardcontroller = require("../controllers/Admin/dashboardController")
 
 router.get('/login',logincontroller.get)
 
+//products routes
 router.get('/products',productcontroller.get)
 router.post('/products',productcontroller.post)
+router.post('/products/delete',productcontroller.postDelete)
 
 router.get('/customers',customercontroller.get)
 router.get('/orders',ordercontroller.get)

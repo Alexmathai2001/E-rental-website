@@ -26,23 +26,20 @@ module.exports = {
                 
                 try {
                     const result = await cloudinary.uploader.upload(req.file.path);
-                    // console.log(result);
-                    
                     const count = await Product.countDocuments();
                     const nextSerialNumber = count + 1;
-                    let discountamount = (req.body.discount * req.body.regularprice)/100
-                    let saleamount = (req.body.regularprice - discountamount)
-                    console.log(saleamount)
+                    let discountamount = (req.body.discountpercentage * req.body.regularprice)/100
+                    let saleamount =Math.round(req.body.regularprice - discountamount)
                     
                     const newProduct =new Product( {
                         serialnumber: nextSerialNumber,
                         productname: req.body.productname,
                         brandname: req.body.brandname,
-                        productid: `PROD-${Math.floor(10000 + Math.random() * 900000)}`,
+                        productid: `PROD-${Math.floor(10000 + Math.random() * 90000)}`,
                         category : req.body.category,
                         regularprice : req.body.regularprice,
-                        saleprice : Math.round(saleamount),
-                        discountpercentage : req.body.discount,
+                        saleprice : saleamount,
+                        discountpercentage : req.body.discountpercentage,
                         bestseller : req.body.bestseller,
                         creationdate : Date.now(),
                         stockstatus : req.body.stockstatus,
@@ -51,8 +48,6 @@ module.exports = {
                         cloudinaryid : result.public_id
                     })
                     await newProduct.save();
-                    
-                    
                     res.redirect('/admin/products');
                 }catch (productError) {
                     console.error('Error creating/saving product:', productError);
@@ -63,5 +58,11 @@ module.exports = {
             console.error('Outer error in post method:', outerError);
             res.status(500).send('Internal Server Error');
         }
+    },
+    postDelete: async function(req,res){
+        let idfordelete = req.body.deleteId
+        let DeleteProduct =  await Product.findByIdAndDelete(idfordelete);
+        cloudinary.uploader.destroy(DeleteProduct.cloudinaryId)
+        res.redirect('/admin/products');
     }
 }

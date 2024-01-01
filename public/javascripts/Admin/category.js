@@ -120,8 +120,6 @@ async function editpopup(element){
         const status = data.showstatus;
         const imageUrl = data.categoryimgurl;
         imagePreview.src = imageUrl
-        console.log(imageUrl);
-        console.log(imagePreview)
         categoryname.value = categoryName
         categoryStatus.value = status
 
