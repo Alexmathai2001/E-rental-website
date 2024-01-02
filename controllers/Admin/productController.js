@@ -50,6 +50,11 @@ module.exports = {
                         cloudinaryid : result.public_id
                     })
                     await newProduct.save();
+                    let productcount = await Product.countDocuments({category : req.body.category});
+                    let updater = await category.findOneAndUpdate({categoryname:req.body.category},{ $set: { productscount: productcount } })
+                    console.log(updater);
+                    console.log(req.body.category);
+                    console.log(productcount);
                     res.redirect('/admin/products');
                 }catch (productError) {
                     console.error('Error creating/saving product:', productError);

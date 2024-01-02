@@ -22,6 +22,7 @@ module.exports = {
                     const newcategory = new category({
                         categoryname : req.body.categoryname,
                         showstatus : req.body.status,
+                        productscount : 0,
                         categoryimgurl : result.secure_url,
                         cloudinaryId : result.public_id
                     });
