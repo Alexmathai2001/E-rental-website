@@ -65,60 +65,39 @@
                 </select>
             </div>
             <!--product specification-->
-            <p class="my-3 font-semibold flex justify-center">Product Specifications</p>
-            <div class="flex justify-around">
-                <div class="flex space-x-5">
-                    <input type="text" name="heading1" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="heading1">
-                    <input type="text" name="content1" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="content1">
-                </div>
-            </div>
-            <div class="flex justify-around mt-2">
-                <div class="flex space-x-5">
-                    <input type="text" name="heading2" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="heading2">
-                    <input type="text" name="content2" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="content2">
-                </div>
-            </div>
-            <div class="flex justify-around mt-2">
-                <div class="flex space-x-5">
-                    <input type="text" name="heading3" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="heading3">
-                    <input type="text" name="content3" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="content3">
-                </div>
-            </div>
-            <div class="flex justify-around mt-2">
-                <div class="flex space-x-5">
-                    <input type="text" name="heading4" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="heading4">
-                    <input type="text" name="content4" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="content4">
-                </div>
-            </div>
-            <div class="flex justify-around mt-2">
-                <div class="flex space-x-5">
-                    <input type="text" name="heading5" placeholder="Heading" class="rounded-lg border-2 px-3 h-8 text-sm" id="heading5">
-                    <input type="text" name="content5" placeholder="Content" class="rounded-lg border-2 px-3 h-8 text-sm" id="content5">
-                </div>
-            </div>
-
-            <!--image upload-->
-            <div class="flex justify-center">
-                <div class="space-x-3 mt-4 flex">
-                    <div>
-                        <img id="imagePreview" class="hidden w-64 h-40 border-2 p-1 border-black mb-2" alt="Image Preview">
-                        <label for="fileInput" id="image-upload" class="cursor-pointer max--w-[15rem] px-8 py-2 text-sm bg-gray-500 text-white rounded-md hover:bg-gray-700">
-                            Upload Image
-                        </label>
-                        <span id="upload-error" class="hidden text-xs text-red-500 mt-2 block ms-7">upload error message</span>
+            <p class="my-3 font-semibold ">Product Specifications</p>
+            <div class="flex justify-evenly">
+                           
+                <div class="flex justify-around">
+                    <div class="flex space-x-5">
+                        <!-- <input type="text" name="specification" placeholder="product specification seperated by comma" class="rounded-lg border-2 px-3 h-8 text-sm" id="specification"> -->
+                        <textarea name="specification" id="specification" cols="60" class="rounded-lg border-2 p-3 text-sm outline-none" rows="10"></textarea>
                     </div>
-                    <input
-                    id="fileInput"
-                    type="file"
-                    name="productimage"
-                    class="hidden"
-                    accept="image/*"
-                    onchange="previewImage(this)"
-                    >
-                    
+                </div>
+                
+
+                <!--image upload-->
+                <div class="flex justify-center">
+                    <div class="space-x-3 mt-4 flex">
+                        <div>
+                            <img id="imagePreview" class="hidden w-64 h-40 border-2 p-1 border-black mb-2" alt="Image Preview">
+                            <label for="fileInput" id="image-upload" class=" cursor-pointer max--w-[15rem] px-8 py-2 text-sm bg-gray-500 text-white rounded-md hover:bg-gray-700">
+                                Upload Image
+                            </label>
+                            <span id="upload-error" class="hidden text-xs text-red-500 mt-2 block ms-7">upload error message</span>
+                        </div>
+                        <input
+                        id="fileInput"
+                        type="file"
+                        name="productimage"
+                        class="hidden"
+                        accept="image/*"
+                        onchange="previewImage(this)"
+                        >
+                        
+                    </div>
                 </div>
             </div>
-
             
             <div class="flex justify-end">
                 <button id="product-submit" class="bg-yellow-600 w-36 py-1 rounded-lg mt-4 text-white font-medium">Save changes</button>

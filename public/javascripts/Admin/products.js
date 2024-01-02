@@ -21,7 +21,8 @@ async function ShowEditPopup(element){
     let stockstatus = document.getElementById('editstockstatus')
     let productcondition = document.getElementById('editproductcondition')
     let imagePreview = document.getElementById('editimagePreview');
-    let sampleinput = document.getElementById('Id')
+    let specification = document.getElementById('editspecification')
+    let sampleinput = document.getElementById('editId')
     sampleinput.value = element.id
     let productid = element.id
     const response = await fetch(`/admin/products/edit/${productid}`)
@@ -32,6 +33,7 @@ async function ShowEditPopup(element){
     regularprice.value = data.regularprice
     discount.value = data.discountpercentage
     bestseller.value = data.bestseller
+    specification.value = data.productspecification
     stockstatus.value = data.stockstatus
     productcondition.value = data.productcondition
     imagePreview.src = data.imageurl
@@ -90,7 +92,6 @@ function editpreviewimage(input){
 }
 
 function imageEditDone(){
-    alert("gello")
     let image_edit_upload = document.getElementById('edit-image-upload')
     image_edit_upload.style.backgroundColor ="rgb(22 163 74 / var(--tw-bg-opacity))"
     image_edit_upload.textContent = 'Upload Successfull !!!'
