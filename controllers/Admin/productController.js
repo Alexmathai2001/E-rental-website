@@ -64,7 +64,7 @@ module.exports = {
     postDelete: async function(req,res){
         let idfordelete = req.body.deleteId
         let DeleteProduct =  await Product.findByIdAndDelete(idfordelete);
-        cloudinary.uploader.destroy(DeleteProduct.cloudinaryId)
+        cloudinary.uploader.destroy(DeleteProduct.cloudinaryid)
         res.redirect('/admin/products');
     },
     getEdit: async function(req,res){
@@ -136,5 +136,13 @@ module.exports = {
             console.error('Outer error in post method:', outerError);
             res.status(500).send('Internal Server Error');
         }
+    },
+    postSearch: async function(req,res){
+        let searchkey = req.body.productSearch        
+        const products = await Product.find({productname : { $regex: new RegExp(searchkey, 'i') } })
+        const categories = await category.find();
+        res.locals.title = "products"; 
+        res.render('Admin/products',{ products , categories })
+
     }
 }

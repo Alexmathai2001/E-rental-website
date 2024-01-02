@@ -18,6 +18,7 @@ router.post('/products',productcontroller.post)
 router.post('/products/delete',productcontroller.postDelete)
 router.get('/products/edit/:id',productcontroller.getEdit)
 router.post('/products/edit/update',productcontroller.postEdit)
+router.post('/products/search',productcontroller.postSearch)
 
 router.get('/customers',customercontroller.get)
 router.get('/orders',ordercontroller.get)

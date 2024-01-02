@@ -1,4 +1,5 @@
 const category = require('../../models/categorySchema')
+const Product = require('../../models/productSchema')
 const cloudinary = require('../../utils/cloudinary')
 const upload = require('../../utils/multer')
 
@@ -92,6 +93,14 @@ module.exports = {
     },
     postDelete: async function(req,res){
         let idfordelete = req.body.deleteId
+        let categoryfordelete = await category.findById(idfordelete)
+        let productsfordelete = await Product.find({category : categoryfordelete.categoryname})
+        console.log(productsfordelete);
+        productsfordelete.forEach(element => {
+            console.log(element.cloudinaryid);
+            cloudinary.uploader.destroy(element.cloudinaryid)
+        });
+        await Product.deleteMany({category : categoryfordelete.categoryname})
         let DeleteCategory =  await category.findByIdAndDelete(idfordelete);
         cloudinary.uploader.destroy(DeleteCategory.cloudinaryId)
         res.redirect('/admin/categories');
