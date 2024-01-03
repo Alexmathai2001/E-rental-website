@@ -138,3 +138,82 @@ async function deletepopup(element){
     deletecategoryname.textContent = list[1]
 }
 
+function updateSortHowOptions() {
+    const sortWhatSelect = document.getElementById("sortSelect");
+    const selectedSortWhat = sortWhatSelect.value;
+    const sortHowSelect = document.getElementById("sortHow");
+
+    sortHowSelect.innerHTML = "";
+    addOption(sortHowSelect, "Sort type", "sortType");
+    if (selectedSortWhat === "CategoryName") {
+      addOption(sortHowSelect, "a-z", "a-z");
+      addOption(sortHowSelect, "z-a", "z-a");
+      addOption(sortHowSelect, "Newest first", "Newest first");
+      addOption(sortHowSelect, "Oldest First", "Oldest First");
+    } else if (selectedSortWhat === "ProductCount") {
+      addOption(sortHowSelect, "Ascending", "Ascending");
+      addOption(sortHowSelect, "Descending", "Descending");
+    }
+  }
+
+  function addOption(selectElement, text, value) {
+    const option = document.createElement("option");
+    option.text = text;
+    option.value = value;
+    selectElement.add(option);
+  }
+
+  updateSortHowOptions()
+  const sortWhatSelect = document.getElementById("sortSelect");
+  sortWhatSelect.addEventListener('change',updateSortHowOptions)
+  const sortHowSelect = document.getElementById("sortHow");
+  //fetch data and sort on change sortvalues 
+  sortHowSelect.addEventListener('change',function(){
+    sortCategory()
+  })
+  async function sortCategory() {
+    const selectedOption = document.getElementById('sortHow').value;
+    try {
+      const response = await fetch('/admin/categories/sort', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'sort=' + selectedOption,
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.text();
+      document.getElementById('table-container').innerHTML = data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+
+  // filter cateogry
+let filterForm =  document.getElementById('filterForm');
+let filtervalues = document.getElementById('categoryfilter');
+filtervalues.addEventListener('change',function(){
+    filterCategory()
+})
+
+  async function filterCategory(){
+    const selectedOption = document.getElementById('categoryfilter').value;
+    try {
+      const response = await fetch('/admin/categories/filter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'filterValue=' + selectedOption,
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.text();
+      document.getElementById('table-container').innerHTML = data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+}

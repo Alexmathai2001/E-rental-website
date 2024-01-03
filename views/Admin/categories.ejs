@@ -55,18 +55,15 @@
                 </div>
 
                 <div class="flex items-center">
-                    <form action="" method="post" id="categorysortform" class="flex items-center">
-                        <div>Sort:</div>
-                        <select name="order" id="sortselece" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
-                            <option value="" disabled selected>Choose</option>
-                            <option value="All">All</option>
-                            <option value="price">Product Name</option>
-                            <option value="date">Product Count</option>
-                            
+                    <form action="" method="post" id="CategorySortForm" class="flex items-center">
+                        <div class="text-sm">Sort:</div>
+                        <select name="" id="sortSelect" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                            <option value="CategoryName">Category Name</option>
+                            <option value="ProductCount">Product Count</option>
                         </select>
 
-                        <div class="ms-3">by:</div>
-                        <select name="product" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                        <div class="ms-3 text-sm">by:</div>
+                        <select name="sortValue" id="sortHow" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
                             <option value="" disabled selected>Choose</option>
                             <option value="All">All</option>
                             <option value="Ascending">Ascending</option>
@@ -76,9 +73,9 @@
                         </select>
                     </form>
                     <!--category filter-->
-                    <form action="" method="post" id="categoryfilter" class="flex items-center">
+                    <form action="" method="post" id="filterForm" class="flex items-center">
                         <div class="ms-3">Filer by:</div>
-                        <select name="filter" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                        <select name="filter" id="categoryfilter" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
                             <option value="" disabled selected>Choose</option>
                             <option value="All">All</option>
                             <option value="Listed">Listed</option>
@@ -88,6 +85,7 @@
                 </div>
             </div>
             <!--product table-->
+
             <div class="h-[32rem]  mt-8 overflow-y-auto">
                 <table class="w-full text-center">
                     <tr class="bg-[#526D82] text-white">
@@ -97,25 +95,10 @@
                         <th class="font-semibold py-1" class="w-1/12">Status</th>
                         <th class="font-semibold py-1">Action</th>
                     </tr>
-                    <% categories.forEach((data) => {  %>
-                    <tr>
-                        <td class=" opacity-70 text-sm">1</td>
-                        <td class=" opacity-70 capitalize text-sm"><%= data.categoryname %></td>
-                        <td class=" opacity-70 w-1/3 text-sm"><%= data.productscount %></td>
-                        <td><div
-                            <% if(data.showstatus === "Listed") { %>
-                             class="bg-green-100 text-green-700 rounded-full my-1 text-sm" 
-                             <% }else{ %>
-                                class="bg-red-100 text-red-700 rounded-full my-1 text-sm"
-                                <% } %>
-                             ><%= data.showstatus
-                              %></div></td>
-                        <td class=" opacity-70">
-                            <button onclick="editpopup(this)" id=" <%= data._id %> "><img src="/images/edit.png" class="h-6" alt=""></button>
-                            <button id="<%= data._id %>-<%= data.categoryname %>" onclick="deletepopup(this)"><img src="/images/delete.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <% }) %>             
+                    <tbody id="table-container">
+                        <%- include("partials/category-table.ejs") %>
+                    </tbody>
+
                 </table> 
             </div>
         </div>

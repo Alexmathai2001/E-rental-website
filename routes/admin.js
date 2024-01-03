@@ -31,6 +31,7 @@ router.post('/categories/edit/update',categorycontroller.postEdit)
 router.post('/categories/delete',categorycontroller.postDelete)
 router.post('/categories/search',categorycontroller.postSearch)
 router.post('/categories/filter',categorycontroller.postFilter)
+router.post('/categories/sort',categorycontroller.postSort)
 
 router.get('/settings',settingcontroller.get)
 router.get('/dashboard',dashboardcontroller.get)

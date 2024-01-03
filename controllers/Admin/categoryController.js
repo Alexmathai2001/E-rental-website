@@ -113,8 +113,85 @@ module.exports = {
         res.render('Admin/categories',{categories})
     },
     postFilter : async function(req,res){
-        let filerKey = req.body.filter
-        console.log(filerKey);
+        let filterkey = req.body.filterValue
+        let allCategory = await category.find()
+        if( filterkey == "Listed"){
+            console.log("listed");
+            const categories = await category.find({showstatus : "Listed"})
+            res.render("Admin/partials/category-table",{categories : categories})
+        }else if( filterkey == "Unlisted"){
+            const categories = await category.find({showstatus : "Unlisted"})
+            res.render("Admin/partials/category-table",{categories : categories})
+        }else if( filterkey == "All"){
+            const categories = await category.find()
+            res.render("Admin/partials/category-table",{categories : categories})
+        }
+    },
+    postSort : async function(req,res){
+        console.log(req.body);
+        const sorttype = req.body.sort
+        const allCategory = await category.find()
+        if (sorttype == "z-a"){
+            let categories =  allCategory.sort(sortArrayZtoA)
+            res.render("Admin/partials/category-table",{categories : categories})
+        }
+        if (sorttype == "a-z"){
+            let categories = allCategory.sort(sortArrayAtoZ)
+            res.render("Admin/partials/category-table",{categories : categories})    
+        }
+        if (sorttype == "Newest first"){
+            console.log("hello");
+            let categories = allCategory.reverse()
+            res.render("Admin/partials/category-table",{categories : categories})
+        }
+        if (sorttype == "Oldest First"){
+            res.render("Admin/partials/category-table",{categories : allCategory})
+        }
+        if (sorttype == "Ascending"){
+            let categories = allCategory.sort(Ascending)
+            res.render("Admin/partials/category-table",{categories : categories})
+        }
+        if (sorttype == "Descending") {
+            let categories = allCategory.sort(Descending)
+            res.render("Admin/partials/category-table",{categories : categories})
+        }
     }
+    
 
 }
+function sortArrayZtoA(a,b){
+    if(a.categoryname < b.categoryname){
+      return 1
+    }
+    if(a.categoryname > b.categoryname){
+      return -1
+    }
+    return 0;
+  }
+  function sortArrayAtoZ(a,b){
+    if(a.categoryname < b.categoryname){
+      return-1
+    }
+    if(a.categoryname > b.categoryname){
+      return 1
+    }
+    return 0;
+  }
+  function Ascending(a,b){
+    if(a.productscount < b.productscount){
+        return -1
+    }
+    if (a.productscount > b.productscount) {
+        return 1
+    }
+    return 0
+  }
+  function Descending (a,b){
+    if(a.productscount > b.productscount){
+        return -1
+    }
+    if (a.productscount < b.productscount) {
+        return 1
+    }
+    return 0
+  }

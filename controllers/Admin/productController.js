@@ -52,9 +52,6 @@ module.exports = {
                     await newProduct.save();
                     let productcount = await Product.countDocuments({category : req.body.category});
                     let updater = await category.findOneAndUpdate({categoryname:req.body.category},{ $set: { productscount: productcount } })
-                    console.log(updater);
-                    console.log(req.body.category);
-                    console.log(productcount);
                     res.redirect('/admin/products');
                 }catch (productError) {
                     console.error('Error creating/saving product:', productError);
@@ -129,6 +126,11 @@ module.exports = {
                         }
                       }
                     await Product.findByIdAndUpdate(productId, reviseddata);
+                    let oldproductcount = await Product.countDocuments({category : productForEdit.category})
+                    let oldupdater = await category.findOneAndUpdate({categoryname:productForEdit.category},{ $set: { productscount: oldproductcount } })
+
+                    let newproductcount = await Product.countDocuments({category : req.body.editcategory});
+                    let updater = await category.findOneAndUpdate({categoryname:req.body.editcategory},{ $set: { productscount: newproductcount } })
                     res.redirect('/admin/products');
 
 
