@@ -151,5 +151,109 @@ module.exports = {
         res.locals.title = "products"; 
         res.render('Admin/products',{ products , categories })
 
+    },
+    postSort : async function(req,res){
+        console.log(req.body);
+        const sorttype = req.body.sort
+        const allProduct = await Product.find()
+        if( sorttype == "a-z"){
+            let products =  allProduct.sort(sortArrayAtoZ)
+            res.render("Admin/partials/product-table",{products : products})
+        }else if(sorttype == "z-a"){
+            let products =  allProduct.sort(sortArrayZtoA)
+            res.render("Admin/partials/product-table",{products : products})
+        }else if(sorttype == "Newest first"){
+            let products = allProduct.reverse()
+            res.render("Admin/partials/product-table",{products : products})
+        }else if(sorttype == "Oldest First"){
+            res.render("Admin/partials/product-table",{products : allProduct})
+        }else if(sorttype == "Ascending"){
+            let products = allProduct.sort(Ascending)
+            res.render("Admin/partials/product-table",{products : products})
+        }else if(sorttype == "Descending"){
+            let products = allProduct.sort(Descending)
+            res.render("Admin/partials/product-table",{products : products})
+        }else if(sorttype == "priceAscending"){
+            let products = allProduct.sort(priceAscending)
+            res.render("Admin/partials/product-table",{products : products})
+        }else if ( sorttype == "priceDescending"){
+            let products = allProduct.sort(priceDescending)
+            res.render("Admin/partials/product-table",{products : products})
+        }
+    },
+    postFilter : async function(req,res){
+        console.log(req.body);
+        let filterkey = req.body.filterValue
+        let allProducts = await Product.find()
+        if( filterkey == "500-1000"){
+            const products = await Product.find( {regularprice: { $gte:500, $lte:1000 } })
+            res.render("Admin/partials/product-table",{products : products})
+        }else if( filterkey == "1000-2000"){
+            const products = await Product.find( {regularprice: { $gte:1000, $lte:2000 } })
+            res.render("Admin/partials/product-table",{products : products})
+        }else if( filterkey == "2000-5000"){
+            const products = await Product.find( {regularprice: { $gte:2000, $lte:5000 } })
+            res.render("Admin/partials/product-table",{products : products})
+        }else if(filterkey == "All"){
+            const products = await Product.find()
+            res.render("Admin/partials/product-table",{products : products})
+        }else{
+            const products = await Product.find({category : filterkey })
+            res.render("Admin/partials/product-table",{products : products})
+        }
     }
 }
+function sortArrayZtoA(a,b){
+    if(a.productname < b.productname){
+      return 1
+    }
+    if(a.productname > b.productname){
+      return -1
+    }
+    return 0;
+  }
+  function sortArrayAtoZ(a,b){
+    if(a.productname < b.productname){
+      return-1
+    }
+    if(a.productname > b.productname){
+      return 1
+    }
+    return 0;
+  }
+  function Ascending(a,b){
+    if(a.discountpercentage < b.discountpercentage){
+        return -1
+    }
+    if (a.discountpercentage > b.discountpercentage) {
+        return 1
+    }
+    return 0
+  }
+  function Descending (a,b){
+    if(a.discountpercentage > b.discountpercentage){
+        return -1
+    }
+    if (a.discountpercentage < b.discountpercentage) {
+        return 1
+    }
+    return 0
+  }
+  function priceAscending(a,b){
+    if(a.regularprice < b.regularprice){
+        return -1
+    }
+    if (a.regularprice > b.regularprice) {
+        return 1
+    }
+    return 0
+  }
+  function priceDescending (a,b){
+    if(a.regularprice > b.regularprice){
+        return -1
+    }
+    if (a.regularprice < b.regularprice) {
+        return 1
+    }
+    return 0
+  }

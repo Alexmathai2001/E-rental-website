@@ -138,6 +138,8 @@ async function deletepopup(element){
     deletecategoryname.textContent = list[1]
 }
 
+//sorting
+
 function updateSortHowOptions() {
     const sortWhatSelect = document.getElementById("sortSelect");
     const selectedSortWhat = sortWhatSelect.value;

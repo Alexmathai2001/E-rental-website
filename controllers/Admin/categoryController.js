@@ -140,7 +140,6 @@ module.exports = {
             res.render("Admin/partials/category-table",{categories : categories})    
         }
         if (sorttype == "Newest first"){
-            console.log("hello");
             let categories = allCategory.reverse()
             res.render("Admin/partials/category-table",{categories : categories})
         }

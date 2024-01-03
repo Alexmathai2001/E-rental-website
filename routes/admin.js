@@ -19,6 +19,8 @@ router.post('/products/delete',productcontroller.postDelete)
 router.get('/products/edit/:id',productcontroller.getEdit)
 router.post('/products/edit/update',productcontroller.postEdit)
 router.post('/products/search',productcontroller.postSearch)
+router.post('/products/sort',productcontroller.postSort)
+router.post('/products/filter',productcontroller.postFilter)
 
 router.get('/customers',customercontroller.get)
 router.get('/orders',ordercontroller.get)
