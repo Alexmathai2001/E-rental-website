@@ -50,40 +50,17 @@
                 <p class="text-base font-semibold my-2 lg:text-xl">New Launches</p>
             </div>
             <!--products-->
-            <div class="grid grid-cols-2 grid-rows-2 justify-items-center w-full lg:flex lg:flex-wrap">
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/generator.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
+            <div class="flex justify-around w-full">
+                <div id="scrollingdiv" class="grid grid-cols-2 grid-rows-2 lg:flex lg:flex-wrap">
+                    <% products.reverse().slice(0,6).forEach((data) => { %>
+                        <div class="flex flex-col items-center w-fit mx-3 my-2 border-[#27374D] rounded-lg border-2 lg:m-5">
+                            <div class="flex justify-end w-full"><img src="/images/new.png" class="lg:h-12 h-8" alt=""></div>
+                            <button class="bg-white my-2 lg:px-7 px-4 lg:pb-7 pb-4 rounded-xl"><img src="<%= data.imageurl %>" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
+                            <div class="text-xs py-1 lg:text-sm rounded-b-lg text-white bg-[#27374D] lg:font-semibold  w-full flex justify-center capitalize"><%= data.productname%></div>
+                        </div>      
+                        <% }) %>
                 </div>
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/circular saw.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
-                </div>
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/log-cutter.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
-                </div>
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/pressure waher.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
-                </div>
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/circular saw.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
-                </div>
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/pressure waher.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
-                </div>
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/generator.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
-                </div>
-                <div class="flex flex-col items-center w-fit lg:m-5">
-                    <button class="bg-[#DDE6ED] my-2 p-7 rounded-full"><img src="/images/log-cutter.png" class="h-24 w-24 md:h-32 md:w-32" alt=""></button>
-                    <div class="text-xs my-1 lg:text-base lg:font-medium">Power Driller</div>
-                </div>
-                            
+
             </div>
             
             
@@ -92,276 +69,46 @@
         <div>
             <p class="text-base font-semibold my-2  lg:text-xl">Available Categories</p>
             <div class="lg:flex lg:justify-evenly">
-                <div>
-                    <p class="text-sm font-semibold opacity-50 my-2 lg:text-lg">Cutting Tools</p>
-                    <div class="flex justify-between lg:justify-start ">
-                        <div class="flex flex-wrap">
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
+
+                <% categories.reverse().slice(0,2).forEach((data) => {%>
+                <div class="border-[1px] bg-slate-50 border-[#27374D] rounded-2xl">
+                    <p class="text-sm font-semibold lg:text-lg capitalize bg-[#27374D] flex justify-center py-1 rounded-t-2xl  text-white"><%= data.categoryname %></p>
+                    <div class="flex  justify-between lg:justify-start ">
+                        <div class="flex justify-center flex-wrap px-2">
+                            <% products.filter(function(product){ return product.category == data.categoryname}).reverse().slice(0,4).forEach((data) => { %>
+                            <div class=" bg-white shadow-md hover:shadow-xl mt-4 p-2 m-1 flex flex-col items-center lg:h-60 w-40 py-8 lg:py-0">
                                 <div>
-                                    <img src="/images/circular saw.png" class="h-16 w-16 lg:w-28 lg:h-28 bg-[#DDE6ED]  rounded-full p-2"
+                                    <img src="<%= data.imageurl %>" class="h-16 w-16 lg:w-28 lg:h-28 p-2"
                                         alt="" />
                                 </div>
                                 <div>
-                                    <p class="py-1">Circular Saw</p>
+                                    <p class="py-1 font-semibold truncate max-w-32 text-sm capitalize"> <%= data.productname %> </p>
                                 </div>
                                 <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
+                                    <p class="text-xs opacity-50 capitalize"> <%= data.brandname %> </p>
                                 </div>
                                 <div class="flex justify-between w-full items-center lg:my-6">
                                     <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
+                                        <span class="text-sm text-slate-600"><span class="font-semibold lg:text-base text-sm text-black">$<%= data.saleprice %></span>/Day</span>
                                     </div>
                                     <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
+                                        <button class="p-1 bg-[#526D82] hover:bg-[#27374D] rounded-s-full -me-1 pe-3 ps-3"><img src="/images/cart-white.png" class="h-6" alt=""></button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/generator.png" class="h-16 w-16 lg:w-28 lg:h-28 bg-[#DDE6ED]  rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/log-cutter.png" class="h-16 w-16 lg:w-28 lg:h-28 bg-[#DDE6ED]  rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/pressure waher.png" class="h-16 w-16 lg:w-28 lg:h-28 bg-[#DDE6ED] rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 w-16 lg:w-28 lg:h-28 bg-[#DDE6ED]  rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 w-16 lg:w-28 lg:h-28 bg-[#DDE6ED]  rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>                           
-                            
+                            </div>                          
+                            <% }) %>
                         </div>
                         
                     </div>
                     <div class="my-3 flex justify-center lg:my-6">
-                        <button class="w-full bg-[#526D82] py-1 rounded-sm text-white text-sm font-medium md:w-1/5 md:h-10">See all Products</button>
+                        <button class="w-full bg-[#526D82] hover:bg-[#27374D] py-1 rounded-full hover:rounded-xl text-white text-sm font-medium md:w-1/5 md:h-10">See all Products</button>
                     </div>
 
                 </div>
-                <div>
-                    <p class="text-sm font-semibold opacity-50 my-2 lg:text-lg">Shaping and Finishing Tools</p>
-                    <div class="flex justify-between lg:justify-start">
-                        <div class="flex flex-wrap">
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 lg:h-28 bg-[#DDE6ED] rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 lg:h-28 bg-[#DDE6ED] rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 lg:h-28 bg-[#DDE6ED] rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 lg:h-28 bg-[#DDE6ED] rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 lg:h-28 bg-[#DDE6ED] rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-2 p-2 m-1 flex flex-col items-center lg:h-60 w-40">
-                                <div>
-                                    <img src="/images/circular saw.png" class="h-16 lg:h-28 bg-[#DDE6ED] rounded-full p-2"
-                                        alt="" />
-                                </div>
-                                <div>
-                                    <p class="py-1">Circular Saw</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm opacity-50">Bosch</p>
-                                </div>
-                                <div class="flex justify-between w-full items-center lg:my-6">
-                                    <div>
-                                        <span class="font-semibold text-sm">$ 599/day</span>
-                                    </div>
-                                    <div>
-                                        <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            
-                        </div>
-                        
-                        
-                    </div>
-                    <div class="my-3 flex justify-center lg:my-6">
-                        <button class="w-full bg-[#526D82] py-1 rounded-sm text-white text-sm font-medium md:w-1/5 md:h-10">See all Products</button>
-                    </div>
-                </div>
+                <% }) %>
             </div>
             <div class="my-3 flex justify-center lg:my-6">
-                <button class="w-full bg-[#27374D] py-1 rounded-sm text-white text-sm font-medium md:w-1/5 md:h-10">See all categories</button>
+                <button class="w-full bg-[#27374D] hover:bg-black rounded-xl py-1 text-white text-sm font-medium md:w-1/5 md:h-10">See all categories</button>
             </div>
         </div>
     </div>

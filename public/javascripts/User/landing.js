@@ -10,3 +10,4 @@ function closesidebar(){
     sidebar.classList.remove("translate-x-[0px]")
     document.getElementById("sidebarcontainer").style.visibility = "hidden"
 }
+
