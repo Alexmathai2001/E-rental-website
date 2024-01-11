@@ -26,9 +26,9 @@ module.exports = {
         // Generate and display the OTP
         const otp = generateOTP();
         req.session.otp = otp;
-        console.log(`Your 6-digit OTP is: ${otp}`);
+        req.session.userid = req.body.phoneno;
 
-        //sending otp message via fast-two-sms
+        // sending otp message via fast-two-sms
         // const newResponse = await fast2sms.sendMessage({authorization: 'GtMy04V4xy8mCnz8qHKHkqi99wBUG2G4PPxcFPw6B1gHipk2J3nuD6696D1N', message:`${otp} is your otp`, numbers: [req.body.phoneno]})
         // console.log(newResponse)
 

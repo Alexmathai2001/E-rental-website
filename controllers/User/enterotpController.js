@@ -10,7 +10,8 @@ module.exports = {
         let otp = req.session.otp;
         console.log("actual otp is" , otp);
         if(req.body.enteredOtp == otp){
-            console.log("if condition");
+            delete req.session.otp;
+            console.log(req.session.userid);
             // res.json({ success: true});
             res.json({ success: true, redirectTo: '/user/landing' });
         }else{

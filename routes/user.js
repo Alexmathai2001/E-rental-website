@@ -17,6 +17,7 @@ const enterotpcontroller = require("../controllers/User/enterotpController")
 const newusercontroller = require("../controllers/User/newuserController")
 const aboutuscontroller = require("../controllers/User/aboutusController")
 const enterotpController = require('../controllers/User/enterotpController')
+const cartController = require('../controllers/User/cartController')
 
 //login
 router.get("/login",logincontrol.get)
@@ -31,7 +32,12 @@ router.get("/allproducts/:categoryname",allproductscontroller.get)
 router.post("/allproducts/filter",allproductscontroller.filter)
 
 router.get("/orderconfirmed",orderconfirmedcontroller.get)
+
+//cart
 router.get("/cart",cartcontroller.get)
+router.post("/cart/addtocart",cartController.post)
+
+
 router.get("/checkout",checkoutcontroller.get)
 router.get("/myorders",myordercontroller.get)
 router.get("/myaccount",myaccountcontroller.get)

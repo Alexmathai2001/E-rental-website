@@ -13,100 +13,33 @@
     <div class="m-3">
         <div class="flex flex-col md:flex-row md:justify-around h-screen">
             <!-- products -->
-            <div class="">
+            <div class=" md:w-full md:px-5">
+                <% CartArray.forEach((data) => { %>
                 <!-- product 1-->
-                <div class="flex p-2 border-2 rounded ">
+                <div class="flex p-2 border-2 rounded md:w-full">
                     <!-- left image -->
-                    <div class="">
-                        <img src="/images/circular saw.png" class="h-24 min-w-[6rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
+                    <div class="md:w-32 ">
+                        <img src="<%= data.productid.imageurl %>" class="h-24 min-w-[6rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
                     </div>
                     <!-- right content -->
-                    <div class="md:flex md:items-center md:space-x-10">
-                        <div>
+                    <div class="flex justify-between items-center w-full">
+                        <div class="bg-white md:w-80 w-32">
                             <!-- product name -->
-                            <p class="flex whitespace-normal text-xs md:text-sm ">Bosch GBM 13 re professional pistol Frip Drill (13 mm chuck size,360W)</p>
+                            <p class="flex whitespace-normal text-xs md:text-sm capitalize"><%= data.productid.productname %></p>
                             <!-- price & offer -->
-                            <p class="font-semibold text-sm md:text-base mt-2">5999/- <span class="text-green-600 font-semibold">21% off</span></p>
+                            <p class="font-semibold text-sm md:text-base mt-2"><%= data.productid.saleprice %>/- <span class="text-green-600 text-sm font-semibold"><%= data.productid.discountpercentage %>% off</span></p>
                             <!-- original price -->
-                            <p class="line-through text-gray-500 font-medium text-xs md:text-sm">7999/-</p>
+                            <p class="line-through text-gray-500 font-medium text-xs md:text-sm"><%= data.productid.regularprice %>/-</p>
                         </div>
-                        <!-- other details -->
-                        <div class="flex justify-between items-center mt-2  md:space-x-20">
-                            <!-- no.of items -->
-                            <div class="flex space-x-1 font-medium text-sm md:text-xl items-center">
-                                <span id="minus" class="bg-[#DDE6ED] w-5 md:w-8 text-center font-bold  rounded-md">-</span>
-                                <span id="quantity" class="text-xs md:text-sm opacity-80">01</span>
-                                <span id="plus" class="bg-[#DDE6ED] w-5 md:w-8 text-center font-bold  rounded-md">+</span>
-                            </div>
-                            <!-- days -->
-                            <p class="text-xs md:text-base md:min-w-[4rem] font-medium opacity-50">Days : 2</p>
-                            <!-- remove button -->
-                            <button class="w-[70px] text-white bg-[#526D82] font-medium py-[4px] rounded text-xs md:text-sm">Remove</button>
-                        </div>
+
+                        <!-- days -->
+                        <p class="text-xs md:text-base md:min-w-[4rem]  font-medium opacity-50">Days : 2</p>
+                        <!-- remove button -->
+                        <button class="w-[70px] text-white bg-[#526D82] font-medium py-[4px] rounded text-xs md:text-sm">Remove</button>
+                        
                     </div>
                 </div>
-                <!-- product 1-->
-                <div class="flex p-2 border-2 rounded ">
-                    <!-- left image -->
-                    <div class="">
-                        <img src="/images/circular saw.png" class="h-24 min-w-[6rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
-                    </div>
-                    <!-- right content -->
-                    <div class="md:flex md:items-center md:space-x-10">
-                        <div>
-                            <!-- product name -->
-                            <p class="flex whitespace-normal text-xs md:text-sm ">Bosch GBM 13 re professional pistol Frip Drill (13 mm chuck size,360W)</p>
-                            <!-- price & offer -->
-                            <p class="font-semibold text-sm md:text-base mt-2">5999/- <span class="text-green-600 font-semibold">21% off</span></p>
-                            <!-- original price -->
-                            <p class="line-through text-gray-500 font-medium text-xs md:text-sm">7999/-</p>
-                        </div>
-                        <!-- other details -->
-                        <div class="flex justify-between items-center mt-2  md:space-x-20">
-                            <!-- no.of items -->
-                            <div class="flex space-x-1 font-medium text-sm md:text-xl items-center">
-                                <span id="minus" class="bg-[#DDE6ED] w-5 md:w-8 text-center font-bold  rounded-md">-</span>
-                                <span id="quantity" class="text-xs md:text-sm opacity-80">01</span>
-                                <span id="plus" class="bg-[#DDE6ED] w-5 md:w-8 text-center font-bold  rounded-md">+</span>
-                            </div>
-                            <!-- days -->
-                            <p class="text-xs md:text-base md:min-w-[4rem] font-medium opacity-50">Days : 2</p>
-                            <!-- remove button -->
-                            <button class="w-[70px] text-white bg-[#526D82] font-medium py-[4px] rounded text-xs md:text-sm">Remove</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- product 1-->
-                <div class="flex p-2 border-2 rounded ">
-                    <!-- left image -->
-                    <div class="">
-                        <img src="/images/circular saw.png" class="h-24 min-w-[6rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
-                    </div>
-                    <!-- right content -->
-                    <div class="md:flex md:items-center md:space-x-10">
-                        <div>
-                            <!-- product name -->
-                            <p class="flex whitespace-normal text-xs md:text-sm ">Bosch GBM 13 re professional pistol Frip Drill (13 mm chuck size,360W)</p>
-                            <!-- price & offer -->
-                            <p class="font-semibold text-sm md:text-base mt-2">5999/- <span class="text-green-600 font-semibold">21% off</span></p>
-                            <!-- original price -->
-                            <p class="line-through text-gray-500 font-medium text-xs md:text-sm">7999/-</p>
-                        </div>
-                        <!-- other details -->
-                        <div class="flex justify-between items-center mt-2  md:space-x-20">
-                            <!-- no.of items -->
-                            <div class="flex space-x-1 font-medium text-sm md:text-xl items-center">
-                                <span id="minus" class="bg-[#DDE6ED] w-5 md:w-8 text-center font-bold  rounded-md">-</span>
-                                <span id="quantity" class="text-xs md:text-sm opacity-80">01</span>
-                                <span id="plus" class="bg-[#DDE6ED] w-5 md:w-8 text-center font-bold  rounded-md">+</span>
-                            </div>
-                            <!-- days -->
-                            <p class="text-xs md:text-base md:min-w-[4rem] font-medium opacity-50">Days : 2</p>
-                            <!-- remove button -->
-                            <button class="w-[70px] text-white bg-[#526D82] font-medium py-[4px] rounded text-xs md:text-sm">Remove</button>
-                        </div>
-                    </div>
-                </div>
+                <% }) %>
                 
             </div>
             <div class="flex-grow md:hidden"></div>
@@ -118,12 +51,12 @@
                         <div>
                             <p class=" opacity-60">Price</p>
                             <p class=" opacity-60">Discount</p>
-                            <p class=" font-medium my-2">Total Amount</p>
+                            <p class=" font-bold my-2">Total Amount</p>
                         </div>
-                        <div>
-                            <p class=" opacity-60">2796/-</p>
-                            <p class=" text-green-600">-250</p>
-                            <p class=" font-medium my-2">2546/-</p>
+                        <div class="font-medium">
+                            <p class=" opacity-60"><%= totalRegularPrice %>/-</p>
+                            <p class=" text-green-600">-<%= totalDiscount %></p>
+                            <p class=" font-bold my-2 "><%= totalSalePrice %>/-</p>
                         </div>
                     </div>
                     <div class="flex justify-center my-4">

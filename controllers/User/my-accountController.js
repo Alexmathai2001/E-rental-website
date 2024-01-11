@@ -1,6 +1,11 @@
 module.exports = {
     get : (req,res) => {
-        res.locals.title = "My Account"
-        res.render("Users/my-account")
+        if(req.session.userid){
+            res.locals.title = "My Account"
+            res.render("Users/my-account")
+        }else(
+            res.redirect('/user/login')
+        )
+
     }
 }

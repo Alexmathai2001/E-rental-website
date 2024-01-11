@@ -24,10 +24,10 @@
                 <div class="flex flex-col items-center md:justify-center">
                     <!-- profile picture -->
                     <div>
-                        <img src="/images/profile.jpg" class=" object-cover h-[5rem] w-[5rem] md:h-[10rem] md:w-[10rem] p-1 shadow-lg border-2 rounded-full" alt="">
+                        <img src="/images/profile.png" class=" object-cover h-[5rem] w-[5rem] md:h-[10rem] md:w-[10rem] p-1 shadow-lg border-2 rounded-full" alt="">
                     </div>
                     <!-- name -->
-                    <p class="text-sm md:text-xl font-semibold my-2">Alex Mathai</p>
+                    <p class="text-sm md:text-xl font-semibold my-2">User</p>
                     <!-- edit button -->
                     <button onclick="edituserinfo()" class="border-2 rounded-full px-4 py-1 flex space-x-1 items-center">
                         <img src="/images/edit.png" class="h-3" alt="">
@@ -105,10 +105,14 @@
     <div id="updateuserinfo" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 px-6 hidden">
         <div class="flex justify-center bg-white mt-28 p-10  w-[24rem] border-2 border-[#9DB2BF] rounded-md ">
             <div class="">
-                <form action="">
+                <form action="" method="post">
                 <div class="flex justify-between mb-14">
                     <div class="font-bold text-xl">Update user info</div>
                     <button type="button" onclick="cancelupdateuserinfo()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <div class="opacity-70 pe-2">Name:</div>
+                    <input class="px-2 border-2 rounded-full outline-none" type="text">
                 </div>
                 <div class="mt-4 flex justify-center">
                     <div class="opacity-70 pe-2">Email:</div>

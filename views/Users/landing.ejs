@@ -16,11 +16,12 @@
                 <button onclick="menuslidein()" class="mx-1 lg:hidden"><img src="/images/menu.png" class=" h-6" alt=""></button>
                 <img src="/images/Logo.png" class="h-8 lg:h-10" alt="">
             </div>
-            <div class="flex">
-                <a href="/user/myaccount" class="text-white opacity-60 text-sm hidden lg:flex mx-3">My Account</a>
-                <a href="/user/myorders" class="text-white opacity-60 text-sm hidden lg:flex mx-3">My Orders</a>
-                <a href="/User/cart" class="text-white opacity-60 text-sm hidden lg:flex mx-3">My Cart</a>
-                <button><img src="/images/search-white.png" class="h-5 mx-5" alt="" /></button>
+            
+            <div class="flex items-center">
+                <a href="/User/login" class="md:bg-white px-3 md:px-7 border-white border-2 py-[4px] text-white md:text-[#27374D] font-bold text-[10px] md:text-sm rounded-[3px] me-8 hover:-translate-y-[2px] hover:bg-gray-200">LOGIN</a>
+                <a href="/user/myaccount" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Account</a>
+                <a href="/user/myorders" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Orders</a>
+                <a href="/User/cart" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Cart</a>
                 
             </div>
         </div>
@@ -95,9 +96,11 @@
                                             <div class="lg:py-6">
                                                 <span class="text-sm text-slate-600"><span class="font-semibold lg:text-base text-sm text-black">$<%= data.saleprice %></span>/Day</span>
                                             </div>
-                                            <a class="" href="">
+                                            <form action="/User/cart/addtocart" method="post">
+                                                <!-- Hidden input field to store the product ID -->
+                                                <input type="hidden" name="productId" value="<%= data._id %>">
                                                 <button class="p-1 bg-[#526D82] hover:bg-[#27374D] rounded-s-full -me-1 pe-3 ps-3"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                            </a>
+                                            </form>
                                         </div>
                                     </div>
                                 </a>
@@ -107,7 +110,7 @@
                         
                     </div>
                     <div class="my-3 flex justify-center lg:my-6">
-                        <button class="w-full bg-[#526D82] hover:bg-[#27374D] py-1 rounded-full hover:rounded-xl text-white text-sm font-medium md:w-1/5 md:h-10">See all Products</button>
+                        <a  href="/User/allproducts/<%= encodeURIComponent(data.categoryname) %>"  class="w-full bg-[#526D82] flex flex-col justify-center items-center hover:bg-[#27374D] py-1 rounded-full hover:rounded-xl text-white text-sm font-medium md:w-1/5 md:h-10">See all Products</a>
                     </div>
 
                 </div>
