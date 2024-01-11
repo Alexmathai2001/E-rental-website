@@ -35,3 +35,30 @@ function startcountdown() {
 }
 
 startcountdown();
+
+
+function validateOTP(event) {
+    event.preventDefault()
+    const enteredOTP = document.getElementById('otpInput').value;
+
+    fetch('/user/enterotp', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ enteredOtp: enteredOTP }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.success) {
+            window.location.href = data.redirectTo;
+        }else{
+            // OTP validation failed
+            document.getElementById('message').innerText = data.message;
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}

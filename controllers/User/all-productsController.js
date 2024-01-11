@@ -1,6 +1,14 @@
+const product = require("../../models/productSchema")
+
 module.exports = {
-    get : (req,res) => {
+    get :async (req,res) => {
         res.locals.title="Cutting Tools"
-        res.render('Users/all-products')
+        categoryname = req.params.categoryname
+        let products = await product.find({category : categoryname})
+        console.log(products);
+        res.render('Users/all-products',{products})
+    },
+    filter : async (req,res) => {
+        
     }
 }

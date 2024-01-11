@@ -17,10 +17,10 @@
             <!-- category -->
             <% categories.forEach((data) => {%>
                 <% if(data.showstatus === "Listed") { %>
-            <div class="w-full bg-white flex flex-col items-center shadow-md hover:shadow-xl rounded-b-lg">
+            <a href="/User/allproducts/<%= encodeURIComponent(data.categoryname) %>" class="w-full bg-white flex flex-col items-center shadow-md hover:shadow-xl rounded-b-lg">
                 <img src=<%= data.categoryimgurl %> class="bg-cover  px-1 rounded-b-lg" alt="">
                 <p class="capitalize font-semibold text-xs my-3"> <%= data.categoryname %> </p>
-            </div>
+            </a>
             <% } %>
             <% })  %>
             

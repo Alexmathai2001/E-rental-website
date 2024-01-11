@@ -15,8 +15,6 @@ const addressSchema = mongoose.Schema({
     phone : Number
 })
 
-
-
 const orderSchema = mongoose.Schema({
     productid : mongoose.Schema.Types.ObjectId,
     rentdate : Date,
@@ -28,7 +26,6 @@ const customerschema = mongoose.Schema({
     phone : Number,
     email : String,
     gender : String,
-    password : String,
     address : [addressSchema],
     cart : [cartSchema],
     orders : [orderSchema]

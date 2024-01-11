@@ -31,7 +31,7 @@ module.exports = {
                     let discountamount = (req.body.discountpercentage * req.body.regularprice)/100
                     let saleamount =Math.round(req.body.regularprice - discountamount)
                     const list = req.body.specification.split(",")
-                    
+                    console.log(list) 
                     const newProduct =new Product( {
                         serialnumber: nextSerialNumber,
                         productname: req.body.productname,
@@ -87,6 +87,8 @@ module.exports = {
                     let result
                     let editdiscountamount = (req.body.editdiscountpercentage * req.body.editregularprice)/100
                     let saleamount =Math.round(req.body.editregularprice - editdiscountamount)
+                    const list = req.body.editspecification.split(",")
+                    console.log(list);
                     
                     if(req.file){
                         console.log(productForEdit);
@@ -105,7 +107,7 @@ module.exports = {
                             saleprice : saleamount || productForEdit.saleamount,
                             stockstatus : req.body.editstockstatus || productForEdit.stockstatus,
                             productcondition : req.body.editproductcondition || productForEdit.productcondition,
-                            productspecification : req.body.editspecification || productForEdit.productspecification,
+                            productspecification : list,
                             imageurl : result.secure_url || productForEdit.imageurl,
                             cloudinaryId : result.public_id || productForEdit.cloudinaryId
                          }
@@ -121,7 +123,7 @@ module.exports = {
                             saleprice : saleamount || productForEdit.saleamount,
                             stockstatus : req.body.editstockstatus || productForEdit.stockstatus,
                             productcondition : req.body.editproductcondition || productForEdit.productcondition,
-                            productspecification : req.body.editspecification || productForEdit.productspecification
+                            productspecification : list 
 
                         }
                       }

@@ -2,10 +2,17 @@ const express = require('express');
 const app = express();
 const path = require('path')
 const connectdb = require('./connection')
+const session = require('express-session')
 const PORT = 3000;
 
 connectdb();
 
+
+app.use(session({
+    secret: 'your-secret-key',  // secret key for session
+    resave: false,
+    saveUninitialized: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -17,7 +24,6 @@ app.use('/User',userRoute)
 
 
 app.use(express.static(path.join(__dirname,'public')))
-
 
 
 app.set('view engine','ejs')

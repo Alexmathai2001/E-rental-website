@@ -17,28 +17,28 @@
     <main>
         <!--container div-->
         <div class="p-3 sm:px-8 sm:py-4 lg:px-5">
-            <div class="lg:flex">
-                <div class="lg:text-lg lg:me-2 ">
+            <div class="lg:flex w-full">
+                <div class="lg:text-lg w-1/2 lg:me-2 ">
                     <div class="border-2">
                         <div class="m-4 flex justify-center">
-                            <img src="/images/circular saw.png" class="h-60" alt="" />
+                            <img src="<%= displayproduct.imageurl %>" class="h-60" alt="" />
                         </div>
                     </div>
+                    <% if(displayproduct.bestseller == true){ %>
                     <div class="py-2">
-                        <img src="/images/best seller.png" class="h-4" alt="" />
+                        <img src="/images/best seller.png" class="h-5" alt="" />
                     </div>
-                    <p class="text-sm font-bold text-gray-400">Bosch</p>
+                    <% } %>
+                    <p class="text-sm font-bold text-gray-400 uppercase"><%= displayproduct.brandname %></p>
                     <!--Product Name-->
-                    <div class="pb-2 text-sm">
-                        BOSCH GBM 13 RE Professional Pistol Grip Drill (13 mm Chuck Size,
-                        360 W)
+                    <div class="pb-2 capitalize font-semibold"><%= displayproduct.productname %>
                     </div>
                     <!--price details and offer-->
                     <div>
                         <p>
-                            <span class="text-base text-green-600 pe-1">21% off</span><span
-                                class="font-bold px-1">599/-</span><span
-                                class="text-sm opacity-50 line-through px-1">799/-</span>
+                            <span class="text-base text-green-600 font-medium pe-1"><%= displayproduct.discountpercentage %>% off</span><span
+                                class="font-bold px-1"><%= displayproduct.saleprice %>/-</span><span
+                                class="text-sm opacity-50 line-through px-1"><%= displayproduct.regularprice %>/-</span>
                         </p>
                     </div>
                     <!--Buttons-->
@@ -73,7 +73,7 @@
                     <div class="py-2 ">
                         <p>
                             Product Condition :
-                            <span class="text-green-600 font-semibold">Like new</span>
+                            <span class="text-green-600 font-semibold capitalize"><%= displayproduct.productcondition %></span>
                         </p>
                     </div>
                     <!--no.of days-->
@@ -81,28 +81,28 @@
                         <div class="text-lg font-semibold py-1">No. of days</div>
 
                         <div class="text-sm">
-                            <form action="">
-                                <input type="radio" class="my-2" name="days" id="2" />
+                            <form id="rentdayselector" action="">
+                                <input type="radio" required class="my-2" name="days" id="2" />
                                 <label for="2">2 days</label><br />
 
                                 <input type="radio" class="my-2" name="days" id="7" />
                                 <label for="7">7 days (
-                                    <span class="opacity-50 line-through">2096/-</span>
-                                    <span class="font-semibold">1800/-</span>)</label><br />
+                                    <span class="opacity-50 line-through"><%= displayproduct.regularprice*7 %></span>
+                                    <span class="font-semibold"><%= displayproduct.saleprice*7 %></span>)</label><br />
 
                                 <input type="radio" class="my-2" name="days" id="14" />
                                 <label for="14">14 days (
-                                    <span class="opacity-50 line-through">4193/-</span>
-                                    <span class="font-semibold">3500/-</span>)</label><br />
+                                    <span class="opacity-50 line-through"><%= displayproduct.regularprice*14 %></span>
+                                    <span class="font-semibold"><%= displayproduct.saleprice*14 %></span>)</label><br />
 
                                 <input type="radio" class="my-2" name="days" id="30" />
                                 <label for="30">30 days (
-                                    <span class="opacity-50 line-through">8985/-</span>
-                                    <span class="font-semibold">7000/-</span>)</label>
+                                    <span class="opacity-50 line-through"><%= displayproduct.regularprice*30 %></span>
+                                    <span class="font-semibold"><%= displayproduct.saleprice*30 %></span>)</label>
                             </form>
                         </div>
-                        <div>
-                            <p>Total amount: <span class="font-bold">599/-</span></p>
+                        <div class="mt-2">
+                            <p class="text-xs">Total amount: <span id="finalrentamount" class="font-bold text-sm">0/-</span></p>
                         </div>
                     </div>
                     <!--specification-->
@@ -111,46 +111,12 @@
                             <p class="font-semibold text-lg">Specifications</p>
                         </div>
                         <table class="text-xs my-2 opacity-70">
+                            <% displayproduct.productspecification.forEach((data) => { %>
                             <tr>
-                                <td class="font-medium">Brand</td>
+                                <td class="font-medium"><%= data %></td>
                                 <td class="ps-32">BOSCH</td>
                             </tr>
-                            <tr>
-                                <td class="font-medium">Model</td>
-                                <td class="ps-32">Professional</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Type</td>
-                                <td class="ps-32">Pistol Grip Drill</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Chuck size</td>
-                                <td class="ps-32">3 mm</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Brand</td>
-                                <td class="ps-32">BOSCH</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Model</td>
-                                <td class="ps-32">Professional</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Type</td>
-                                <td class="ps-32">Pistol Grip Drill</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Chuck size</td>
-                                <td class="ps-32">3 mm</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Type</td>
-                                <td class="ps-32">Pistol Grip Drill</td>
-                            </tr>
-                            <tr>
-                                <td class="font-medium">Chuck size</td>
-                                <td class="ps-32">3 mm</td>
-                            </tr>
+                            <% }) %>
                         </table>
                     </div>
                     <!--related products-->
@@ -159,193 +125,32 @@
                             <p class="font-semibold text-lg">Related Products</p>
                         </div>
                         <div class="flex">
-                            <div class="flex w-11/12 overflow-auto me-5">
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
+                            <div class="flex w-full e-5">
+                                <% relatedproducts.reverse().slice(0,5).forEach((data) => { %>
+                                    <a href="/User/product/<%= encodeURIComponent(data._id) %>">
+                                        <div class="border-2 p-2 m-1 flex flex-col items-center w-[160px]">
+                                            <div>
+                                                <img src="<%= data.imageurl %>" class="h-16 w-16 p-2"
+                                                    alt="" />
+                                            </div>
+                                            <div>
+                                                <p class="py-1 truncate w-full capitalize"><%= data.productname %></p>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm opacity-50 font-medium capitalize"><%= data.brandname %></p>
+                                            </div>
+                                            <div class="flex justify-between w-full items-center">
+                                                <div>
+                                                    <span class="font-semibold text-sm">$ <%= data.saleprice %>/day</span>
+                                                </div>
+                                                <div>
+                                                    <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="border-2 p-2 m-1 flex flex-col items-center min-w-[160px]">
-                                    <div>
-                                        <img src="/images/circular saw.png" class="h-16 w-16 bg-[#DDE6ED]  rounded-full p-2"
-                                            alt="" />
-                                    </div>
-                                    <div>
-                                        <p class="py-1">Circular Saw</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm opacity-50">Bosch</p>
-                                    </div>
-                                    <div class="flex justify-between w-full items-center">
-                                        <div>
-                                            <span class="font-semibold text-sm">$ 599/day</span>
-                                        </div>
-                                        <div>
-                                            <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                
-                            </div>
-                            <div class=" flex items-center ">
-                                <div>
-                                    <img src="/images/right-arrow.png" class="h-9 p-2 border-2 rounded-full drop-shadow-md" alt="">
-                                </div>
+                                    </a>
+ 
+                                <% }) %>                             
                             </div>
                         </div>  
                     </div>
@@ -355,6 +160,22 @@
         <!--footer-->
     <%- include("partials/footer.ejs") %>
     </main>
-</body>
+    <script>
+        const displayProductData = JSON.parse('<%- JSON.stringify(displayproduct) %>');
+        document.getElementById("rentdayselector").addEventListener("change",() => {
+        const selectedRadio = document.querySelector('input[name="days"]:checked');
+        if(selectedRadio.id === "2"){
+            document.getElementById("finalrentamount").textContent = displayProductData.saleprice + "/-"
+        }else if(selectedRadio.id === "7"){
+            document.getElementById("finalrentamount").textContent = displayProductData.saleprice*7 + "/-"
+        }else if(selectedRadio.id === "14"){
+            document.getElementById("finalrentamount").textContent = displayProductData.saleprice*14 + "/-"
+        }else if(selectedRadio.id === "30"){
+            document.getElementById("finalrentamount").textContent = displayProductData.saleprice*30 + "/-"
+        }
+        })
+
+    </script>
+<script src="/javascripts/User/product.js"></script>
 
 </html>

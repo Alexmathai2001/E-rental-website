@@ -17,25 +17,26 @@
             </div>
             <!-- right box -->
             <div class="py-10 px-[2rem] md:w-1/2 w-full bg-white rounded-r-lg">
-                <div class="flex flex-col h-full">
-                    <div>
-                        <p class="my-1 font-semibold text-xl">Enter OTP</p>
-                        <p class="text-gray-500 text-sm">We have sent an otp to +91 9400354724 <a class="text-blue-500" href="">Edit</a></p>
-                        <div class="mt-4">
-                            <input type="text" name="" class="py-2 px-4 outline-none border-2 rounded-lg w-full text-sm" placeholder="One Time Password" id="">
+                    <form action="" method="post" class="flex flex-col h-full">
+                        <div>
+                            <p class="my-1 font-semibold text-xl">Enter OTP</p>
+                            <p class="text-gray-500 text-sm">We have sent an otp to +91 9400354724 <a class="text-blue-500" href="">Edit</a></p>
+                            <div class="mt-4">
+                                <input  type="number" name="enteredOTP" class="py-2 px-4 outline-none border-2 rounded-lg w-full text-sm" placeholder="One Time Password" id="otpInput">
+                            </div>
+                            <div class="w-full flex justify-between">
+                                <span id="message" class="text-xs mt-1 text-red-500 font-medium"></span>
+                                <a id="resendotp" onclick="resendotp()" class="text-xs text-blue-500 my-1 me-2 cursor-pointer">Resend otp</a>
+                            </div>
+                            <p class="text-xs text-gray-500">By continuing,you agree to website's <a class="text-blue-600" href="">terms and conditions</a></p>
                         </div>
-                        <div class="w-full flex justify-end">
-                            <a id="resendotp" onclick="resendotp()" class="text-xs text-blue-500 my-1 me-2 cursor-pointer">Resend otp</a>
+                        <div class="flex flex-grow"></div>
+                        <div>
+                            <button onclick="validateOTP(event)" class="w-full bg-blue-500 rounded-full text-white text-sm py-2 font-medium">Continue</button>
                         </div>
-                        <p class="text-xs text-gray-500">By continuing,you agree to website's <a class="text-blue-600" href="">terms and conditions</a></p>
-                    </div>
-                    <div class="flex flex-grow"></div>
-                    <div>
-                        <button class="w-full bg-blue-500 rounded-full text-white text-sm py-2 font-medium">Continue</button>
-                    </div>
-                </div>
+                    </form>
+                </form>
             </div>
-
         </div>
     </div>
     <div class="flex-grow"></div>

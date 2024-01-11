@@ -16,13 +16,20 @@ const addresscontroller = require("../controllers/User/addressController")
 const enterotpcontroller = require("../controllers/User/enterotpController")
 const newusercontroller = require("../controllers/User/newuserController")
 const aboutuscontroller = require("../controllers/User/aboutusController")
+const enterotpController = require('../controllers/User/enterotpController')
 
-
+//login
 router.get("/login",logincontrol.get)
-router.get("/product",productcontroller.get)
+router.post("/login",logincontrol.post)
+
+router.get("/product/:id",productcontroller.get)
 router.get("/landing",landingcontroller.get)
 router.get("/categories",categorycontroller.get)
-router.get("/allproducts",allproductscontroller.get)
+
+//allproducts
+router.get("/allproducts/:categoryname",allproductscontroller.get)
+router.post("/allproducts/filter",allproductscontroller.filter)
+
 router.get("/orderconfirmed",orderconfirmedcontroller.get)
 router.get("/cart",cartcontroller.get)
 router.get("/checkout",checkoutcontroller.get)
@@ -30,11 +37,16 @@ router.get("/myorders",myordercontroller.get)
 router.get("/myaccount",myaccountcontroller.get)
 router.get("/ordersummary",ordersummartcontroller.get)
 router.get("/address",addresscontroller.get)
-router.get("/enterotp",enterotpcontroller.get)
 
+//enterotp
+router.get("/enterotp",enterotpcontroller.get)
+router.post("/enterotp",enterotpController.post)
+
+//newuser
 router.get("/newuser",newusercontroller.get)
 router.post("/newuser",newusercontroller.post)
 
+//aboutus
 router.get("/aboutus",aboutuscontroller.get)
 
 
