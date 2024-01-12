@@ -15,7 +15,6 @@ module.exports = {
                 const totalRegularPrice = CartArray.reduce((sum, data) => sum + data.productid.regularprice, 0);
                 const totalSalePrice = CartArray.reduce((sum, data) => sum + data.productid.saleprice, 0);
                 const totalDiscount = totalRegularPrice - totalSalePrice
-                console.log(totalRegularPrice);
                 res.render('Users/cart', { CartArray,totalRegularPrice,totalSalePrice,totalDiscount });
             } catch (error) {
                 console.error('Error fetching user details:', error);
@@ -38,5 +37,15 @@ module.exports = {
         }else{
             res.redirect('/user/login')
         }
+    },
+    removecart : async (req,res) => {
+        console.log(req.body);
+        console.log(req.session.userid);
+        const updatedCart = await usermodel.findOneAndUpdate(
+            { phone : req.session.userid },
+            { $pull: { 'cart': { productid: req.body.productid } } },  // Remove product from cart array
+            { new: true }  // Return the updated document
+          );
+        res.redirect('/user/cart')
     }
 }

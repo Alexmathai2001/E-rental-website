@@ -76,9 +76,12 @@
                                             <div class="lg:py-6">
                                                 <span class="text-sm text-slate-600"><span class="font-semibold lg:text-base text-sm text-black">$<%= data.saleprice %></span>/Day</span>
                                             </div>
-                                            <a class="" href="">
+                                            <form action="/User/cart/addtocart" method="post">
+                                                <!-- Hidden input field to store the product ID -->
+                                                <input type="hidden" name="productId" value="<%= data._id %>">
                                                 <button class="p-1 bg-[#526D82] hover:bg-[#27374D] rounded-s-full -me-1 pe-3 ps-3"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                            </a>
+                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </a>

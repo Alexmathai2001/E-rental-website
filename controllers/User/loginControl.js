@@ -13,7 +13,9 @@ module.exports = {
         const searchphone = await usermodel.findOne({phone : req.body.phoneno})
         if(searchphone === null){
             const newuser = new usermodel({
-                phone : req.body.phoneno
+                phone : req.body.phoneno,
+                email : " ",
+                name : " "
             });
             await newuser.save();
         }

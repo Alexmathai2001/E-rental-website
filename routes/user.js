@@ -18,10 +18,14 @@ const newusercontroller = require("../controllers/User/newuserController")
 const aboutuscontroller = require("../controllers/User/aboutusController")
 const enterotpController = require('../controllers/User/enterotpController')
 const cartController = require('../controllers/User/cartController')
+const logoutController = require('../controllers/User/logoutController')
 
 //login
 router.get("/login",logincontrol.get)
 router.post("/login",logincontrol.post)
+
+//logout
+router.post("/logout",logoutController.logout)
 
 router.get("/product/:id",productcontroller.get)
 router.get("/landing",landingcontroller.get)
@@ -36,11 +40,17 @@ router.get("/orderconfirmed",orderconfirmedcontroller.get)
 //cart
 router.get("/cart",cartcontroller.get)
 router.post("/cart/addtocart",cartController.post)
+router.post("/cart/removeproduct",cartController.removecart)
 
 
 router.get("/checkout",checkoutcontroller.get)
 router.get("/myorders",myordercontroller.get)
+
+//my-account
 router.get("/myaccount",myaccountcontroller.get)
+router.get("/myaccount/edit",myaccountcontroller.getedit)
+router.post("/myaccount",myaccountcontroller.postEdit)
+
 router.get("/ordersummary",ordersummartcontroller.get)
 router.get("/address",addresscontroller.get)
 

@@ -18,7 +18,11 @@
             </div>
             
             <div class="flex items-center">
-                <a href="/User/login" class="md:bg-white px-3 md:px-7 border-white border-2 py-[4px] text-white md:text-[#27374D] font-bold text-[10px] md:text-sm rounded-[3px] me-8 hover:-translate-y-[2px] hover:bg-gray-200">LOGIN</a>
+                <% if(username){%>
+                    <p class="border-white border-[1px] px-3 py-1 text-white text-sm font-semibold rounded-[3px] me-5 hover:bg-white hover:text-[#27374D]"><%= username %></p>
+                <% }else{ %>
+                    <a href="/User/login" class="md:bg-white px-3 md:px-7 border-white border-2 py-[4px] text-white md:text-[#27374D] font-bold text-[10px] md:text-sm rounded-[3px] me-8 hover:-translate-y-[2px] hover:bg-gray-200">LOGIN</a>
+                <% } %>
                 <a href="/user/myaccount" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Account</a>
                 <a href="/user/myorders" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Orders</a>
                 <a href="/User/cart" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Cart</a>
@@ -144,7 +148,11 @@
             <div class="flex flex-grow"></div>
             <!-- logout button -->
             <div class="flex justify-center px-4 my-3">
-                <button class="w-full py-3 bg-red-700 text-white font-semibold text-sm rounded-lg">Logout</button>
+                <% if(username){ %>
+                <form action="/User/logout" method="post" class="w-full">
+                    <button class="w-full py-3 bg-red-700 text-white font-semibold text-sm rounded-lg">Logout</button>
+                </form>
+                <% } %>
             </div>
         </div>
     </div>

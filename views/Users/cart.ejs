@@ -35,7 +35,10 @@
                         <!-- days -->
                         <p class="text-xs md:text-base md:min-w-[4rem]  font-medium opacity-50">Days : 2</p>
                         <!-- remove button -->
-                        <button class="w-[70px] text-white bg-[#526D82] font-medium py-[4px] rounded text-xs md:text-sm">Remove</button>
+                        <form action="/User/cart/removeproduct" method="post">
+                            <input id="" name="productid" value="<%= data.productid._id %>" hidden type="text">
+                            <button  class="w-[70px] text-white bg-[#526D82] font-medium py-[4px] rounded text-xs md:text-sm">Remove</button>
+                        </form>
                         
                     </div>
                 </div>

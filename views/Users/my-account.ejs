@@ -13,13 +13,16 @@
     <!-- container -->
     <div class="px-3 py-2">
         <!-- main card container-->
-        <div class="flex justify-center">
+        <div class="flex justify-center ">
             <!-- main card-->
-            <div class=" m-1 py-3 rounded-lg bg-slate-50 w-11/12 md:w-3/5 md:h-[19rem] md:border-2">
+            <div class=" m-1 py-3 rounded-lg bg-white w-11/12 md:w-3/5 md:h-[19rem] md:border-2">
                 <div class=" justify-end mx-6 hidden md:flex">
-                    <button>
-                        <img src="/images/logout (1).png" class="h-10" alt="">
-                    </button>
+                    <form action="/User/logout" method="post">
+                        <button>
+                            <img src="/images/logout (1).png" class="h-10" alt="">
+                        </button>
+                    </form>
+
                 </div>
                 <div class="flex flex-col items-center md:justify-center">
                     <!-- profile picture -->
@@ -27,7 +30,11 @@
                         <img src="/images/profile.png" class=" object-cover h-[5rem] w-[5rem] md:h-[10rem] md:w-[10rem] p-1 shadow-lg border-2 rounded-full" alt="">
                     </div>
                     <!-- name -->
-                    <p class="text-sm md:text-xl font-semibold my-2">User</p>
+                    <% if(username === " "){ %>
+                    <p class="text-sm md:text-xl font-semibold my-2 capitalize">User</p>
+                    <% }else{ %>
+                    <p class="text-sm md:text-xl font-semibold my-2 capitalize"><%= username %></p>
+                    <% } %>
                     <!-- edit button -->
                     <button onclick="edituserinfo()" class="border-2 rounded-full px-4 py-1 flex space-x-1 items-center">
                         <img src="/images/edit.png" class="h-3" alt="">
@@ -40,23 +47,23 @@
         <div class="my-3 md:flex md:justify-center">
             <div class="flex md:flex-row flex-col items-center w-full md:w-3/5 space-y-2 md:space-x-3">
                 <!-- card 1 -->
-                <button class="flex  md:h-[10rem] justify-between md:justify-center md:space-x-3 items-center w-11/12 md:w-4/12 bg-white px-4 py-2 rounded-md border-2 hover:shadow-[3px_3px_5px_rgba(0,0,0,0.25)] shadow-[3px_3px_5px_rgba(0,0,0,0.10)]">
-                    <p class="text-xs md:text-lg font-medium opacity-60 md:inline-block">My orders</p>
-                    <img src="/images/right-arrow.png" class="h-3 w-3 opacity-60" alt="">
+                    <a href="/user/myorders" class="flex  md:h-[5rem] justify-between md:justify-center md:space-x-3 items-center w-11/12 md:w-4/12 bg-white px-4 py-2 rounded-md border-2 hover:shadow-[3px_3px_5px_rgba(0,0,0,0.25)] shadow-[3px_3px_5px_rgba(0,0,0,0.10)]">
+                        <p class="text-xs md:text-lg font-medium opacity-60 md:inline-block">My orders</p>
+                        <img src="/images/right-arrow.png" class="h-3 w-3 opacity-60" alt="">
+                    </a>
 
-                </button>
                 <!-- card 2 -->
-                <button class="flex  md:h-[10rem] justify-between md:justify-center md:space-x-3 items-center w-11/12 md:w-4/12 bg-white px-4 py-2 rounded-md border-2 hover:shadow-[3px_3px_5px_rgba(0,0,0,0.25)] shadow-[3px_3px_5px_rgba(0,0,0,0.10)]">
-                    <p class="text-xs md:text-lg font-medium opacity-60 md:inline-block">My Cart</p>
-                    <img src="/images/right-arrow.png" class="h-3 w-3 opacity-60" alt="">
+                    <a href="/user/cart" class="flex  md:h-[5rem] justify-between md:justify-center md:space-x-3 items-center w-11/12 md:w-4/12 bg-white px-4 py-2 rounded-md border-2 hover:shadow-[3px_3px_5px_rgba(0,0,0,0.25)] shadow-[3px_3px_5px_rgba(0,0,0,0.10)]">
+                        <p class="text-xs md:text-lg font-medium opacity-60 md:inline-block">My Cart</p>
+                        <img src="/images/right-arrow.png" class="h-3 w-3 opacity-60" alt="">
+                    </a>
 
-                </button>
                 <!-- card 3 -->
-                <button class="flex  md:h-[10rem] justify-between md:justify-center md:space-x-3 items-center w-11/12 md:w-4/12 bg-white px-4 py-2 rounded-md border-2 hover:shadow-[3px_3px_5px_rgba(0,0,0,0.25)] shadow-[3px_3px_5px_rgba(0,0,0,0.10)]">
-                    <p class="text-xs md:text-lg font-medium opacity-60 md:inline-block">About Us</p>
-                    <img src="/images/right-arrow.png" class="h-3 w-3 opacity-60" alt="">
+                    <a href="/user/aboutus" class="flex  md:h-[5rem] justify-between md:justify-center md:space-x-3 items-center w-11/12 md:w-4/12 bg-white px-4 py-2 rounded-md border-2 hover:shadow-[3px_3px_5px_rgba(0,0,0,0.25)] shadow-[3px_3px_5px_rgba(0,0,0,0.10)]">
+                        <p class="text-xs md:text-lg font-medium opacity-60 md:inline-block">About Us</p>
+                        <img src="/images/right-arrow.png" class="h-3 w-3 opacity-60" alt="">
+                    </a>
 
-                </button>
             </div>
         </div>
 
@@ -67,7 +74,9 @@
 
     <!-- logout button -->
     <div class="flex justify-center md:justify-end mb-5 md:hidden">
-        <button class="bg-red-800 text-white w-11/12 md:w-1/5 md:mx-8 py-2 rounded-md font-bold">Logout</button>
+        <form action="/User/logout" method="post" class="w-full flex justify-center">
+            <button class="bg-red-800 text-white w-11/12 md:w-1/5 md:mx-8 py-2 rounded-md font-bold">Logout</button>
+        </form>
     </div>
     <footer class="py-2 px-3 bg-[#DDE6ED] hidden md:block">
         <div class=" flex justify-around">
@@ -105,22 +114,22 @@
     <div id="updateuserinfo" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 px-6 hidden">
         <div class="flex justify-center bg-white mt-28 p-10  w-[24rem] border-2 border-[#9DB2BF] rounded-md ">
             <div class="">
-                <form action="" method="post">
+                <form action="/user/myaccount" method="post">
                 <div class="flex justify-between mb-14">
                     <div class="font-bold text-xl">Update user info</div>
                     <button type="button" onclick="cancelupdateuserinfo()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
                 </div>
                 <div class="mt-4 flex justify-center">
                     <div class="opacity-70 pe-2">Name:</div>
-                    <input class="px-2 border-2 rounded-full outline-none" type="text">
+                    <input class="px-2 border-2 text-sm rounded-full outline-none" type="text" value="" name="name" id="username">
                 </div>
                 <div class="mt-4 flex justify-center">
                     <div class="opacity-70 pe-2">Email:</div>
-                    <input class="px-2 border-2 rounded-full outline-none" type="text">
+                    <input class="px-2 border-2 text-sm rounded-full outline-none" type="text" value="" name="email" id="useremail">
                 </div>
                 <div class="flex justify-center py-3">
                     <div class="opacity-70 pe-2">phone:</div>
-                    <input class="px-2 border-2 rounded-full outline-none" type="text" name="" id="">
+                    <input class="px-2 border-2 text-sm rounded-full outline-none" type="text" value="" name="phone" id="userphone">
                 </div>
                 
                 <div class="flex justify-center">
