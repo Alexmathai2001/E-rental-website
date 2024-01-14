@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const cartSchema = mongoose.Schema({
     productid : { type: mongoose.Schema.Types.ObjectId, ref: 'product'},
-    quantity : Number
+    days : Number
 })
 
 const addressSchema = mongoose.Schema({

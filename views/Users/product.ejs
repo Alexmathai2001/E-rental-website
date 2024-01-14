@@ -44,13 +44,13 @@
                     <!--Buttons-->
                     <div>
                         <div class="flex justify-evenly py-4">
-                            <button
-                                class="bg-[#DDE6ED] w-2/3 mx-1 py-3 lg:px-3 sm:px-24 rounded-md lg:text-base lg:font-semibold">
-                                Add to cart
-                            </button>
-                            <button class="bg-[#27374D] text-white w-2/3 mx-1 py-3 lg:px-3 sm:px-24 rounded-md">
-                                Rent now
-                            </button>
+                            <label for="addtocartbutton"
+                                class="bg-[#DDE6ED] w-2/3 mx-1 flex justify-center items-center py-3 lg:px-3 sm:px-24 rounded-md lg:text-base lg:font-semibold">
+                                Add to Cart
+                            </label>
+                            <label for="rentnowbutton" class="bg-[#27374D] flex justify-center text-white w-2/3 mx-1 py-3 lg:px-3 sm:px-24 rounded-md items-center">
+                                Rent Now
+                            </label>
                         </div>
                     </div>
                     <!--features-->
@@ -81,28 +81,31 @@
                         <div class="text-lg font-semibold py-1">No. of days</div>
 
                         <div class="text-sm">
-                            <form id="rentdayselector" action="">
-                                <input type="radio" required class="my-2" name="days" id="2" />
+                            <form id="rentdayselector" action="" method="post">
+                                <input type="radio" checked class="my-2" name="days" value="2" id="2" />
                                 <label for="2">2 days</label><br />
 
-                                <input type="radio" class="my-2" name="days" id="7" />
+                                <input type="radio" class="my-2" name="days" value="7" id="7" />
                                 <label for="7">7 days (
                                     <span class="opacity-50 line-through"><%= displayproduct.regularprice*7 %></span>
                                     <span class="font-semibold"><%= displayproduct.saleprice*7 %></span>)</label><br />
 
-                                <input type="radio" class="my-2" name="days" id="14" />
+                                <input type="radio" class="my-2" name="days" value="14" id="14" />
                                 <label for="14">14 days (
                                     <span class="opacity-50 line-through"><%= displayproduct.regularprice*14 %></span>
                                     <span class="font-semibold"><%= displayproduct.saleprice*14 %></span>)</label><br />
 
-                                <input type="radio" class="my-2" name="days" id="30" />
+                                <input type="radio" class="my-2" name="days" value="30" id="30" />
                                 <label for="30">30 days (
                                     <span class="opacity-50 line-through"><%= displayproduct.regularprice*30 %></span>
                                     <span class="font-semibold"><%= displayproduct.saleprice*30 %></span>)</label>
+                                    <button class="hidden" type="submit" name="action" value="addtocart" id="addtocartbutton"></button>
+                                    <button class="hidden" type="submit" name="action" value="rentnow" id="rentnowbutton"></button>
+                                <input type="text" name="product" hidden value="<%= displayproduct._id %>">
                             </form>
                         </div>
                         <div class="mt-2">
-                            <p class="text-xs">Total amount: <span id="finalrentamount" class="font-bold text-sm">0/-</span></p>
+                            <p class="text-xs">Total amount: <span id="finalrentamount" class="font-bold text-sm"><%= displayproduct.saleprice%>/-</span></p>
                         </div>
                     </div>
                     <!--specification-->

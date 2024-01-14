@@ -16,7 +16,8 @@
             <div class=" md:w-full md:px-5">
                 <% CartArray.forEach((data) => { %>
                 <!-- product 1-->
-                <div class="flex p-2 border-2 rounded md:w-full">
+                <a href="/User/product/<%= encodeURIComponent(data.productid._id) %>">
+                    <div class="flex p-2 border-2 rounded md:w-full">
                     <!-- left image -->
                     <div class="md:w-32 ">
                         <img src="<%= data.productid.imageurl %>" class="h-24 min-w-[6rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
@@ -33,7 +34,7 @@
                         </div>
 
                         <!-- days -->
-                        <p class="text-xs md:text-base md:min-w-[4rem]  font-medium opacity-50">Days : 2</p>
+                        <p class="text-xs md:text-base md:min-w-[4rem]  font-medium opacity-50">Days : <%= data.days %></p>
                         <!-- remove button -->
                         <form action="/User/cart/removeproduct" method="post">
                             <input id="" name="productid" value="<%= data.productid._id %>" hidden type="text">
@@ -41,7 +42,8 @@
                         </form>
                         
                     </div>
-                </div>
+                    </div>
+                </a>
                 <% }) %>
                 
             </div>
@@ -58,7 +60,7 @@
                         </div>
                         <div class="font-medium">
                             <p class=" opacity-60"><%= totalRegularPrice %>/-</p>
-                            <p class=" text-green-600">-<%= totalDiscount %></p>
+                            <p class=" text-green-600">-<%= totalDiscount %>/-</p>
                             <p class=" font-bold my-2 "><%= totalSalePrice %>/-</p>
                         </div>
                     </div>
