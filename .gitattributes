@@ -1,0 +1,5 @@
+controllers/* linguist-vendored=false
+models/* linguist-vendored=false
+routes/* linguist-vendored=false
+utils/* linguist-vendored=false
+views/* linguist-vendored=false
