@@ -25,7 +25,7 @@ const customerschema = mongoose.Schema({
     name : String,
     phone : Number,
     email : String,
-    gender : String,
+    status : String,
     address : [addressSchema],
     cart : [cartSchema],
     orders : [orderSchema]

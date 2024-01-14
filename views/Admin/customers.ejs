@@ -95,18 +95,34 @@
                         <th class="font-semibold py-1" class="w-1/5">Status</th>
                         <th class="font-semibold py-1" >Action</th>
                     </tr>
-                    <tr>
+                    <% customerDetails.forEach((data) =>{ %>
+                    <tr class="text-sm">
                         <td>1</td>
-                        <td>Alex Mathai</td>
-                        <td>alexmathai07@gmail.com</td>
-                        <td>9400354724</td>
+                        <% if(data.name === " "){ %>
+                            <td class="capitalize">User</td>
+                        <% }else{ %>
+                            <td class="capitalize"><%= data.name %></td>
+                        <% } %>
+
+                        <% if(data.email === " "){ %>
+                            <td class="capitalize">Not Provided</td>
+                        <% }else{ %>
+                            <td ><%= data.email %></td>
+                        <% } %>
+                        <td><%= data.phone %></td>
                         <td>14</td>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div></td>
+                        <% if(data.status === "active"){ %>
+                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div>
+                        </td>
+                        <% }else{ %>
+                            <td><div class="bg-red-100 text-red-700 px-1 rounded-full my-1">Blocked</div>
+                            </td>
+                        <% } %>
                         <td>
-                            <button onclick="updateuserinfo()"><img src="/images/edit.png" class="h-6" alt=""></button>
+                            <button  onclick="editpopup(this)" id="<%= data._id %>"><img src="/images/edit.png" class="h-6" alt=""></button>
                         </td>
                     </tr>
-
+                    <% }) %>
                     
                 </table> 
             </div>
@@ -118,31 +134,31 @@
     <!--update user info-->
     <div id="updateuserinfo" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 px-6 hidden">
         <div class="flex justify-center bg-white mt-28 p-10  w-4/12 border-2 border-[#9DB2BF] rounded-md ">
-            <div class="">
-                <form action="">
-                <div class="flex justify-between mb-14">
+            <div class=" w-full">
+                <div class="flex justify-between items-center mb-8 ">
                     <div class="font-bold text-xl">Update user info</div>
                     <button type="button" onclick="cancelupdateuserinfo()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
                 </div>
-                <div class="mt-4 flex justify-center">
-                    <div class="opacity-70 pe-2">Email:</div>
-                    <input class="px-2 border-2 rounded-full outline-none" type="text">
-                </div>
-                <div class="flex justify-center py-3">
-                    <div class="opacity-70 pe-2">phone:</div>
-                    <input class="px-2 border-2 rounded-full outline-none" type="text" name="" id="">
-                </div>
-                <div class="flex justify-center py-3">
-                    <div class="opacity-70 pe-2">Status:</div>
-                    <select class="px-2 border-2 rounded-full outline-none" name="" id="">
-                        <option value="" disabled selected>choose</option>
-                        <option value="Active">Active</option>
-                        <option value="Blocked">Blocked</option>
-                    </select>
-                </div>
-                <div class="flex justify-center">
-                    <button class="bg-[#27374D] px-4 py-2 rounded-full mt-4 text-white font-medium">Update</button>
-                </div>
+                <form action="/admin/customers/update" method="post">
+                    <div class="mt-4 flex justify-center items-center   ">
+                        <div class="opacity-70 pe-2 text-sm">Email:</div>
+                        <input class="px-2 border-2 text-sm rounded-lg outline-none" id="emailinput" name="email" type="text">
+                    </div>
+                    <div class="flex justify-center items-center py-3">
+                        <div class="opacity-70 pe-2 text-sm">Name:</div>
+                        <input class="px-2 border-2 text-sm rounded-lg outline-none" type="text" name="name" id="nameinput">
+                        <input type="text" hidden name="phone" value="" id="phoneinput">
+                    </div>
+                    <div class="flex justify-center items-center py-3">
+                        <div class="opacity-70 pe-2 text-sm">Status:</div>
+                        <select class="px-2 border-2 text-sm rounded-lg outline-none" name="status" id="statusinput">
+                            <option value="active">Active</option>
+                            <option value="blocked">Blocked</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="bg-[#27374D] px-4 py-2 rounded-lg mt-4 text-white font-medium text-sm">Update</button>
+                    </div>
             </form>
             </div> 
         </div>

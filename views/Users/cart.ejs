@@ -6,12 +6,12 @@
     <title>My Cart</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="flex flex-col h-screen">
     <!-- header -->
     <%- include("partials/sub-header.ejs") %>
     <!-- container -->
     <div class="m-3">
-        <div class="flex flex-col md:flex-row md:justify-around h-screen">
+        <div class="md:flex md:flex-row md:justify-around ">
             <!-- products -->
             <div class=" md:w-full md:px-5">
                 <% CartArray.forEach((data) => { %>
@@ -47,7 +47,7 @@
                 <% }) %>
                 
             </div>
-            <div class="flex-grow md:hidden"></div>
+
             <!-- summary -->
             <div>
                 <div class="border-2 p-3 md:space-y-8">
@@ -71,32 +71,9 @@
             </div>
         </div>
     </div>
+    <div class="flex-grow"></div>
     <!--footer-->
     <%- include("partials/footer.ejs") %>
 </body>
-
-
-
-<script>
-    const decrement = document.getElementById('minus')
-    const value = document.getElementById('quantity')
-    const increment = document.getElementById('plus')
-
-    let a = 1
-
-    increment.addEventListener("click",() =>{
-        a++;
-        a = (a < 10) ? "0" + a : a;
-        value.innerText = a;
-    })
-
-    decrement.addEventListener("click",() =>{
-        if(a > 1){
-            a--;
-            a = (a < 10) ? "0" + a : a;
-        value.innerText = a;
-        }
-    })
-</script>
 
 </html>

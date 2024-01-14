@@ -18,7 +18,7 @@
         <!--container div-->
         <div class="p-3 sm:px-8 sm:py-4 lg:px-5">
             <div class="lg:flex w-full">
-                <div class="lg:text-lg w-1/2 lg:me-2 ">
+                <div class="lg:text-lg md:w-1/2 lg:me-2 ">
                     <div class="border-2">
                         <div class="m-4 flex justify-center">
                             <img src="<%= displayproduct.imageurl %>" class="h-60" alt="" />
@@ -146,9 +146,10 @@
                                                 <div>
                                                     <span class="font-semibold text-sm">$ <%= data.saleprice %>/day</span>
                                                 </div>
-                                                <div>
-                                                    <button class="p-1 bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                                </div>
+                                                <form action="/User/cart/addtocart" method="post">
+                                                    <input type="hidden" name="productId" value="<%= data._id %>">
+                                                    <button class="p-1 cursor-pointer bg-[#27374D] rounded-full"><img src="/images/cart-white.png" class="h-6" alt=""></button>
+                                                </form>
                                             </div>
                                         </div>
                                     </a>

@@ -9,6 +9,7 @@ const customercontroller = require("../controllers/Admin/customerController")
 const categorycontroller = require("../controllers/Admin/categoryController")
 const settingcontroller = require("../controllers/Admin/settingController")
 const dashboardcontroller = require("../controllers/Admin/dashboardController")
+const { route } = require('./user')
 
 router.get('/login',logincontroller.get)
 
@@ -22,7 +23,11 @@ router.post('/products/search',productcontroller.postSearch)
 router.post('/products/sort',productcontroller.postSort)
 router.post('/products/filter',productcontroller.postFilter)
 
+//customers
 router.get('/customers',customercontroller.get)
+router.get('/customers/edit/:id',customercontroller.getEdit)
+router.post('/customers/update',customercontroller.postEdit)
+
 router.get('/orders',ordercontroller.get)
 
 //category routes
