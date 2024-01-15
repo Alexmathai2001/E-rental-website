@@ -43,41 +43,35 @@
             <!--add product button filter sort-->
             <div class="flex justify-between my-4">
                 <div class="">
-                    
-    
-                    <form action="" class="inline">
-                        <input type="text" name="" id="" placeholder="search" class="border-2 rounded-full ps-5 ms-5">
+                    <form action="/admin/customers/search" method="post" id="customerSearchForm" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="customerSearch" id="searchValue" placeholder="Search by Customer name.. ">
+                            <button  onsubmit="searchCustomer()" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
                     </form>
                 </div>
 
                 <div class="flex items-center">
-                    <form action=""  class="flex items-center">
+                    <form action=""  class="flex items-center text-sm">
                         <div>Sort:</div>
-                        <select name="product" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
-                            <option value="" disabled selected>Choose</option>
-                            <option value="All">All</option>
-                            <option value="Ascending">Name</option>
-                            <option value="Descending">No.of rents</option>
+                        <select name="product" id="sortSelect" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                            <option value="UserName">UserName</option>
+                            <option value="Orders">No.of rents</option>
                             
                         </select>
 
                         <div class="ms-3">by:</div>
-                        <select name="product" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
-                            <option value="" disabled selected>Choose</option>
-                            <option value="All">All</option>
-                            <option value="Ascending">A - Z</option>
-                            <option value="Descending">Z - A</option>
-                            <option value="newest">Newest first</option>
-                            <option value="oldest">Oldest first</option>
+                        <select name="product" id="sortHow" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
                         </select>
                     </form>
-                    <form action="" class="flex items-center">
-                        <div class="ms-3">Filer by:</div>
-                        <select name="filter" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
-                            <option value="" disabled selected>Choose</option>
+                    <form action="" class="flex items-center text-sm">
+                        <div class="ms-3">Filter by:</div>
+                        <select name="filter" id="filterValues" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
                             <option value="All">All</option>
-                            <option value="Category">Active</option>
-                            <option value="500-1000">Blocked</option>
+                            <option value="active">Active</option>
+                            <option value="blocked">Blocked</option>
                             
                         </select>
                     </form>
@@ -95,34 +89,10 @@
                         <th class="font-semibold py-1" class="w-1/5">Status</th>
                         <th class="font-semibold py-1" >Action</th>
                     </tr>
-                    <% customerDetails.forEach((data) =>{ %>
-                    <tr class="text-sm">
-                        <td>1</td>
-                        <% if(data.name === " "){ %>
-                            <td class="capitalize">User</td>
-                        <% }else{ %>
-                            <td class="capitalize"><%= data.name %></td>
-                        <% } %>
-
-                        <% if(data.email === " "){ %>
-                            <td class="capitalize">Not Provided</td>
-                        <% }else{ %>
-                            <td ><%= data.email %></td>
-                        <% } %>
-                        <td><%= data.phone %></td>
-                        <td>14</td>
-                        <% if(data.status === "active"){ %>
-                        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div>
-                        </td>
-                        <% }else{ %>
-                            <td><div class="bg-red-100 text-red-700 px-1 rounded-full my-1">Blocked</div>
-                            </td>
-                        <% } %>
-                        <td>
-                            <button  onclick="editpopup(this)" id="<%= data._id %>"><img src="/images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <% }) %>
+                    <!-- here -->
+                    <tbody id="table-container">
+                        <%- include("partials/customer-table.ejs") %>
+                    </tbody>
                     
                 </table> 
             </div>
