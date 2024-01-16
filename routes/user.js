@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const loginAuth = require('../middleware/loginAuth')
 
+//controllers
 const logincontrol = require("../controllers/User/loginControl")
 const productcontroller = require("../controllers/User/productController")
 const landingcontroller = require("../controllers/User/landingController")
@@ -21,13 +23,14 @@ const cartController = require('../controllers/User/cartController')
 const logoutController = require('../controllers/User/logoutController')
 
 //login
-router.get("/login",logincontrol.get)
-router.post("/login",logincontrol.post)
+router.get("/login",loginAuth.userAuth,logincontrol.get)
+router.post("/login",loginAuth.userAuth,logincontrol.post)
 
 //logout
 router.post("/logout",logoutController.logout)
 
 router.get("/product/:id",productcontroller.get)
+
 router.get("/landing",landingcontroller.get)
 router.get("/categories",categorycontroller.get)
 
@@ -43,7 +46,10 @@ router.post("/cart/addtocart",cartController.post)
 router.post("/cart/removeproduct",cartController.removecart)
 
 
-router.get("/checkout",checkoutcontroller.get)
+router.get("/checkout",loginAuth.userlogincheck,checkoutcontroller.get)
+router.post('/checkout/placeorder',checkoutcontroller.post)
+router.post('/checkout/:id',checkoutcontroller.getbuynow)
+
 router.get("/myorders",myordercontroller.get)
 
 //my-account
@@ -52,11 +58,14 @@ router.get("/myaccount/edit",myaccountcontroller.getedit)
 router.post("/myaccount",myaccountcontroller.postEdit)
 
 router.get("/ordersummary",ordersummartcontroller.get)
+
+
 router.get("/address",addresscontroller.get)
+router.post("/address",addresscontroller.post)
 
 //enterotp
-router.get("/enterotp",enterotpcontroller.get)
-router.post("/enterotp",enterotpController.post)
+router.get("/enterotp",loginAuth.userAuth,enterotpcontroller.get)
+router.post("/enterotp",loginAuth.userAuth,enterotpController.post)
 
 //newuser
 router.get("/newuser",newusercontroller.get)

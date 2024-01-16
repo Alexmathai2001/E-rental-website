@@ -3,10 +3,13 @@ const app = express();
 const path = require('path')
 const connectdb = require('./connection')
 const session = require('express-session')
+const nocache = require("nocache");
 const PORT = 3000;
 
 connectdb();
 
+
+app.use(nocache());
 
 app.use(session({
     secret: 'your-secret-key',  // secret key for session

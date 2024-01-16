@@ -5,17 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   
     addToCartLabel.addEventListener('click', (event) => {
       event.preventDefault();
+      form.method = 'post'
       form.action = '/User/cart/addtocart'
       form.submit();  // Submit the form
     });
   
-    rentNowLabel.addEventListener('click', (event) => {
-      // Prevent default label behavior
+    rentNowLabel.addEventListener('click',function (event) {
       event.preventDefault();
-        alert("rentnow worked")
-      // Set form action to the Rent Now route
-    //   form.action = '/rentnow_route';  // Replace with your Rent Now route
-      form.submit();  // Submit the form
+      form.method = 'post'
+        form.action = `/User/checkout/${this.id}`
+      form.submit();  
     });
   
     // Handle form submission (optional, if not using AJAX)

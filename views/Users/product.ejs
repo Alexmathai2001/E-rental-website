@@ -44,11 +44,11 @@
                     <!--Buttons-->
                     <div>
                         <div class="flex justify-evenly py-4">
-                            <label for="addtocartbutton"
+                            <label for="addtocartbutton" 
                                 class="bg-[#DDE6ED] w-2/3 mx-1 flex justify-center items-center py-3 lg:px-3 sm:px-24 rounded-md lg:text-base lg:font-semibold">
                                 Add to Cart
                             </label>
-                            <label for="rentnowbutton" class="bg-[#27374D] flex justify-center text-white w-2/3 mx-1 py-3 lg:px-3 sm:px-24 rounded-md items-center">
+                            <label id="<%- displayproduct._id %>" for="rentnowbutton" class="bg-[#27374D] flex justify-center text-white w-2/3 mx-1 py-3 lg:px-3 sm:px-24 rounded-md items-center">
                                 Rent Now
                             </label>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="text-lg font-semibold py-1">No. of days</div>
 
                         <div class="text-sm">
-                            <form id="rentdayselector" action="" method="post">
+                            <form id="rentdayselector" action="" >
                                 <input type="radio" checked class="my-2" name="days" value="2" id="2" />
                                 <label for="2">2 days</label><br />
 

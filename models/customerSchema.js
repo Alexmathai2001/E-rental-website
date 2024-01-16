@@ -18,7 +18,9 @@ const addressSchema = mongoose.Schema({
 const orderSchema = mongoose.Schema({
     productid : mongoose.Schema.Types.ObjectId,
     rentdate : Date,
+    orderdate : Date,
     status : String,
+    address : addressSchema
 })
 
 const customerschema = mongoose.Schema({

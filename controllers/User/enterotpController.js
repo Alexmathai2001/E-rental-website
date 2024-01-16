@@ -5,17 +5,13 @@ module.exports = {
         console.log(otp);
     },
     post : async (req,res) => {
-        console.log(req.body);
-        console.log("user entered otp is",req.body.enteredOtp);
         let otp = req.session.otp;
-        console.log("actual otp is" , otp);
         if(req.body.enteredOtp == otp){
             delete req.session.otp;
-            console.log(req.session.userid);
-            // res.json({ success: true});
-            res.json({ success: true, redirectTo: '/user/landing' });
+            req.session.userid = req.session.user
+            delete req.session.user
+            res.json({ success: true, redirectTo: req.session.url || '/user/landing' });
         }else{
-            console.log("else condition");
             res.json({ success: false, message: 'Invalid OTP. Please try again.' });
         }
     }

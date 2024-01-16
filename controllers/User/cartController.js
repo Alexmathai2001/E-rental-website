@@ -5,13 +5,13 @@ module.exports = {
         if (req.session.userid) {
             try {
                 res.locals.title = "My Cart";
-    
+                if(req.session.url){
+                    delete req.session.url;
+                }
                 // Fetch customer details and populate the cart array with product details
                 const userDetails = await usermodel.findOne({ phone: req.session.userid })
                     .populate('cart.productid'); // Populate the cart array with product details
                 const CartArray = userDetails.cart.reverse();
-    
-                console.log(CartArray);
                 const totalRegularPrice = CartArray.reduce((sum, data) => {
                     // Multiply the regular price by the number of days for each product
                     return sum + (data.productid.regularprice * data.days);
@@ -26,6 +26,7 @@ module.exports = {
             }
         } else {
             // If user is not authenticated, redirect to login page
+            req.session.url = "/User/cart"
             res.redirect('/user/login');
         }
         },
@@ -65,7 +66,6 @@ module.exports = {
         }
     },
     removecart : async (req,res) => {
-        console.log("required body is", req.body);
         const updatedCart = await usermodel.findOneAndUpdate(
             { phone : req.session.userid },
             { $pull: { 'cart': { productid: req.body.productid },'cart.days': req.body.days  } },  // Remove product from cart array
