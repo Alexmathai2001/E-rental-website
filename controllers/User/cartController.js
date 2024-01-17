@@ -2,9 +2,7 @@ const usermodel = require('../../models/customerSchema')
 
 module.exports = {
     get :async (req,res) => {
-        if (req.session.userid) {
             try {
-                res.locals.title = "My Cart";
                 if(req.session.url){
                     delete req.session.url;
                 }
@@ -20,15 +18,10 @@ module.exports = {
                     return sum + (data.productid.saleprice * data.days)
                 }, 0);
                 const totalDiscount = totalRegularPrice - totalSalePrice
-                res.render('Users/cart', { CartArray,totalRegularPrice,totalSalePrice,totalDiscount });
+                res.render('Users/cart', { CartArray,totalRegularPrice,totalSalePrice,totalDiscount,username:res.locals.username });
             } catch (error) {
                 console.error('Error fetching user details:', error);
             }
-        } else {
-            // If user is not authenticated, redirect to login page
-            req.session.url = "/User/cart"
-            res.redirect('/user/login');
-        }
         },
     post :async (req,res) => {
         if(req.session.userid){

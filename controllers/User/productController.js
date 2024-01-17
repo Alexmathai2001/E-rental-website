@@ -11,6 +11,6 @@ module.exports = {
         return { [key]: value }; // Return key-value pair as an object
       });
        const relatedproducts = await product.find({category : displayproduct.category})
-        res.render('Users/product',{displayproduct,relatedproducts})
+        res.render('Users/product',{displayproduct,relatedproducts,username:res.locals.username })
       }
 }

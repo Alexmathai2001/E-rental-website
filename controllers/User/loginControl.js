@@ -51,7 +51,6 @@ module.exports = {
     
             res.redirect(`/user/enterotp`)
         }else{
-            console.log("blocked");
             let userblocked = "This account is currently blocked by the Admin"
             res.render("Users/login",{userblocked})
         }

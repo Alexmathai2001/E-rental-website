@@ -5,7 +5,7 @@ module.exports = {
         res.locals.title="Cutting Tools"
         categoryname = req.params.categoryname
         let products = await product.find({category : categoryname})
-        res.render('Users/all-products',{products})
+        res.render('Users/all-products',{products,username:res.locals.username})
     },
     filter : async (req,res) => {
         

@@ -8,7 +8,7 @@
 </head>
 <body>
     <!--header section-->
-    <%- include("partials/sub-header.ejs") %>
+    <%- include("partials/header.ejs") %>
     <!-- main section -->
     <form action="/user/checkout/placeorder" method="post" class="p-3 md:p-6 bg-slate-100">
         <p class="font-bold text-lg md:text-2xl md:ms-10 mb-3">You're almost there...!</p>
@@ -21,22 +21,25 @@
                         <p class="text-xs md:text-base font-semibold opacity-60">Delivery address</p>
                     </div>
                     <!-- Address Cards -->
-                    <div class="md:flex space-x-3 py-2">
+                    <div class="md:flex md:space-x-5 py-2">
                         <!-- Address cards -->
                         <% userAddresses.forEach((data) => { %>
-                        <div class="addressCard shadow-slate-300  shadow-[3px_3px_5px_rgba(0,0,0,0.25)] px-3 py-3 flex justify-between min-w-[18rem]  ">
-                            <input type="radio" value="<%= data %>" name="address" >
-                            <div class="">
-                                <p id="name" data-product-id="<%= data.name %>" class="username text-sm md:text-base font-semibold md:font-bold capitalize"><%= data.name %></p>
-                                <p id="house" class="house text-xs opacity-60 capitalize"><%= data.houseno %></p>
-                                <p id="road" class="road text-xs opacity-60 capitalize"><%= data.roadname %></p>
-                                <div class="flex space-x-2">
-                                    <p id="city" class="city text-xs opacity-60 capitalize"><%= data.city %></p>
-                                    <p id="state" class="state text-xs opacity-60 capitalize"><%= data.state %></p>
+                        <div class="addressCard shadow-slate-300  border-[3px] px-3 py-3 flex justify-between min-w-[18rem]  ">
+                            <div class="flex items-center">
+                                <input type="radio" required value="<%= data %>" name="address" >
+                                <div class=" ms-3">
+                                    <p id="name" data-product-id="<%= data.name %>" class="username text-sm md:text-base font-semibold md:font-bold capitalize"><%= data.name %></p>
+                                    <p id="house" class="house text-xs opacity-60 capitalize"><%= data.houseno %></p>
+                                    <p id="road" class="road text-xs opacity-60 capitalize"><%= data.roadname %></p>
+                                    <div class="flex space-x-2">
+                                        <p id="city" class="city text-xs opacity-60 capitalize"><%= data.city %></p>
+                                        <p id="state" class="state text-xs opacity-60 capitalize"><%= data.state %></p>
+                                    </div>
+                                    <p id="pin" class="pin text-xs opacity-60 capitalize"><%= data.pin %></p>
+                                    <p id="phone" class="phone text-xs opacity-90 capitalize font-medium"><%= data.phone %></p>
                                 </div>
-                                <p id="pin" class="pin text-xs opacity-60 capitalize"><%= data.pin %></p>
-                                <p id="phone" class="phone text-xs opacity-90 capitalize font-medium"><%= data.phone %></p>
                             </div>
+ 
                             <div class="flex flex-col justify-around">
                                 <button class="flex items-center justify-start space-x-1">
                                     <img src="/images/pencil.png" class="h-[10px] md:h-[12px]" alt="">
@@ -47,16 +50,16 @@
                         <% }) %>
                         <a href="/User/address">
                             <div class="w-40 h-full bg-gray-100 md:flex justify-center items-center rounded shadow-slate-300  shadow-[3px_3px_5px_rgba(0,0,0,0.25)] hidden">
-                                <div class="flex flex-col items-center">
+                                <div class="flex flex-col items-center ">
                                     <img src="/images/add.png" class="h-6" alt="">
                                     <p class="text-sm">Add address</p>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <a href="">
+                    <a href="/User/address">
                         <div class="flex justify-center md:hidden">
-                            <button class="mt-2 border-[#526D82] border-2 text-[#27374D]  bg-white w-[20rem] py-1 text-sm">Add new address</button>
+                            <div class="mt-2 border-[#526D82] border-2 text-[#27374D]  bg-white w-[20rem] py-1 text-sm justify-center flex">Add new address</div>
                         </div>
                     </a>
                     

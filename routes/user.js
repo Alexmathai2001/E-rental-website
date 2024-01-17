@@ -29,28 +29,29 @@ router.post("/login",loginAuth.userAuth,logincontrol.post)
 //logout
 router.post("/logout",logoutController.logout)
 
-router.get("/product/:id",productcontroller.get)
+router.get("/product/:id",loginAuth.JustLoginCheck,productcontroller.get)
 
-router.get("/landing",landingcontroller.get)
-router.get("/categories",categorycontroller.get)
+router.get("/landing",loginAuth.JustLoginCheck,landingcontroller.get)
+
+router.get("/categories",loginAuth.JustLoginCheck,categorycontroller.get)
 
 //allproducts
-router.get("/allproducts/:categoryname",allproductscontroller.get)
+router.get("/allproducts/:categoryname",loginAuth.JustLoginCheck,allproductscontroller.get)
 router.post("/allproducts/filter",allproductscontroller.filter)
 
 router.get("/orderconfirmed",orderconfirmedcontroller.get)
 
 //cart
-router.get("/cart",cartcontroller.get)
+router.get("/cart",loginAuth.userlogincheck,cartcontroller.get)
 router.post("/cart/addtocart",cartController.post)
 router.post("/cart/removeproduct",cartController.removecart)
 
 
 router.get("/checkout",loginAuth.userlogincheck,checkoutcontroller.get)
 router.post('/checkout/placeorder',checkoutcontroller.post)
-router.post('/checkout/:id',checkoutcontroller.getbuynow)
+router.post('/checkout/:id',loginAuth.userlogincheck,checkoutcontroller.getbuynow)
 
-router.get("/myorders",myordercontroller.get)
+router.get("/myorders",loginAuth.userlogincheck,myordercontroller.get)
 
 //my-account
 router.get("/myaccount",myaccountcontroller.get)

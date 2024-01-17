@@ -10,28 +10,7 @@
 </head>
 <body>
     <!--header section-->
-    <header>
-        <div class="bg-[#27374D] px-4 py-3 flex justify-between text-white items-center font-medium">
-            <div class="flex">
-                <button onclick="menuslidein()" class="mx-1 lg:hidden"><img src="/images/menu.png" class=" h-6" alt=""></button>
-                <img src="/images/Logo.png" class="h-8 lg:h-10" alt="">
-            </div>
-            
-            <div class="flex items-center">
-                <% if(username === " "){%>
-                    <p class="border-white border-[1px] px-3 py-1 text-white text-sm font-semibold rounded-[3px] me-5 hover:bg-white hover:text-[#27374D]">User</p>
-                <% }else if(username){ %>
-                    <p class="border-white border-[1px] px-3 py-1 text-white text-sm font-semibold rounded-[3px] me-5 hover:bg-white hover:text-[#27374D] capitalize"><%= username %></p>
-                <% }else{ %>
-                    <a href="/User/login" class="md:bg-white px-3 md:px-7 border-white border-2 py-[4px] text-white md:text-[#27374D] font-bold text-[10px] md:text-sm rounded-[3px] me-8 hover:-translate-y-[2px] hover:bg-gray-200">Log In</a>
-                <% } %>
-                <a href="/user/myaccount" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Account</a>
-                <a href="/user/myorders" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Orders</a>
-                <a href="/User/cart" class="text-white opacity-80 font-semibold hover:opacity-100 hover:-translate-y-[2px] text-sm hidden lg:flex mx-3">Cart</a>
-                
-            </div>
-        </div>
-    </header>
+    <%- include('partials/header.ejs') %>
     <!--main section-->
     <!--container div-->
     <div class="my-2 mx-3 lg:mx-8">

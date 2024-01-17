@@ -5,7 +5,7 @@ module.exports = {
             if(req.session.url){
                 delete req.session.url
             }
-            res.render("Users/myorders")
+            res.render("Users/myorders",{username:res.locals.username})
         }else{
             req.session.url = "/user/myorders"
             res.redirect('/user/login')

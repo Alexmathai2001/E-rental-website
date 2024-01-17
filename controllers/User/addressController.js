@@ -3,7 +3,7 @@ const user = require('../../models/customerSchema')
 module.exports = {
     get : (req,res) => {
         res.locals.title = 'Address'
-        res.render('Users/address')
+        res.render('Users/address',{username:res.locals.username})
     },
     post : async (req,res) => {
         const newAddress = {
