@@ -63,6 +63,8 @@ router.get("/ordersummary",ordersummartcontroller.get)
 
 router.get("/address",addresscontroller.get)
 router.post("/address",addresscontroller.post)
+router.get('/address/edit/:id',addresscontroller.getedit)
+router.post('/address/edit/:id',addresscontroller.postedit)
 
 //enterotp
 router.get("/enterotp",loginAuth.userAuth,enterotpcontroller.get)

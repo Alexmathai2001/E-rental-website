@@ -109,34 +109,7 @@
     <!--footer-->
     <%- include("partials/footer.ejs") %>
 
-    <!-- side bar -->
-    <div id="sidebarcontainer" class="h-full w-full absolute inset-0 bg-[rgba(0,0,0,0.6)] invisible transition-all duration-75">
-        <div id="sidebar" class="w-[250px] -translate-x-[250px] transition-all duration-300   flex flex-col h-screen bg-slate-50 absolute top-0 left-0">
-            <!-- side bar header -->
-            <header class="bg-[#27374D] py-5 px-4">
-                <div class="flex justify-start">
-                    <img onclick="closesidebar()" src="/images/close-white.png" class="h-4 w-4" alt="">
-                </div>
-            </header>
-            <!-- sidebar container -->
-            <div class="px-2 py-2 ">
-                <a href="myaccount" class="block text-sm w-full py-2 border-b-4 rounded-lg my-1 bg-white">My Account</a >
-                <a href="myorders" class="block text-sm w-full py-2 border-b-4 rounded-lg my-1 bg-white">My orders</a >
-                <a href="cart" class="block text-sm w-full py-2 border-b-4 rounded-lg my-1 bg-white">My Cart</a >
-                <a href="aboutus" class="block text-sm w-full py-2 border-b-4 rounded-lg my-1 bg-white">About Us</a >
-                <a href="" class="block text-sm w-full py-2 border-b-4 rounded-lg my-1 bg-white">Contact Us</a >
-            </div>
-            <div class="flex flex-grow"></div>
-            <!-- logout button -->
-            <div class="flex justify-center px-4 my-3">
-                <% if(username){ %>
-                <form action="/User/logout" method="post" class="w-full">
-                    <button class="w-full py-3 bg-red-700 text-white font-semibold text-sm rounded-lg">Logout</button>
-                </form>
-                <% } %>
-            </div>
-        </div>
-    </div>
+
     
 </body>
 </html>

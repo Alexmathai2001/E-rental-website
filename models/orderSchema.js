@@ -1,5 +1,20 @@
 const mongoose = require('mongoose')
 
+const itemSchema = mongoose.Schema({
+    productid : mongoose.Schema.Types.ObjectId,
+    quantity : Number
+})
+
+const addressSchema = mongoose.Schema({
+    name : String,
+    houseno : String,
+    roadname : String,
+    city : String,
+    state : String,
+    pin : Number,
+    phone : Number
+})
+
 const adminorderSchema = mongoose.Schema({
     items : [itemSchema],
     address : [addressSchema],
@@ -13,20 +28,6 @@ const adminorderSchema = mongoose.Schema({
     customername : String
 })
 
-const itemSchema = mongoose.Schema({
-    productid : mongoose.Schema.Types.ObjectId,
-    productname : String,
-    quantity : Number
-})
 
-const addressSchema = mongoose.Schema({
-    name : String,
-    houseno : String,
-    roadname : String,
-    city : String,
-    state : String,
-    pin : Number,
-    phone : Number
-})
 
 module.exports = mongoose.model('adminorder',adminorderSchema)

@@ -13,7 +13,7 @@
     <div class="mx-3 mt-2 flex justify-center bg-white rounded-lg">
         <div class="md:w-3/5 w-4/5">
             <p class="font-poppins font-semibold md:text-xl my-5 md:mt-5 text-lg">Add your Address here</p>
-            <form method="post" action="/user/address">
+            <form method="post" <% if(locals.address){ %> action="" <% }else{ %> action="/user/address"><% } %>
                 <!-- contact details -->
             <div class=" md:my-10 mt-5">
                 <div class="flex space-x-2 my-1 items-center">
@@ -21,8 +21,8 @@
                     <p class="font-semibold text-[#526D82]">Contact Details</p>
                 </div>
                 <div class="space-y-2 md:space-y-0 md:flex md:space-x-4 md:items-center">
-                    <input type="text" value="" class="h-10 border-[#27374D] outline-none px-2 border-b-2 w-full" name="FullName" placeholder="Full Name" id="">
-                    <input type="tel" value="" class="h-10 border-[#27374D] outline-none px-2 border-b-2 w-full" name="ContactNumber" placeholder="Contact Number" id="">
+                    <input <% if (locals.address) { %> value="<%= address.name %>" <% } %>  type="text" value="" class="h-10 border-[#27374D] outline-none px-2 border-b-2 w-full" name="FullName" placeholder="Full Name" id="">
+                    <input <% if (locals.address) { %> value="<%= address.phone %>" <% } %>  type="tel" value="" class="h-10 border-[#27374D] outline-none px-2 border-b-2 w-full" name="ContactNumber" placeholder="Contact Number" id="">
                 </div>
             </div>
             <!-- address -->
@@ -33,12 +33,12 @@
                         <p class="font-semibold text-[#526D82]">Address</p>
                     </div>
                     <div class="space-y-2 ">
-                        <input type="text" value="" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" name="HouseNo" placeholder="House no / Building name" id="">
-                        <input type="text" value="" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" name="RoadName" placeholder="Road name / Area / Colony" id="">
-                        <input type="number" value="" name="pin" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" placeholder="PIN code" id="">
+                        <input  <% if (locals.address) { %> value="<%= address.houseno %>" <% } %> type="text" value="" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" name="HouseNo" placeholder="House no / Building name" id="">
+                        <input <% if (locals.address) { %> value="<%= address.roadname %>" <% } %> type="text" value="" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" name="RoadName" placeholder="Road name / Area / Colony" id="">
+                        <input <% if (locals.address) { %> value="<%= address.pin %>" <% } %> type="number" value="" name="pin" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" placeholder="PIN code" id="">
                         <div class="space-y-2 md:flex md:space-x-5 md:space-y-0 items-center">
-                            <input type="text" value="" name="city" placeholder="City" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" id="">
-                            <select name="state" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full bg-white" id="states"></select>
+                            <input <% if (locals.address) { %> value="<%= address.city %>" <% } %> type="text" value="" name="city" placeholder="City" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full" id="">
+                            <select <% if (locals.address) { %> value="<%= address.state %>" <% } %> name="state" class="outline-none h-10 border-[#27374D]  px-2 border-b-2 w-full bg-white" id="states"></select>
                         </div>
                         <div class="flex justify-center pt-10">
                             <button type="submit" class="py-3 px-6 bg-yellow-600 text-white font-semibold">Save and Continue</button>
