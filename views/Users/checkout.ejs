@@ -26,7 +26,7 @@
                         <% userAddresses.forEach((data) => { %>
                         <div class="addressCard shadow-slate-300  border-[3px] px-3 py-3 flex justify-between min-w-[18rem]  ">
                             <div class="flex items-center">
-                                <input type="radio" required value="<%= data %>" name="address" >
+                                <input type="radio" required value="<%= data.name %>-<%= data.houseno %>-<%= data.roadname %>-<%= data.city %>-<%= data.state %>-<%= data.pin %>-<%= data.phone %>" name="address" >
                                 <div class=" ms-3">
                                     <p id="name" data-product-id="<%= data.name %>" class="username text-sm md:text-base font-semibold md:font-bold capitalize"><%= data.name %></p>
                                     <p id="house" class="house text-xs opacity-60 capitalize"><%= data.houseno %></p>
@@ -121,8 +121,8 @@
                             <label for="debit">Debit card</label><br>
                             <input type="radio" name="paymenttype" id="credit" value="credit">
                             <label for="credit">Credit card</label><br>
-                            <input type="radio" name="paymenttype" id="net banking" value="net banking">
-                            <label for="net banking">Net Banking</label>
+                            <input type="radio" name="paymenttype" id="cashondelivery" value="cash on delivery">
+                            <label for="net banking">Cash On delivery</label>
                         </div>
                     </div>
                 </div>

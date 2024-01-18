@@ -21,6 +21,9 @@ const aboutuscontroller = require("../controllers/User/aboutusController")
 const enterotpController = require('../controllers/User/enterotpController')
 const cartController = require('../controllers/User/cartController')
 const logoutController = require('../controllers/User/logoutController')
+const searchController = require('../controllers/User/searchController')
+
+router.post('/search',searchController.get)
 
 //login
 router.get("/login",loginAuth.userAuth,logincontrol.get)

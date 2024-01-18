@@ -16,7 +16,13 @@ const addressSchema = mongoose.Schema({
 })
 
 const orderSchema = mongoose.Schema({
-    productid : mongoose.Schema.Types.ObjectId,
+    productid : [
+        {
+            product : {type : mongoose.Types.ObjectId , ref : "product"},
+            days : String
+        }
+    ],
+    paymentMethod : String,
     rentdate : Date,
     orderdate : Date,
     status : String,

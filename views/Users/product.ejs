@@ -113,11 +113,13 @@
                         <div>
                             <p class="font-semibold text-lg">Specifications</p>
                         </div>
-                        <table class="text-xs my-2 opacity-70">
+                        <table class="md:text-sm text-xs my-2 opacity-70">
                             <% displayproduct.productspecification.forEach((data) => { %>
                             <tr>
-                                <td class="font-medium"><%= data %></td>
-                                <td class="ps-32">BOSCH</td>
+                                <% let spec = [] %>
+                                <% spec = data.split(":") %>
+                                <td class="font-semibold"><%= spec[0] %></td>
+                                <td class="ps-32"><%= spec[1] %></td>
                             </tr>
                             <% }) %>
                         </table>

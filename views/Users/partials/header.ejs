@@ -11,8 +11,8 @@
                 <button onclick="hidesearchbox()">
                     <img src="/images/left-arrow.png" class="h-4 w-4" alt="">
                 </button>
-                <form action="" class="flex w-full">
-                    <input type="text" placeholder="What are you looking for today?" class="w-full text-black text-sm font-normal outline-none" name="" id="">
+                <form action="/user/search" method="post" class="flex w-full">
+                    <input type="text" placeholder="What are you looking for today?" class="w-full text-black text-sm font-normal outline-none" name="searchId" id="">
                     <button><img src="/images/search.png" class="h-5 w-5" alt=""></button>                   
                 </form>                
             </div>
@@ -49,7 +49,7 @@
 
 
     <!-- side bar -->
-    <div id="sidebarcontainer" class="h-full w-full absolute inset-0 bg-[rgba(0,0,0,0.6)] invisible transition-all duration-75">
+    <div id="sidebarcontainer" class="h-full w-full absolute inset-0 bg-[rgba(0,0,0,0.6)] invisible transition-all z-10 duration-75">
         <div id="sidebar" class="w-[250px] -translate-x-[250px] transition-all duration-300   flex flex-col h-screen bg-slate-50 absolute top-0 left-0">
             <!-- side bar header -->
             <header class="bg-[#27374D] py-5 px-4">
@@ -76,5 +76,5 @@
             </div>
         </div>
     </div>
-    
+
 <script src="/javascripts/User/header.js"></script>

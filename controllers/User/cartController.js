@@ -6,14 +6,17 @@ module.exports = {
                 if(req.session.url){
                     delete req.session.url;
                 }
+                console.log("test 1");
                 // Fetch customer details and populate the cart array with product details
                 const userDetails = await usermodel.findOne({ phone: req.session.userid })
                     .populate('cart.productid'); // Populate the cart array with product details
                 const CartArray = userDetails.cart.reverse();
+                console.log("test 2");
                 const totalRegularPrice = CartArray.reduce((sum, data) => {
                     // Multiply the regular price by the number of days for each product
                     return sum + (data.productid.regularprice * data.days);
                   }, 0);
+                  console.log("test 3");
                 const totalSalePrice = CartArray.reduce((sum, data) => {
                     return sum + (data.productid.saleprice * data.days)
                 }, 0);
@@ -24,6 +27,7 @@ module.exports = {
             }
         },
     post :async (req,res) => {
+        console.log(req.session);
         if(req.session.userid){
             //to find if the cart product is already existing or is a new product
             const data = await usermodel.findOne({
@@ -52,6 +56,7 @@ module.exports = {
                       new: true // Return the updated document
                     }
                   );
+                  res.redirect('/user/cart')
             }
 
         }else{

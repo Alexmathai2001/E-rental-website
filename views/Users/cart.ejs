@@ -34,7 +34,11 @@
                         </div>
 
                         <!-- days -->
-                        <p class="text-xs md:text-sm md:min-w-[4rem] opacity-90">Rent Duration : <%= data.days %> Days</p>
+                        <div class="flex">
+                            <span class="hidden md:block text-xs md:text-sm md:min-w-[4rem] opacity-90">Rent Duration :</span>
+                            <span class="text-xs md:text-sm md:min-w-[4rem] opacity-90"> <%= data.days %> Days</span>
+                        </div>
+
                         <!-- remove button -->
                         <form action="/User/cart/removeproduct" method="post">
                             <input id="" name="productid" value="<%= data.productid._id %>" hidden type="text">
@@ -75,5 +79,5 @@
     <!--footer-->
     <%- include("partials/footer.ejs") %>
 </body>
-
+<script src="/javascripts/User/cart.js"></script>
 </html>
