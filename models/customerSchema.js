@@ -23,8 +23,8 @@ const orderSchema = mongoose.Schema({
         }
     ],
     paymentMethod : String,
-    rentdate : Date,
-    orderdate : Date,
+    rentdate : String,
+    orderdate : String,
     status : String,
     address : addressSchema
 })

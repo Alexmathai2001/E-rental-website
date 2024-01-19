@@ -8,6 +8,7 @@ module.exports = {
     get : async (req,res) => {
         res.locals.title = "Order Checkout"
         const address = await userdata.find({ 'address': { $exists: true, $not: { $size: 0 } } })
+        console.log(address);
         if(address == ""){
             res.redirect('/user/address')
         }else{
@@ -51,19 +52,27 @@ module.exports = {
             let fakedata = producttosave.map((data) => {
                 return { product: data.productid._id, days: data.days }
             })
-            console.log("fakedata is : ",fakedata);
+              let currentDate = new Date()
+              const formattedDate = currentDate.toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric'
+              });
+
+              const formattedRentDate = newDateObject.toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric'
+              });
+              console.log(formattedDate);
               const details = {
                 productid: fakedata,
-
-                rentdate: rentDate,
+                rentdate: formattedRentDate,
                 paymentMethod: req.body.paymenttype,
-                orderdate: new Date(),
-                status: "ordered",
+                orderdate: formattedDate,
+                status: "confirmed",
                 address: dataObject
               };
-
-            console.log(details);
-            console.log(userDetails);
             await userdata.findOneAndUpdate({ phone: req.session.userid },{ $push: { orders: details } })
         }
         
@@ -85,7 +94,6 @@ module.exports = {
             }
             userDetails = [data1]
             producttosave = userDetails
-            console.log(userDetails);
             const totalRegularPrice = data.regularprice * req.body.days
             const totalSalePrice = data.saleprice * req.body.days
             const totalDiscount = totalRegularPrice - totalSalePrice

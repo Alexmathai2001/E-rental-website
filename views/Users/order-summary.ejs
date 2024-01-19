@@ -18,11 +18,11 @@
         <!-- Detailed summary -->
         <div>
             <div class="flex justify-between md:justify-center items-center my-1 md:space-x-[28rem]">
-                <p class="text-xs text-gray-500 ">Product rented on 12th december,2023</p>
+                <p class="text-xs text-gray-500 ">Product rented on <%= order.rentdate %></p>
                 <button class="border-2 rounded-lg py-1 px-1 bg-gray-200 text-xs font-medium w-2/6 md:w-32 text-gray-700">Download invoice</button>
             </div>
             <div class="md:flex md:justify-center">
-                <div class="border-2 py-2 px-3 rounded-lg">
+                <div class="border-2  md:w-3/5 py-2 px-3 rounded-lg bg-white">
                     <div class="py-1">
                         <p class="text-xs font-semibold text-gray-500">Order id : #378374933</p>
                     </div>
@@ -30,12 +30,14 @@
                         <!-- shipping address -->
                         <div class="py-2">
                             <p class="font-semibold text-sm text-gray-900 mb-2 md:font-bold md:text-lg">Billing Address</p>
-                            <div class="px-0 text-xs text-gray-700 space-y-[2px]">
-                                <p>Alex Mathai</p>
-                                <p>Kunjukattil House,</p>
-                                <P>Chelakode PO,</P>
-                                <p>Pazhayannur via,</p>
-                                <p>Pin : 680587</p>
+                            <div class="px-0 text-xs text-gray-700 space-y-[2px] capitalize">
+                                <p><%= order.address.name %></p>
+                                <p><%= order.address.houseno %>,</p>
+                                <P><%= order.address.roadname %>,</P>
+                                <p><%= order.address.city %>,</p>
+                                <p><%= order.address.state %>,</p>
+                                <p>Pin : <%= order.address.pin %></p>
+                                <p>Phone : <span class="font-bold"><%= order.address.phone %></span></p>
                             </div>
                         </div>
                         <!-- payment details -->
@@ -43,7 +45,7 @@
                             <div>
                                 <p class="font-semibold text-sm text-gray-900 mb-2 md:font-bold md:text-lg">Payment Mode</p>
                                 <div>
-                                    <p class="text-xs text-gray-700 space-y-[2px]">UPI</p>
+                                    <p class="text-xs text-gray-700 space-y-[2px] capitalize"><%= order.paymentMethod %></p>
                                 </div>
                             </div>
                         </div>
@@ -58,10 +60,10 @@
                                         <p class=" font-medium text-xs my-2">Total Amount</p>
                                     </div>
                                     <div>
-                                        <p class=" opacity-60 text-xs">2796/-</p>
+                                        <p class=" opacity-60 text-xs"> <%= product.regularprice %>/-</p>
                                         <p class=" opacity-60 text-xs">-250</p>
                                         <p class=" text-green-600 text-xs">Free</p>
-                                        <p class=" font-medium text-xs my-2">2546/-</p>
+                                        <p class=" font-medium text-xs my-2"><%= product.regularprice %>/-</p>
                                     </div>
                                 </div>
                         </div>
@@ -69,36 +71,36 @@
                 </div>
             </div>
             <!-- Product 1 -->
-        <div class="flex justify-center">
-            <div class="flex justify-center  md:space-x-5 items-center my-4 border-2 p-3">
+        <div class="flex justify-center ">
+            <div class="flex md:w-3/5 w-full bg-white md:space-x-5 items-center my-4 border-2 p-3">
                 <div class="">
-                    <img src="/images/circular saw.png" class="h-20 min-w-[5rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
+                    <img src="<%= product.imageurl %>" class="h-20 min-w-[5rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
                 </div>
                 <div>
                     <div class="md:flex md:items-center md:space-x-10">
                         <div>
                             <div class="hidden md:flex md:justify-between bg-slate-200 py-2 px-5 text-xs min-w-[40rem] rounded-lg opacity-60 my-3">
                                 <div class="flex space-x-5">
-                                    <p>Order placed on : 12/09/2045</p>
-                                    <p>Shipped to : Alex Mathai</p>
+                                    <p>Order placed on : <%= order.orderdate %></p>
+                                    <p>Shipped to : <%= order.address.name %></p>
                                 </div>
                                 <div>
                                     <p>Order id : #938364</p>
                                 </div>
                             </div>
                             <!-- product name -->
-                            <p class="flex whitespace-normal text-xs md:text-sm ">Bosch GBM 13 re professional pistol Frip Drill (13 mm chuck size,360W)</p>
+                            <p class="flex whitespace-normal text-xs md:text-sm capitalize"><%= product.productname %></p>
                             <!-- price & offer -->
-                            <p class="font-semibold text-sm md:text-base mt-2">5999/- <span class="line-through text-gray-500 font-medium text-xs md:text-sm">7999/-</span> </span></p>
+                            <p class="font-semibold text-sm md:text-base mt-2"><%= product.saleprice %>/- <span class="line-through text-gray-500 font-medium text-xs md:text-sm"><%= product.regularprice %>/-</span> </span></p>
                         </div>
                         
                     </div>
-                   <div class="flex justify-between items-center ">
-                        <button class="bg-yellow-600 py-1 px-3 flex items-center rounded-md my-2 space-x-2 min-w-[3rem]">
+                   <div class="flex w-full justify-between items-center ">
+                        <a href="/User/product/<%= encodeURIComponent(product._id) %>" class="bg-yellow-600 py-1 px-3 flex items-center rounded-md my-2 space-x-2 min-w-[3rem]">
                             <img src="/images/again.png" class="h-3 w-3" alt="">
                             <p class="font-semibold text-xs text-white">Rent again</p>
-                        </button>
-                        <p class="opacity-50 text-[8px] md:text-[12px] ">Delivered on 12th Dec 2023</p>
+                        </a>
+                        <p class="opacity-50 text-[8px] md:text-[12px] capitalize"><%= order.status %></p>
                    </div> 
                 </div>
             </div>

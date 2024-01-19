@@ -61,7 +61,7 @@ router.get("/myaccount",myaccountcontroller.get)
 router.get("/myaccount/edit",myaccountcontroller.getedit)
 router.post("/myaccount",myaccountcontroller.postEdit)
 
-router.get("/ordersummary",ordersummartcontroller.get)
+router.get("/ordersummary/:id",ordersummartcontroller.get)
 
 
 router.get("/address",addresscontroller.get)

@@ -21,7 +21,7 @@ const adminorderSchema = mongoose.Schema({
     modeofpayment : String,
     discount : Number,
     totalamount : Number,
-    orderdate : Date,
+    orderdate : String,
     status : String,
     deliverydate : Date,
     returndate : Date,
