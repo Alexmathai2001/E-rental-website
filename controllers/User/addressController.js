@@ -1,9 +1,10 @@
 const usermodel = require('../../models/customerSchema')
-
+let params
 module.exports = {
     get : (req,res) => {
         res.locals.title = 'Address'
-        res.render('Users/address',{username:res.locals.username})
+        params = req.params.id
+        res.render(`Users/address`,{username:res.locals.username})
     },
     post : async (req,res) => {
         const newAddress = {
@@ -21,7 +22,9 @@ module.exports = {
             { $push: { address: newAddress } },
             { new: true } // To return the updated document
           )
-          res.redirect('/user/checkout')
+          console.log(req.params);
+         
+          res.redirect(`/User/checkout/${params}`)
 
     },
     getedit : async (req,res) => {

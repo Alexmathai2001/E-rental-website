@@ -43,44 +43,38 @@
             <!--add product button filter sort-->
             <div class="flex justify-between my-4">
                 <div class="">
-                    
-    
-                    <form action="" class="inline">
-                        <input type="text" name="" id="" placeholder="search" class="border-2 rounded-full ps-5 ms-5">
+                    <form action="/admin/orders/search" method="post" id="ordersSearchForm" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="ordersSearch" id="searchValue" placeholder="Search Orders ">
+                            <button  onsubmit="searchOrders()" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
                     </form>
                 </div>
 
                 <div class="flex items-center">
-                    <form action=""  class="flex items-center">
+                    <form action=""  class="flex items-center text-sm">
                         <div>Sort:</div>
-                        <select name="order" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
-                            <option value="" disabled selected>Choose</option>
-                            <option value="All">All</option>
-                            <option value="price">price</option>
-                            <option value="date">date</option>
+                        <select name="product" id="sortSelect" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                            <option value="Date">Date</option>
+                            <option value="Price">Price</option>
                             
                         </select>
 
                         <div class="ms-3">by:</div>
-                        <select name="product" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
-                            <option value="" disabled selected>Choose</option>
-                            <option value="All">All</option>
-                            <option value="Ascending">Ascending</option>
-                            <option value="Descending">Descending</option>
-                            <option value="newest">Newest first</option>
-                            <option value="oldest">Oldest first</option>
+                        <select name="" id="sortHow" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
                         </select>
                     </form>
-                    <form action="" class="flex items-center">
-                        <div class="ms-3">Filer by:</div>
-                        <select name="filter" id="" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
-                            <option value="" disabled selected>Choose</option>
+                    <form action="" class="flex items-center text-sm">
+                        <div class="ms-3">Filter by:</div>
+                        <select name="filter" id="filterValues" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
                             <option value="All">All</option>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="shipped">Shipped</option>
-                            <option value="out for delivery">Out for delivery</option>
-                            <option value="delivered">delivered</option>
-                            <option value="returned">returned</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Out For Delivery">Out For Delivery</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Returned">Returned</option>
                             
                         </select>
                     </form>
@@ -89,81 +83,21 @@
             <!--product table-->
             <div class="h-[32rem]  mt-8 overflow-y-auto">
                 <table class="w-full text-center">
-                    <tr class="bg-[#526D82] text-white">
+                    <tr class="bg-[#526D82] text-white capitalize">
                         <th class="font-semibold py-1">#</th>
-                        <th class="font-semibold py-1">Name</th>
-                        <th class="font-semibold py-1" class="w-1/3">Product</th>
-                        <th class="font-semibold py-1" class="w-1/12">Order id</th>
+                        <th class="font-semibold py-1">name</th>
+                        <th class="font-semibold py-1" class="w-1/3">address</th>
+                        <th class="font-semibold py-1" class="w-1/12">phone number</th>
                         <th class="font-semibold py-1">Date</th>
                         <th class="font-semibold py-1" class="w-1/5">Price</th>
                         <th class="font-semibold py-1" class=" " >Status</th>
                         <th class="font-semibold py-1" >Action</th>
                     </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
-                        <td class=" opacity-70">
-                            <button onclick="editorder()"><img src="/images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
-                        <td class=" opacity-70">
-                            <button onclick="editorder()"><img src="/images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
-                        <td class=" opacity-70">
-                            <button onclick="editorder()"><img src="/images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
-                        <td class=" opacity-70">
-                            <button onclick="editorder()"><img src="/images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class=" opacity-70">1</td>
-                        <td class=" opacity-70">Alex Mathai</td>
-                        <td class=" opacity-70 max-w-[12rem] truncate">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill IM-DM-5P-V2 Cordless Drill </td>
-                        <td class=" opacity-70">685479</td>
-                        <td class=" opacity-70">11/06/2023</td>
-                        <td class=" opacity-70">699</td>
-                        <td><div class="bg-[#DDE6ED] text-[#27374D] rounded-full my-1">Confirmed</div></td>
-                        <td class=" opacity-70">
-                            <button onclick="editorder()"><img src="/images/edit.png" class="h-6" alt=""></button>
-                        </td>
-                    </tr>
-                   
-                    
-                    
-                    
-                    
+                    <!-- here -->
+                    <tbody id="table-container">
+                        <%- include("partials/orders-table.ejs") %>
+                    </tbody>
+
                 </table> 
             </div>
             
@@ -183,47 +117,41 @@
                     <div class="grid grid-cols-2 grid-rows-2 gap-3">
                         <div class="p-5 border-2 bg-white">
                             <div class="font-semibold ">Address</div>
-                            <table>
+                            <table class="">
                                 <tr>
                                     <td class="opacity-40 w-60">Name</td>
-                                    <td class="opacity-80">Alex Mathai</td>
+                                    <td id="name" class="opacity-80">Alex Mathai</td>
                                 </tr>
                                 <tr>
-                                    <td class="pt-3 opacity-40 w-60">Phone</td>
-                                    <td class="pt-3 opacity-80">9400354724</td>
+                                    <td class="pt-3 opacity-40 w-60">House Name</td>
+                                    <td id="houseno" class="pt-3 opacity-80">9400354724</td>
                                 </tr>
                                 <tr>
                                     <td class="pt-3 opacity-40 w-60">Street</td>
-                                    <td class="pt-3 opacity-80">Chelakkara</td>
+                                    <td id="roadname" class="pt-3 opacity-80">Chelakkara</td>
                                 </tr>
                                 <tr>
                                     <td class="pt-3 opacity-40 w-60">City/town</td>
-                                    <td class="pt-3 opacity-80">Thrissur</td>
+                                    <td id="city" class="pt-3 opacity-80">Thrissur</td>
                                 </tr>
                                 <tr>
                                     <td class="pt-3 opacity-40 w-60">State</td>
-                                    <td class="pt-3 opacity-80">Kerala</td>
+                                    <td id="state" class="pt-3 opacity-80">Kerala</td>
                                 </tr>
                                 <tr>
                                     <td class="pt-3 opacity-40 w-60">PIN</td>
-                                    <td class="pt-3 opacity-80">980587</td>
+                                    <td id="pin" class="pt-3 opacity-80">980587</td>
                                 </tr>
                                 <tr>
-                                    <td class="pt-3 opacity-40 w-60">Email</td>
-                                    <td class="pt-3 opacity-80">alexmathai07@gmail.co</td>
+                                    <td class="pt-3 opacity-40 w-60">Phone</td>
+                                    <td id="phone" class="pt-3 opacity-80">9400354724</td>
                                 </tr>
                             </table>
                         </div>
                         <div class="p-5 border-2 bg-white">
                             <div class="font-semibold ">Product</div>
-                            <div class="flex bg-slate-50 p-3">
-                                <div class="">
-                                    <div><img src="/images/circular saw.png" class="h-14" alt=""></div>
-                                </div>
-                                <div class="ms-6">
-                                    <div class="w-64 text-xs">IZOM 20V Cordless Driver DM-5P-V2 Cordless Drill </div>
-                                    <div class="font-semibold text-sm">$699/day <span class="text-green-500">21% off</span></div>
-                                </div>
+                            <div id="product-container" class="whitespace-nowrap flex flex-col overflow-y-auto">
+
                             </div>
                         </div>
                         <div class="p-5 border-2 bg-white">
@@ -231,11 +159,11 @@
                             <table>
                                 <tr class="my-2">
                                     <td class="opacity-40 w-60">Price</td>
-                                    <td class="opacity-80">699/-</td>
+                                    <td id="price" class="opacity-80">699/-</td>
                                 </tr>
                                 <tr>
                                     <td class="pt-3 opacity-40 w-60">Discount</td>
-                                    <td class="pt-3 opacity-80">-146/-</td>
+                                    <td id="discount" class="pt-3 opacity-80 text-green-700">-146/-</td>
                                 </tr>
                                 <tr>
                                     <td class="pt-3 opacity-40 w-60">Shipping</td>
@@ -243,17 +171,17 @@
                                 </tr>
                                 <tr>
                                     <td class="pt-3 font-semibold w-60">Total Amount</td>
-                                    <td class="pt-3 font-semibold">553</td>
+                                    <td id="total" class="pt-3 font-semibold">553</td>
                                 </tr>
                                 
                             </table>
                         </div>
-                        <div class="p-5 border-2 bg-white">
+                        <form action="/admin/orders/updateorder"  method="post" class="p-5 border-2 bg-white">
                             <div class="font-semibold ">Status</div>
                             <div class="flex">
                                 <div  class="pt-3 opacity-40 w-60">Order Status</div>
                                 <div>
-                                    <form action="">
+                                    <div>
                                         <input type="radio" id="confirmed" name="status" value="confirmed">
                                         <label for="confirmed">Confirmed</label><br>
                                         <input type="radio" id="shipped" name="status" value="shipped">
@@ -264,13 +192,13 @@
                                         <label for="delivered">Delivered</label><br>
                                         <input type="radio" id="returned" name="status" value="returned">
                                         <label for="returned">Returned</label><br>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex justify-end mt-20">
                                 <button class="bg-blue-600 text-sm text-white font-medium rounded-md py-2 px-4">Update Status</button>
                             </div>
-                        </div>
+                        </form>
             
                     </div>
             </div>

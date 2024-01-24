@@ -31,7 +31,14 @@ router.post('/customers/search',customercontroller.search)
 router.post('/customers/sort',customercontroller.sort)
 router.post('/customers/filter',customercontroller.filter)
 
+
+//orders
 router.get('/orders',ordercontroller.get)
+router.get('/orders/:id',ordercontroller.getedit)
+router.post('/orders/updateorder',ordercontroller.postEdit)
+router.post('/orders/search',ordercontroller.search)
+router.post('/orders/sort',ordercontroller.postSort)
+router.post('/orders/filter',ordercontroller.postFilter)
 
 //category routes
 router.get('/categories',categorycontroller.get)

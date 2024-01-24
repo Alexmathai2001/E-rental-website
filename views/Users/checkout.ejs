@@ -9,157 +9,183 @@
 <body>
     <!--header section-->
     <%- include("partials/header.ejs") %>
+    <div class="searchResult-Container">
+
+    </div>
     <!-- main section -->
-    <form action="/user/checkout/placeorder" method="post" class="p-3 md:p-6 bg-slate-100">
-        <p class="font-bold text-lg md:text-2xl md:ms-10 mb-3">You're almost there...!</p>
-        <div class="md:flex md:justify-around">
-            <!-- left card -->
-            <div class="bg-white p-3 md:px-6 rounded md:w-8/12">
-                <div>
-                    <div class="flex space-x-4 items-center mb-2">
-                        <img src="/images/location.png" class="h-5 md:h-6" alt="">
-                        <p class="text-xs md:text-base font-semibold opacity-60">Delivery address</p>
-                    </div>
-                    <!-- Address Cards -->
-                    <div class="md:flex md:space-x-5 py-2">
-                        <!-- Address cards -->
-                        <% userAddresses.forEach((data) => { %>
-                        <div class="addressCard shadow-slate-300  border-[3px] px-3 py-3 flex justify-between min-w-[18rem]  ">
-                            <div class="flex items-center">
-                                <input type="radio" required value="<%= data.name %>-<%= data.houseno %>-<%= data.roadname %>-<%= data.city %>-<%= data.state %>-<%= data.pin %>-<%= data.phone %>" name="address" >
-                                <div class=" ms-3">
-                                    <p id="name" data-product-id="<%= data.name %>" class="username text-sm md:text-base font-semibold md:font-bold capitalize"><%= data.name %></p>
-                                    <p id="house" class="house text-xs opacity-60 capitalize"><%= data.houseno %></p>
-                                    <p id="road" class="road text-xs opacity-60 capitalize"><%= data.roadname %></p>
-                                    <div class="flex space-x-2">
-                                        <p id="city" class="city text-xs opacity-60 capitalize"><%= data.city %></p>
-                                        <p id="state" class="state text-xs opacity-60 capitalize"><%= data.state %></p>
+    <main>
+        <form action="/user/checkout/placeorder" method="post" class="p-3 md:p-6 bg-slate-100">
+            <p class="font-bold text-lg md:text-2xl md:ms-10 mb-3">You're almost there...!</p>
+            <div class="md:flex md:justify-around">
+                <!-- left card -->
+                <div class="bg-white p-3 md:px-6 rounded md:w-8/12">
+                    <div>
+                        <div class="flex space-x-4 items-center mb-2">
+                            <img src="/images/location.png" class="h-5 md:h-6" alt="">
+                            <p class="text-xs md:text-base font-semibold opacity-60">Delivery address</p>
+                        </div>
+                        <!-- Address Cards -->
+                        <div class="md:flex whitespace-nowrap overflow-x-auto w-full md:space-x-5 py-2">
+                            <!-- Address cards -->
+                            <% userAddresses.forEach((data) => { %>
+                            <div class="addressCard shadow-slate-300 bg-white border-[3px] px-3 py-3 flex justify-between min-w-[18rem]  ">
+                                <div class="flex items-center">
+                                    <input type="radio" required value="<%= data.name %>-<%= data.houseno %>-<%= data.roadname %>-<%= data.city %>-<%= data.state %>-<%= data.pin %>-<%= data.phone %>" name="address" >
+                                    <div class=" ms-3">
+                                        <p id="name" data-product-id="<%= data.name %>" class="username text-sm md:text-base font-semibold md:font-bold capitalize"><%= data.name %></p>
+                                        <p id="house" class="house text-xs opacity-60 capitalize"><%= data.houseno %></p>
+                                        <p id="road" class="road text-xs opacity-60 capitalize"><%= data.roadname %></p>
+                                        <div class="flex space-x-2">
+                                            <p id="city" class="city text-xs opacity-60 capitalize"><%= data.city %></p>
+                                            <p id="state" class="state text-xs opacity-60 capitalize"><%= data.state %></p>
+                                        </div>
+                                        <p id="pin" class="pin text-xs opacity-60 capitalize"><%= data.pin %></p>
+                                        <p id="phone" class="phone text-xs opacity-90 capitalize font-medium"><%= data.phone %></p>
                                     </div>
-                                    <p id="pin" class="pin text-xs opacity-60 capitalize"><%= data.pin %></p>
-                                    <p id="phone" class="phone text-xs opacity-90 capitalize font-medium"><%= data.phone %></p>
+                                </div>
+    
+                                <div class="flex flex-col justify-around">
+                                    <a href="/user/address/edit/<%- data._id %>" class="flex justify-center items-center px-3 rounded-lg py-[2px] text-sm font-medium border-2 border-gray-500 text-gray-500 hover:bg-[#27374D] hover:text-white bg-white">Edit
+                                    </a>
                                 </div>
                             </div>
- 
-                            <div class="flex flex-col justify-around">
-                                <a href="/user/address/edit/<%- data._id %>" class="flex justify-center items-center px-3 rounded-lg py-[2px] text-sm font-medium border-2 border-gray-500 text-gray-500 hover:bg-[#27374D] hover:text-white bg-white">Edit
+                            <% }) %>
+                            <% if(userDetails.length<=1){ %>
+                                <% userDetails.forEach((data) => { %>
+                                    <a href="/User/address/<%- data.productid._id %>" class="h-36">
+                                        <div class="w-40 h-full bg-gray-100 md:flex justify-center items-center rounded shadow-slate-300  shadow-[3px_3px_5px_rgba(0,0,0,0.25)] hidden">
+                                            <div class="flex flex-col items-center ">
+                                                <img src="/images/add.png" class="h-6" alt="">
+                                                <p class="text-sm">Add address</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+            
+                                <a href="/User/address/<%- data.productid._id %>">
+                                    <div class="flex justify-center md:hidden">
+                                        <div class="mt-2 border-[#526D82] border-2 text-[#27374D]  bg-white w-[20rem] py-1 text-sm justify-center flex">Add new address</div>
+                                    </div>
+                                </a>
+                                <% }) %>
+                            <% }else{%>
+                                <a href="/User/address/cart">
+                                    <div class="w-40 h-full bg-gray-100 md:flex justify-center items-center rounded shadow-slate-300  shadow-[3px_3px_5px_rgba(0,0,0,0.25)] hidden">
+                                        <div class="flex flex-col items-center ">
+                                            <img src="/images/add.png" class="h-6" alt="">
+                                            <p class="text-sm">Add address</p>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
-                        </div>
-                        <% }) %>
-                        <a href="/User/address">
-                            <div class="w-40 h-full bg-gray-100 md:flex justify-center items-center rounded shadow-slate-300  shadow-[3px_3px_5px_rgba(0,0,0,0.25)] hidden">
-                                <div class="flex flex-col items-center ">
-                                    <img src="/images/add.png" class="h-6" alt="">
-                                    <p class="text-sm">Add address</p>
+        
+                            <a href="/User/address/cart">
+                                <div class="flex justify-center md:hidden">
+                                    <div class="mt-2 border-[#526D82] border-2 text-[#27374D]  bg-white w-[20rem] py-1 text-sm justify-center flex">Add new address</div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                            <% } %>
+                        
                     </div>
-                    <a href="/User/address">
-                        <div class="flex justify-center md:hidden">
-                            <div class="mt-2 border-[#526D82] border-2 text-[#27374D]  bg-white w-[20rem] py-1 text-sm justify-center flex">Add new address</div>
+                    <!-- order summary -->
+                    <div>
+                        <div class="flex space-x-4 items-center mt-4 mb-2">
+                            <img src="/images/shopping-bag.png" class="h-5 md:h-6" alt="">
+                            <p class="text-xs md:text-base font-semibold opacity-60">Order Summary</p>
                         </div>
-                    </a>
-                    
-                </div>
-                <!-- order summary -->
-                <div>
-                    <div class="flex space-x-4 items-center mt-4 mb-2">
-                        <img src="/images/shopping-bag.png" class="h-5 md:h-6" alt="">
-                        <p class="text-xs md:text-base font-semibold opacity-60">Order Summary</p>
-                    </div>
-                    <div class="">
-                        <!-- product details -->
-                        <% userDetails.forEach((data) => { %>
-                        <div>
-                            <div class="flex p-2 border-2 rounded my-3">
-                                <!-- left image -->
-                                <div class="">
-                                    <img src="<%= data.productid.imageurl %>" class="h-20 min-w-[5rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
-                                </div>
-                                <!-- right content -->
-                                <div class="md:flex md:justify-between md:items-center md:space-x-10">
-                                    <div class="md:w-96">
-                                        <!-- product name -->
-                                        <p class="flex whitespace-normal text-xs md:text-sm capitalize"><%= data.productid.productname %></p>
-                                        <!-- brand name -->
-                                        <p class="flex whitespace-normal text-xs md:text-sm font-semibold text-gray-500 capitalize"><%= data.productid.brandname %></p>
-                                        <!-- price & offer -->
-                                        <p class="font-semibold text-sm md:text-base mt-1"><%= data.productid.saleprice %>/- <span class="text-green-600 font-semibold text-xs"><%= data.productid.discountpercentage %>% off</span></p>
-                                        <!-- original price -->
-                                        <p class="line-through text-gray-500 font-medium text-xs md:text-sm"><%= data.productid.regularprice %>/-</p>
+                        <div class="">
+                            <!-- product details -->
+                            <% userDetails.forEach((data) => { %>
+                            <div>
+                                <div class="flex p-2 border-2 rounded my-3">
+                                    <!-- left image -->
+                                    <div class="">
+                                        <img src="<%= data.productid.imageurl %>" class="h-20 min-w-[5rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
                                     </div>
-                                    <div class="font-medium text-xs md:text-sm ">Rent Period : <%= data.days %> days</div>
-                                    
+                                    <!-- right content -->
+                                    <div class="md:flex md:justify-between md:items-center md:space-x-10">
+                                        <div class="md:w-96">
+                                            <!-- product name -->
+                                            <p class="flex whitespace-normal text-xs md:text-sm capitalize"><%= data.productid.productname %></p>
+                                            <!-- brand name -->
+                                            <p class="flex whitespace-normal text-xs md:text-sm font-semibold text-gray-500 capitalize"><%= data.productid.brandname %></p>
+                                            <!-- price & offer -->
+                                            <p class="font-semibold text-sm md:text-base mt-1"><%= data.productid.saleprice %>/- <span class="text-green-600 font-semibold text-xs"><%= data.productid.discountpercentage %>% off</span></p>
+                                            <!-- original price -->
+                                            <p class="line-through text-gray-500 font-medium text-xs md:text-sm"><%= data.productid.regularprice %>/-</p>
+                                        </div>
+                                        <div class="font-medium text-xs md:text-sm ">Rent Period : <%= data.days %> days</div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                            <!-- date -->
+                            <div class="flex space-x-2 items-center my-3">
+                                <div>
+                                    <p class="text-sm md:font-semibold md:text-base">Rent starting date:</p>
+                                </div>
+                                <div  class="text-xs md:text-sm  border-2 px-2 rounded-md text-[#666666]">
+                                    <input type="date" name="rentdate" id="">
                                 </div>
                             </div>
                         </div>
-                        <% }) %>
-                        <!-- date -->
-                        <div class="flex space-x-2 items-center my-3">
-                            <div>
-                                <p class="text-sm md:font-semibold md:text-base">Rent starting date:</p>
-                            </div>
-                            <div  class="text-xs md:text-sm  border-2 px-2 rounded-md text-[#666666]">
-                                <input type="date" name="rentdate" id="">
+                        
+                        
+                    </div>
+                    <div>
+                        <div class="flex space-x-4 items-center mt-4 mb-2">
+                            <img src="/images/wallet.png" class="h-5 md:h-6" alt="">
+                            <p class="text-xs md:text-base font-semibold opacity-60">Payment Details</p>
+                        </div>
+                        <div class="text-xs md:text-sm">
+                            <div  class="space-y-2 my-3">
+                                <input type="radio" name="paymenttype" id="upi" value="upi">
+                                <label for="upi">UPI</label><br>
+                                <input type="radio" name="paymenttype" id="debit" value="debit">
+                                <label for="debit">Debit card</label><br>
+                                <input type="radio" name="paymenttype" id="credit" value="credit">
+                                <label for="credit">Credit card</label><br>
+                                <input type="radio" name="paymenttype" id="cashondelivery" value="cash on delivery">
+                                <label for="net banking">Cash On delivery</label>
                             </div>
                         </div>
                     </div>
-                    
-                    
+                    <div></div>
                 </div>
+                <!-- right card -->
                 <div>
-                    <div class="flex space-x-4 items-center mt-4 mb-2">
-                        <img src="/images/wallet.png" class="h-5 md:h-6" alt="">
-                        <p class="text-xs md:text-base font-semibold opacity-60">Payment Details</p>
-                    </div>
-                    <div class="text-xs md:text-sm">
-                        <div  class="space-y-2 my-3">
-                            <input type="radio" name="paymenttype" id="upi" value="upi">
-                            <label for="upi">UPI</label><br>
-                            <input type="radio" name="paymenttype" id="debit" value="debit">
-                            <label for="debit">Debit card</label><br>
-                            <input type="radio" name="paymenttype" id="credit" value="credit">
-                            <label for="credit">Credit card</label><br>
-                            <input type="radio" name="paymenttype" id="cashondelivery" value="cash on delivery">
-                            <label for="net banking">Cash On delivery</label>
-                        </div>
-                    </div>
-                </div>
-                <div></div>
-            </div>
-            <!-- right card -->
-            <div>
-                <div class="">
-                    <div class="border-2 p-3 md:space-y-8 bg-white my-3 rounded">
-                        <p class="font-semibold text-base mb-2 md:font-bold md:text-lg">Order Details</p>
-                        <div class="flex justify-between text-sm md:text-base">
-                            <div>
-                                <p class=" opacity-60">Price</p>
-                                <p class=" opacity-60">Discount</p>
-                                <p class=" opacity-60">Delivery Charge</p>
-                                <p class=" font-medium my-2">Total Amount</p>
+                    <div class="">
+                        <div class="border-2 p-3 md:space-y-8 bg-white my-3 rounded">
+                            <p class="font-semibold text-base mb-2 md:font-bold md:text-lg">Order Details</p>
+                            <div class="flex justify-between text-sm md:text-base">
+                                <div>
+                                    <p class=" opacity-60">Price</p>
+                                    <p class=" opacity-60">Discount</p>
+                                    <p class=" opacity-60">Delivery Charge</p>
+                                    <p class=" font-medium my-2">Total Amount</p>
+                                </div>
+                                <div>
+                                    <p class=" opacity-60"><%= totalRegularPrice %>/-</p>
+                                    <p class=" opacity-60 text-green-600">-<%= totalDiscount %>/-</p>
+                                    <p class=" text-green-600">Free</p>
+                                    <p class=" font-medium my-2"><%= totalSalePrice %>/-</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class=" opacity-60"><%= totalRegularPrice %>/-</p>
-                                <p class=" opacity-60 text-green-600">-<%= totalDiscount %>/-</p>
-                                <p class=" text-green-600">Free</p>
-                                <p class=" font-medium my-2"><%= totalSalePrice %>/-</p>
+                            <div class="flex justify-center my-4">
+                                <button class="bg-[#27374D] text-white w-72 py-2 text-sm font-medium rounded">Proceed to Pay</button>
                             </div>
-                        </div>
-                        <div class="flex justify-center my-4">
-                            <button class="bg-[#27374D] text-white w-72 py-2 text-sm font-medium rounded">Proceed to Pay</button>
-                        </div>
-                        <div class="flex justify-center">
-                            <div class=" bg-green-100 text-green-600 w-80 my-2 px-3 py-4">
-                                <p class="text-xs whitespace-normal">Your total savings amount on this order is <span  class="text-xs font-semibold">Rs <%= totalDiscount %>/-</span></p>
+                            <div class="flex justify-center">
+                                <div class=" bg-green-100 text-green-600 w-80 my-2 px-3 py-4">
+                                    <p class="text-xs whitespace-normal">Your total savings amount on this order is <span  class="text-xs font-semibold">Rs <%= totalDiscount %>/-</span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </main>
     <!--footer-->
     <%- include("partials/footer.ejs") %>
 </body>

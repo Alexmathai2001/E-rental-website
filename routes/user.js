@@ -21,9 +21,9 @@ const aboutuscontroller = require("../controllers/User/aboutusController")
 const enterotpController = require('../controllers/User/enterotpController')
 const cartController = require('../controllers/User/cartController')
 const logoutController = require('../controllers/User/logoutController')
-const searchController = require('../controllers/User/searchController')
+const searchResultController = require('../controllers/User/searchResultController')
 
-router.post('/search',searchController.get)
+router.get('/search',searchResultController.getSearch)
 
 //login
 router.get("/login",loginAuth.userAuth,logincontrol.get)
@@ -50,7 +50,7 @@ router.post("/cart/addtocart",cartController.post)
 router.post("/cart/removeproduct",cartController.removecart)
 
 
-router.get("/checkout",loginAuth.userlogincheck,checkoutcontroller.get)
+router.get("/checkout/:id",loginAuth.userlogincheck,checkoutcontroller.get)
 router.post('/checkout/placeorder',checkoutcontroller.post)
 router.post('/checkout/:id',loginAuth.userlogincheck,checkoutcontroller.getbuynow)
 
@@ -64,7 +64,7 @@ router.post("/myaccount",myaccountcontroller.postEdit)
 router.get("/ordersummary/:id",ordersummartcontroller.get)
 
 
-router.get("/address",addresscontroller.get)
+router.get("/address/:id",addresscontroller.get)
 router.post("/address",addresscontroller.post)
 router.get('/address/edit/:id',addresscontroller.getedit)
 router.post('/address/edit/:id',addresscontroller.postedit)

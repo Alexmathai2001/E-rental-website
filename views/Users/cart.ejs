@@ -9,8 +9,12 @@
 <body class="flex flex-col h-screen">
     <!-- header -->
     <%- include("partials/header.ejs") %>
+
+    <div class="searchResult-Container">
+
+    </div>
     <!-- container -->
-    <div class="m-3">
+    <main class="m-3">
         <div class="md:flex md:flex-row md:justify-around ">
             <!-- products -->
             <div class=" md:w-full md:px-5">
@@ -69,12 +73,12 @@
                         </div>
                     </div>
                     <div class="flex justify-center my-4">
-                        <a href="/User/checkout" class="flex justify-center items-center bg-[#27374D] text-white w-72 py-2 text-sm font-medium rounded">Checkout</a>
+                        <a href="/User/checkout/cart" class="flex justify-center items-center bg-[#27374D] text-white w-72 py-2 text-sm font-medium rounded">Checkout</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
     <div class="flex-grow"></div>
     <!--footer-->
     <%- include("partials/footer.ejs") %>

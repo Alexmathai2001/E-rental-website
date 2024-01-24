@@ -6,25 +6,26 @@
                 <img src="/images/Logo.png" class="h-8 lg:h-10" alt="">
             </a>
         </div>
+        <!-- mobile search bar -->
         <div id="expandedsearchbox" class="w-full hidden me-5">
             <div class="flex bg-white w-full py-2 px-3 space-x-4">
                 <button onclick="hidesearchbox()">
                     <img src="/images/left-arrow.png" class="h-4 w-4" alt="">
                 </button>
                 <form action="/user/search" method="post" class="flex w-full">
-                    <input type="text" placeholder="What are you looking for today?" class="w-full text-black text-sm font-normal outline-none" name="searchId" id="">
+                    <input type="text" placeholder="aaa" class="w-full text-black text-sm font-normal outline-none" name="searchId" id="">
                     <button><img src="/images/search.png" class="h-5 w-5" alt=""></button>                   
                 </form>                
             </div>
         </div>
 
-        
+        <!-- laptop search bar -->
         <div class="flex items-center">
             <div id="defaultsubheader" class="flex">
                 <button onclick="showsearchbox()"><img src="/images/search-white.png" class="h-5 md:hidden mx-5" alt="" /></button>
-                <form action="" method="post" > <!--search-->
+                <form action="" method="post" class="searchDesktopHeader" > <!--search-->
                     <div class="hidden me-5 md:flex items-center h-full rounded-md bg-orange-400 text-[#666666] outline outline-[.1px] outline-gray-400">
-                        <input value="" type="text" class="outline-none rounded-md pl-3 h-full text-sm w-80 placeholder:text-sm" name="categorySearch" id="" placeholder="Which tool are you looking today? ">
+                        <input value="" type="text" class="outline-none rounded-md pl-3 h-full text-sm w-80 placeholder:text-sm searchHeaderInput" name="categorySearch" id="searchHeaderInput" placeholder="Which tool are you looking today? ">
                         <button type="submit" class=" px-1 py-1  h-full cursor-pointer" >
                             <img src="/images/search-white.png" class="h-6" alt="">
                         </button>

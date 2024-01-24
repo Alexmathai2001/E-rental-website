@@ -5,6 +5,7 @@ module.exports = {
         res.locals.title = "customers"; 
         const data = await customers.find()
         const customerDetails = data.reverse()
+        console.log(customerDetails);
         res.render('Admin/customers',{customerDetails})
       },
     getEdit : async(req,res) => {
