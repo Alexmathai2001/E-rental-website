@@ -14,7 +14,7 @@
     </div>
     <!-- main section -->
     <main>
-        <form action="/user/checkout/placeorder" method="post" class="p-3 md:p-6 bg-slate-100">
+        <form method="post" class="p-3 md:p-6 bg-slate-100" id="payForm">
             <p class="font-bold text-lg md:text-2xl md:ms-10 mb-3">You're almost there...!</p>
             <div class="md:flex md:justify-around">
                 <!-- left card -->
@@ -30,7 +30,7 @@
                             <% userAddresses.forEach((data) => { %>
                             <div class="addressCard shadow-slate-300 bg-white border-[3px] px-3 py-3 flex justify-between min-w-[18rem]  ">
                                 <div class="flex items-center">
-                                    <input type="radio" required value="<%= data.name %>-<%= data.houseno %>-<%= data.roadname %>-<%= data.city %>-<%= data.state %>-<%= data.pin %>-<%= data.phone %>" name="address" >
+                                    <input type="radio" id="address" required value="<%= data.name %>-<%= data.houseno %>-<%= data.roadname %>-<%= data.city %>-<%= data.state %>-<%= data.pin %>-<%= data.phone %>" name="address" >
                                     <div class=" ms-3">
                                         <p id="name" data-product-id="<%= data.name %>" class="username text-sm md:text-base font-semibold md:font-bold capitalize"><%= data.name %></p>
                                         <p id="house" class="house text-xs opacity-60 capitalize"><%= data.houseno %></p>
@@ -142,7 +142,7 @@
                             <div  class="space-y-2 my-3">
                                 <input type="radio" name="paymenttype" id="upi" value="upi">
                                 <label for="upi">UPI</label><br>
-                                <input type="radio" name="paymenttype" id="debit" value="debit">
+                                <input required type="radio" name="paymenttype" id="debit" value="debit">
                                 <label for="debit">Debit card</label><br>
                                 <input type="radio" name="paymenttype" id="credit" value="credit">
                                 <label for="credit">Credit card</label><br>
@@ -173,7 +173,7 @@
                                 </div>
                             </div>
                             <div class="flex justify-center my-4">
-                                <button class="bg-[#27374D] text-white w-72 py-2 text-sm font-medium rounded">Proceed to Pay</button>
+                                <button  type="submit" onsubmit="payment()" id="rzp-button1" class="bg-[#27374D] text-white w-72 py-2 text-sm font-medium rounded">Proceed to Pay</button>
                             </div>
                             <div class="flex justify-center">
                                 <div class=" bg-green-100 text-green-600 w-80 my-2 px-3 py-4">
@@ -188,6 +188,8 @@
     </main>
     <!--footer-->
     <%- include("partials/footer.ejs") %>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </body>
+
 <script src="/javascripts/User/checkout.js"></script>
 </html>

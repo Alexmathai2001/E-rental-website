@@ -17,25 +17,10 @@
         </div>
         <div class="flex  justify-center">
             <div>
-                <form action="">
-                    <div class="border-b-2 border-[#9DB2BF] rounded-sm bg-[#DDE6ED] h-10 w-72 pb-10 ">
-                        <input type="text" placeholder="Email Address" class="bg-[#DDE6ED] h-10 outline-none text-gray-500 px-3 placeholder:text-xs ">
-                        <button>
-                            <span class="material-symbols-outlined text-sm opacity-60">
-                                visibility_off
-                            </span>
-                        </button>
-                    </div>
+                <form action="/admin/login" method="post" class="">
+                    <input type="text" name="username"  class="py-2 px-4 w-72 outline-none border-2 rounded-lg block text-sm" placeholder="Username" id="username">
                     
-                    
-                    <div class="border-b-2 border-[#9DB2BF] rounded-sm bg-[#DDE6ED] h-10 w-72 pb-10 mt-4">
-                        <input type="password" placeholder="Password" class="bg-[#DDE6ED] h-10 outline-none text-gray-500 px-3 placeholder:text-xs ">
-                        <button>
-                            <span class="material-symbols-outlined text-sm opacity-60">
-                                visibility_off
-                            </span>
-                        </button>
-                    </div>
+                    <input type="password" name="passwordname"  class="py-2 px-4 w-72 mt-6 outline-none border-2 rounded-lg block text-sm" placeholder="Password" id="Password">
 
                     <button type="submit" class="bg-[#27374D] text-white px-5 py-2 rounded-lg block text-center w-72 my-8">Sign In</button>
                     </form>

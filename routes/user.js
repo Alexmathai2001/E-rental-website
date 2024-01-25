@@ -22,9 +22,10 @@ const enterotpController = require('../controllers/User/enterotpController')
 const cartController = require('../controllers/User/cartController')
 const logoutController = require('../controllers/User/logoutController')
 const searchResultController = require('../controllers/User/searchResultController')
+const orderController = require('../controllers/Admin/orderController')
 
 router.get('/search',searchResultController.getSearch)
-
+router.post('/checkout/payment',checkoutcontroller.payment)
 //login
 router.get("/login",loginAuth.userAuth,logincontrol.get)
 router.post("/login",loginAuth.userAuth,logincontrol.post)
@@ -54,6 +55,8 @@ router.get("/checkout/:id",loginAuth.userlogincheck,checkoutcontroller.get)
 router.post('/checkout/placeorder',checkoutcontroller.post)
 router.post('/checkout/:id',loginAuth.userlogincheck,checkoutcontroller.getbuynow)
 
+
+router.post('/checkout/pay',orderconfirmedcontroller.payment)
 router.get("/myorders",loginAuth.userlogincheck,myordercontroller.get)
 
 //my-account

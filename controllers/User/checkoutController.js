@@ -1,8 +1,10 @@
+const { json } = require('express');
 const userdata = require('../../models/customerSchema')
 const products = require('../../models/productSchema')
-const {ObjectId} = require('mongodb')
+const Razorpay = require('razorpay');
+var instance = new Razorpay({ key_id: 'rzp_test_QfPZ4R4jhKFmna', key_secret: 'Kgvk8R04wASBxxMdnxR3CVZN' })
 
-
+let totalSalePrice
 
 module.exports = {
     get : async (req,res) => {
@@ -24,7 +26,7 @@ module.exports = {
               userDetails = [data1]
               producttosave = userDetails
               const totalRegularPrice = data.regularprice * req.session.days
-              const totalSalePrice = data.saleprice * req.session.days
+              totalSalePrice = data.saleprice * req.session.days
               const totalDiscount = totalRegularPrice - totalSalePrice
              res.render("Users/checkout",{userAddresses,userDetails,totalRegularPrice,totalSalePrice,totalDiscount})
              delete req.session.days
@@ -46,7 +48,7 @@ module.exports = {
                 // Multiply the regular price by the number of days for each product
                 return sum + (data.productid.regularprice * data.days);
               }, 0);
-            const totalSalePrice = userDetails.reduce((sum, data) => {
+            totalSalePrice = userDetails.reduce((sum, data) => {
                 return sum + (data.productid.saleprice * data.days)
             }, 0);
             const totalDiscount = totalRegularPrice - totalSalePrice
@@ -62,6 +64,7 @@ module.exports = {
         // const usercart = await userdata.findOne({ phone: req.session.userid })
         //         .populate('cart.productid');
         // let userDetails = usercart.cart.reverse()
+    
         const rentDate = req.body.rentdate;
         const newDateObject = addDaysToDate(rentDate);
         const formattedDate = formatDate(newDateObject);
@@ -96,7 +99,7 @@ module.exports = {
                 productid: fakedata,
                 rentdate: formattedRentDate,
                 paymentMethod: req.body.paymenttype,
-                orderdate: formattedDate,
+                orderdate: currentDate,
                 status: "confirmed",
                 address: dataObject
               };
@@ -123,12 +126,47 @@ module.exports = {
             userDetails = [data1]
             producttosave = userDetails
             const totalRegularPrice = data.regularprice * req.body.days
-            const totalSalePrice = data.saleprice * req.body.days
+            totalSalePrice = data.saleprice * req.body.days
             const totalDiscount = totalRegularPrice - totalSalePrice
            res.render("Users/checkout",{userAddresses,userDetails,totalRegularPrice,totalSalePrice,totalDiscount})
         }
-    }
-}
+    },payment : async function(req,res){
+      console.log('payment method is '+req.body.paymentMethod);
+      if(req.body.paymentMethod==='cash on delivery' ){
+          res.json('Cod')
+      }
+
+
+          var options = {
+              amount: totalSalePrice * 100,  // amount in the smallest currency unit
+              currency: "INR",
+              receipt: "order_rcptid_11"
+            };
+          instance.orders.create(options, (err, order) => { 
+              if (order) { 
+                  console.log(order, ": order success") 
+                  res.status(200).send({ 
+                      success: true, 
+                      msg: "Order Created", 
+                      order_id: order.id, 
+                      amount: totalSalePrice * 100, 
+                      key_id: 'rzp_test_QfPZ4R4jhKFmna', 
+                      name: 'rafeeq', 
+                      email: 'muhammedrafeeqvr@gmail.com', 
+                      contact: '957983967' 
+             
+                  }) 
+              } 
+              else if (err) { 
+                  console.log("Error in creating razorpay order :", err) 
+                  res.status(500).send() 
+              }
+          })
+          
+      }
+  
+  }
+
 
 function addDaysToDate(inputDate) {
     const dateObject = new Date(inputDate);

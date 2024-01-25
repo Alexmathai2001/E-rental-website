@@ -63,9 +63,9 @@
                                     </div>
                                     <div>
                                         <p class=" opacity-60 text-xs"> <%= product.regularprice %>/-</p>
-                                        <p class=" opacity-60 text-xs">-250</p>
+                                        <p class=" opacity-60 text-xs">-<%= product.regularprice - product.saleprice %></p>
                                         <p class=" text-green-600 text-xs">Free</p>
-                                        <p class=" font-medium text-xs my-2"><%= product.regularprice %>/-</p>
+                                        <p class=" font-medium text-xs my-2"><%= product.saleprice %>/-</p>
                                     </div>
                                 </div>
                         </div>

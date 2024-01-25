@@ -3,100 +3,67 @@
 
 <%- include("partials/head.ejs") %>
 
-<body class="flex flex-col h-screen">
+<body class="flex flex-col h-screen bg-white">
     <!-- header -->
     <%- include('partials/header.ejs') %>
-    <div class="searchResult-Container">
-
-    </div>
+    
+    <div class="md:flex md:px-0">
     <!-- main -->
-    <main class="px-3 py-2  bg-slate-100">
-        <div class="md:flex">
-            <div class="hidden w-1/6 bg-slate-50 md:flex justify-center items-center">
-                <form id="products-filter-form" action="">
-                    <div class="space-y-8">
-                        <div class=" text-sm">
-                            <p class="font-semibold  text-sm mb-3">By price:</p>
-                            <div class="text-gray-600 space-y-2">
-                                <input type="checkbox" name="price" value="500-1000" id="500-1000">
-                                <label for="500-1000">500-1000</label><br>
-                                <input type="checkbox" name="price" value="1000-1500" id="1000-1500">
-                                <label for="1000-1500">1000-1500</label><br>
-                                <input type="checkbox" name="price" value="1500-2000" id="1500-2000">
-                                <label for="1500-2000">1500-2000</label><br>
-                                <input type="checkbox" name="price" value="2000-above" id="2000-above">
-                                <label for="2000-above">2000-above</label>
-                            </div>
-                            
-                        </div>
-                        <div class=" text-sm">
-                        <p class="font-semibold  text-sm mb-3">By Discount:</p>
-                            <div class="text-gray-600 space-y-2">
-                                <input type="checkbox" name="" id="5%-10%">
-                                <label for="5%-10%">5%-10%</label><br>
-                                <input type="checkbox" name="" id="10%-15%">
-                                <label for="10%-15%">10%-15%</label><br>
-                                <input type="checkbox" name="" id="15%-20%">
-                                <label for="15%-20%">15%-20%</label><br>
-                                <input type="checkbox" name="" id="20%-above">
-                                <label for="20%-above">20%-above</label>
-                            </div>
-                        </div>
-                        <div class=" text-sm">
-                            <p class="font-semibold  text-sm mb-3">By Condition:</p>
-                            <div class="text-gray-600 space-y-2">
-                                <input type="checkbox" name="" id="like new">
-                                <label for="like new">like new</label><br>
-                                <input type="checkbox" name="" id="Good">
-                                <label for="Good">Good</label><br>
-                                <input type="checkbox" name="" id="okay">
-                                <label for="okay">okay</label><br>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="w-full">
-                <p class="mt-1 py-1 px-6 text-lg font-semibold capitalize"><%= products[0].category %></p>
-                <div class="flex justify-around ">
-                    <div class=" grid grid-cols-2 md:grid-cols-6 my-2 mx-2 gap-x-5 gap-y-2">
-                        <% products.forEach((data) => { %>
-                            <div>
-                                <a class="flex flex-col items-center" href="/User/product/<%= encodeURIComponent(data._id) %>">
-                                    <div class=" bg-white shadow-md hover:shadow-xl mt-4 p-1 m-1 flex flex-col items-center lg:h-60 w-40 py-8 lg:py-0">
-                                        <div>
-                                            <img src="<%= data.imageurl %>" class="h-16 w-16 lg:w-28 lg:h-28 p-2"
-                                                alt="" />
-                                        </div>
-                                        <div>
-                                            <p class="py-1 font-semibold truncate max-w-32 text-sm capitalize"> <%= data.productname %> </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs opacity-50 capitalize"> <%= data.brandname %> </p>
-                                        </div>
-                                        <div class="flex justify-between w-full  items-center lg:py-0">
-                                            <div class="lg:py-6">
-                                                <span class="text-sm text-slate-600"><span class="font-semibold lg:text-base text-sm text-black">$<%= data.saleprice %></span>/Day</span>
-                                            </div>
-                                            <form action="/User/cart/addtocart" method="post">
-                                                <!-- Hidden input field to store the product ID -->
-                                                <input type="hidden" name="productId" value="<%= data._id %>">
-                                                <button class="p-1 bg-[#526D82] hover:bg-[#27374D] rounded-s-full -me-1 pe-3 ps-3"><img src="/images/cart-white.png" class="h-6" alt=""></button>
-                                            </form>
-                                            
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            
-                        <% }) %>
-                    </div>
-                </div>
+    <main class="px-3 py-2 w-1/5 bg-slate-100">
+        <div class="md:flex md:whitespace-nowrap">
+            <!-- filter form -->
+            
+            <%- include('partials/user-filter-form.ejs') %>
 
-            </div>
+
         </div>
 
     </main>
+    <div class="searchResult-Container">
+
+    </div>
+    <main>
+        <div class="w-full ">
+            <p class="mt-1 py-1 px-6 text-lg font-semibold capitalize md:whitespace-nowrap"><%= products[0].category %></p>
+            <div class="flex justify-around ">
+                <div class=" grid grid-cols-2 md:grid-cols-6 my-2 mx-2 gap-x-5 gap-y-2">
+                    <% products.forEach((data) => { %>
+                        <div>
+                            <a class="flex flex-col items-center" href="/User/product/<%= encodeURIComponent(data._id) %>">
+                                <div class=" bg-white shadow-md hover:shadow-xl mt-4 p-1 m-1 flex flex-col items-center lg:h-60 w-40 py-8 lg:py-0">
+                                    <div>
+                                        <img src="<%= data.imageurl %>" class="h-16 w-16 lg:w-28 lg:h-28 p-2"
+                                            alt="" />
+                                    </div>
+                                    <div>
+                                        <p class="py-1 font-semibold truncate max-w-32 text-sm capitalize"> <%= data.productname %> </p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs opacity-50 capitalize"> <%= data.brandname %> </p>
+                                    </div>
+                                    <div class="flex justify-between w-full  items-center lg:py-0">
+                                        <div class="lg:py-6">
+                                            <span class="text-sm text-slate-600"><span class="font-semibold lg:text-base text-sm text-black">$<%= data.saleprice %></span>/Day</span>
+                                        </div>
+                                        <form action="/User/cart/addtocart" method="post">
+                                            <!-- Hidden input field to store the product ID -->
+                                            <input type="hidden" name="productId" value="<%= data._id %>">
+                                            <button class="p-1 bg-[#526D82] hover:bg-[#27374D] rounded-s-full -me-1 pe-3 ps-3"><img src="/images/cart-white.png" class="h-6" alt=""></button>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        
+                    <% }) %>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    </div>
+
     <div class="flex flex-grow">
 
     </div>

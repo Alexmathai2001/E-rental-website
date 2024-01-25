@@ -12,6 +12,7 @@ const dashboardcontroller = require("../controllers/Admin/dashboardController")
 const { route } = require('./user')
 
 router.get('/login',logincontroller.get)
+router.post('/login',logincontroller.post)
 
 //products routes
 router.get('/products',productcontroller.get)

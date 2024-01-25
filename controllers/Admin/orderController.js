@@ -50,7 +50,6 @@ module.exports = {
           console.log(orders);
           globalOrders=orders
         res.render('Admin/orders',{orders})
-        
       } catch (error) {
         
       }
@@ -144,7 +143,10 @@ module.exports = {
         });
         res.render('Admin/partials/orders-table', { orders: filteredOrders });
     }
+    
 }
+
+
 
 function sortArraydate(a,b){
   if(a.date < b.date){

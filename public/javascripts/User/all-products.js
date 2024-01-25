@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         checkbox.addEventListener('change', async function () {
             var formDataString = serializeForm(document.getElementById('products-filter-form'));
             try {
-                const response = await fetch('/user/products/filter', {
+                const response = await fetch('/user/allproducts/filter', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.text();
+                console.log("data is : ",data);
                 document.getElementsByTagName('main')[1].style.display = 'none';
-                document.getElementById('searchResult-Container').innerHTML=data
+                document.querySelector('.searchResult-Container').innerHTML=data
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -35,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return serialized.join('&');
     }
     })
+
+
 
     function menuslidein(){
         const sidebar = document.getElementById('sidebar')
