@@ -2,6 +2,8 @@ const { json } = require('express');
 const userdata = require('../../models/customerSchema')
 const products = require('../../models/productSchema')
 const Razorpay = require('razorpay');
+require("dotenv").config()
+
 var instance = new Razorpay({ key_id: 'rzp_test_QfPZ4R4jhKFmna', key_secret: 'Kgvk8R04wASBxxMdnxR3CVZN' })
 
 let totalSalePrice

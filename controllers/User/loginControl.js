@@ -1,5 +1,6 @@
 const fast2sms = require('fast-two-sms')
 const usermodel = require("../../models/customerSchema")
+require("dotenv").config()
 
 
 module.exports = {
@@ -24,8 +25,8 @@ module.exports = {
             req.session.user = req.body.phoneno;
     
             // sending otp message via fast-two-sms
-            // const newResponse = await fast2sms.sendMessage({authorization: 'GtMy04V4xy8mCnz8qHKHkqi99wBUG2G4PPxcFPw6B1gHipk2J3nuD6696D1N', message:`${otp} is your otp`, numbers: [req.body.phoneno]})
-            // console.log(newResponse)
+            const newResponse = await fast2sms.sendMessage({authorization: process.env.fasttwosms_auth, message:`${otp} is your otp`, numbers: [req.body.phoneno]})
+            console.log(newResponse)
     
             res.redirect(`/user/enterotp`)
         }else{
