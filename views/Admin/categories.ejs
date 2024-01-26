@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <!--head-->
+    <%- include("partials/head.ejs") %>
+<body class="box-border">
+
+
+    <!--header-->
+    <%- include("partials/header.ejs") %>
+
+
+     <div class="flex ">
+        <!--leftside navigation-->
+        <div class="border-e-2  ">
+            <div class="mx-4 mt-10 mb-60">
+                <a href="dashboard" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                        <div>Dashboard</div>
+                </a>
+                <a href="products" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Products</div>
+                </a>
+                <a href="customers" class="hover:bg-gray-100 mb-3 ps-4 text-left w-48 py-2 block">
+                    <div>Customers</div>
+                </a>
+                <a href="orders" class=" hover:bg-gray-100 mb-3 ps-4 text-left w-48 py-2 block">
+                    <div>Orders</div>
+                </a>
+                <a href="categories" class=" mb-3 ps-4 text-left w-48 py-2 bg-[#DDE6ED] block">
+                    <div class="font-semibold">Category</div>
+                </a>
+                <a href="settings" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Settings</div>
+                </a>
+                
+            </div>
+        </div>
+        <!--rightside content-->
+        <div class="mx-7 mt-5 w-screen">
+
+            <div class=" text-2xl font-semibold">Category management</div>
+            <!--add product button filter sort-->
+            <div class="flex justify-between my-4">
+                <div class="flex space-x-4">
+                    <button onclick="addcategory()" class="bg-[#526D82] text-white px-3 py-1 font-medium rounded text-sm">+ Add Category</button>
+    
+                    <form action="/admin/categories/search" method="post" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="categorySearch" id="" placeholder="Search by Category name.. ">
+                            <button type="submit" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="flex items-center">
+                    <form action="" method="post" id="CategorySortForm" class="flex items-center">
+                        <div class="text-sm">Sort:</div>
+                        <select name="" id="sortSelect" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                            <option value="CategoryName">Category Name</option>
+                            <option value="ProductCount">Product Count</option>
+                        </select>
+
+                        <div class="ms-3 text-sm">by:</div>
+                        <select name="sortValue" id="sortHow" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="All">All</option>
+                            <option value="Ascending">Ascending</option>
+                            <option value="Descending">Descending</option>
+                            <option value="newest">Newest first</option>
+                            <option value="oldest">Oldest first</option>
+                        </select>
+                    </form>
+                    <!--category filter-->
+                    <form action="" method="post" id="filterForm" class="flex items-center">
+                        <div class="ms-3">Filer by:</div>
+                        <select name="filter" id="categoryfilter" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="All">All</option>
+                            <option value="Listed">Listed</option>
+                            <option value="Unlisted">Unlisted</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <!--product table-->
+
+            <div class="h-[32rem]  mt-8 overflow-y-auto">
+                <table class="w-full text-center">
+                    <tr class="bg-[#526D82] text-white">
+                        <th class="font-semibold py-1 rounded-s-md">#</th>
+                        <th class="font-semibold py-1">Category Name</th>
+                        <th class="font-semibold py-1" class="w-1/3">No. of Product</th>
+                        <th class="font-semibold py-1" class="w-1/12">Status</th>
+                        <th class="font-semibold py-1">Action</th>
+                    </tr>
+                    <tbody id="table-container">
+                        <%- include("partials/category-table.ejs") %>
+                    </tbody>
+
+                </table> 
+            </div>
+        </div>
+    </div>
+    
+    <!--Add category popup--> 
+    <%- include("partials/add-category-popup.ejs") %>
+
+    <!--Edit category popup-->
+    <%- include('partials/edit-category-popup.ejs') %>
+
+    <!--delete category popup-->
+    <%- include("partials/delete-category-popup.ejs",{}) %>
+
+    
+</body>
+
+</html>
+<script src="/javascripts/Admin/category.js"></script>

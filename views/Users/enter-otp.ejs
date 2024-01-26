@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
+<body class="flex flex-col h-screen bg-slate-200">
+    <div class="flex flex-grow"></div>
+    <div class="flex justify-center ">
+        <!-- container box -->
+        <div class="md:h-[40rem] h-screen md:w-3/5 w-screen border-2 rounded-xl flex shadow-lg">
+            <!-- left box -->
+            <div class="w-1/2  bg-[url('/images/bg-cover.png')] rounded-l-lg bg-cover hidden md:flex flex-col items-center text-center h-full">
+                <p class="text-white font-semibold text-2xl mt-14  px-8">Why invest in tools you use once? <br> <span class="text-sm font-normal">Rent the best for your project, and let us <br> take care of the rest.</span></p>
+            </div>
+            <!-- right box -->
+            <div class="py-10 px-[2rem] md:w-1/2 w-full bg-white rounded-r-lg">
+                    <form action="" method="post" class="flex flex-col h-full">
+                        <div>
+                            <p class="my-1 font-semibold text-xl">Enter OTP</p>
+                            <p class="text-gray-500 text-sm">We have sent an otp to +91<%= phone %> </p>
+                            <div class="mt-4">
+                                <input  type="number" name="enteredOTP" class="py-2 px-4 outline-none border-2 rounded-lg w-full text-sm" placeholder="One Time Password" id="otpInput">
+                            </div>
+                            <div class="w-full flex justify-between">
+                                <span id="message" class="text-xs mt-1 text-red-500 font-medium"></span>
+                                <a id="resendotp" onclick="resendotp()" class="text-xs text-blue-500 my-1 me-2 cursor-pointer">Resend otp</a>
+                            </div>
+                        </div>
+                        <div class="flex flex-grow"></div>
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">By continuing,you agree to website's <a class="text-blue-600" href="">terms and conditions</a></p>
+                            <button onclick="validateOTP(event)" class="w-full bg-blue-500 rounded-full text-white text-sm py-2 font-medium">Continue</button>
+                        </div>
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="flex-grow"></div>
+
+
+    
+</body>
+</html>
+
+<script src="/javascripts/User/enterotp.js"></script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Category</title>
+</head>
+<body class="select-none flex flex-col h-screen">
+    <!--header section-->
+    <%- include("partials/header.ejs") %>
+    <div class="searchResult-Container">
+
+    </div>
+    <!-- categories container -->
+    
+    <main class="px-5 py-5 bg-slate-100 w-full">
+        <p class="text-xl font-semibold my-4 mx-2">Available Categories</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-10 gap-y-6">
+            <!-- category -->
+            <% categories.forEach((data) => {%>
+                <% if(data.showstatus === "Listed") { %>
+            <a href="/User/allproducts/<%= encodeURIComponent(data.categoryname) %>" class="w-full bg-white flex flex-col items-center shadow-md hover:shadow-xl rounded-b-lg">
+                <img src=<%= data.categoryimgurl %> class="bg-cover  px-1 rounded-b-lg" alt="">
+                <p class="capitalize font-semibold text-xs my-3"> <%= data.categoryname %> </p>
+            </a>
+            <% } %>
+            <% })  %>
+            
+        </div>
+    </main>
+    <div class="flex flex-grow bg-slate-100"></div>
+    <!--footer-->
+    <%- include("partials/footer.ejs") %>
+
+
+    
+</body>
+<script src="/javascripts/User/landing.js"></script>
+</html>

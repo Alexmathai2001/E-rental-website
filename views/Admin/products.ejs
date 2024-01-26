@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--head-->
+<%- include("partials/head.ejs") %>
+
+<body class="box-border">
+
+    <!--header-->
+    <%- include("partials/header.ejs") %>
+
+     <div class="flex ">
+        <!--leftside navigation-->
+        <div class="border-e-2  ">
+            <div class="mx-4 mt-10 mb-80">
+                
+                <a href="/Admin/dashboard" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                        <div>Dashboard</div>
+                </a>
+                <a href="/Admin/products" class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
+                    <div class="font-semibold">Products</div>
+                </a>
+                <a href="/Admin/customers" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Customers</div>
+                </a>
+                <a href="/Admin/orders" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Orders</div>
+                </a>
+                <a href="/Admin/categories" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Category</div>
+                </a>
+                <a href="/Admin/settings" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Settings</div>
+                </a>
+                
+            </div>
+        </div>
+        <!--rightside content-->
+        <div class="mx-7 mt-5 w-screen">
+
+            <div class=" text-2xl font-poppins font-semibold">Product management</div>
+            <!--add product button filter sort-->
+            <div class="flex justify-between my-4">
+                <div class="flex space-x-4">
+                    <button onclick="showPopup()" class="bg-[#526D82] text-white px-3 py-1 font-medium rounded text-sm">Add product</button>
+    
+                    <form action="/admin/products/search" method="post" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="productSearch" id="" placeholder="Search by Product name... ">
+                            <button type="submit" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="flex items-center">
+                    <form action=""  class="flex items-center">
+                        <div class="text-sm">Sort:</div>
+                        <select name="product" id="sortSelect" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                            <option value="Product name">Product name</option>
+                            <option value="Discount">Discount</option>
+                            <option value="Price">Price</option>
+                        </select>
+
+                        <div class="ms-3 text-sm">by:</div>
+                        <select name="product" id="sortHow" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                            
+                        </select>
+                    </form>
+                    <form action="" id="filterForm" class="flex items-center">
+                        <div class="ms-3 text-sm">Filer by:</div>
+                        <select name="filter" id="productfilter" class="bg-white outline-none border-2 rounded-full px-2 opacity-50 text-sm">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="All">All</option>
+                            <option value="500-1000">500-1000</option>
+                            <option value="1000-2000">1000-2000</option>
+                            <option value="2000-5000">2000-5000</option>
+                            <% categories.forEach((category) => { %>
+                                <option value="<%= category.categoryname %>" class="capitalize"><%= category.categoryname %></option>
+                                <% }) %>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <!--product table-->
+            <div class="h-[32rem]  mt-8 overflow-y-auto">
+                <table class="w-full text-center">
+                    <tr class="bg-[#526D82] text-white">
+                        <th class="font-semibold py-1">#</th>
+                        <th class="font-semibold py-1" class="w-1/3">Product Name</th>
+                        <th class="font-semibold py-1">Product id</th>
+                        <th class="font-semibold py-1" class="w-1/12">Price</th>
+                        <th class="font-semibold py-1">Discount</th>
+                        <th class="font-semibold py-1" class="w-1/5">Category</th>
+                        <th class="font-semibold py-1">Action</th>
+                    </tr>
+                    <tbody id="table-container">
+                        <%- include("partials/product-table.ejs") %>
+                    </tbody>
+                </table> 
+            </div> 
+        </div>
+    </div>
+    
+    <%- include("partials/delete-product-popup.ejs") %>
+    <%- include("partials/add-product-popup.ejs") %>
+    <%- include("partials/edit-product-popup.ejs") %>
+
+</body>
+</html>
+<script src="/javascripts/Admin/products.js"></script>

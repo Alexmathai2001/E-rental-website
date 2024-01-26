@@ -1,0 +1,15 @@
+<% products.forEach((data) => { %>
+    <tr>
+        <td class="text-sm"><%= data.serialnumber %></td>
+
+        <td class="text-sm capitalize"><%= data.productname %></td>
+        <td class="text-gray-400 text-sm">#<%= data.productid %></td>
+        <td class="text-sm"><%= data.regularprice %></td>
+        <td class="text-sm text-green-600"><%= data.discountpercentage %>%</td>
+        <td class="text-sm capitalize"><%= data.category %></td>
+        <td>
+            <button onclick="ShowEditPopup(this)" id="<%- data._id %>"><img src="/images/edit.png" class="h-6" alt=""></button>
+            <button id="<%- data._id  %>-<%- data.productname %>" onclick="deletepopup(this)"><img src="/images/delete.png" class="h-6" alt=""></button>
+        </td>
+    </tr>
+<% }) %>

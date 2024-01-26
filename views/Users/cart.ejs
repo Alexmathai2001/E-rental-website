@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col h-screen">
+    <!-- header -->
+    <%- include("partials/header.ejs") %>
+
+    <div class="searchResult-Container">
+
+    </div>
+    <!-- container -->
+    <main class="m-3">
+        <div class="md:flex md:flex-row md:justify-around ">
+            <!-- products -->
+            <div class=" md:w-full md:px-5">
+                <% CartArray.forEach((data) => { %>
+                <!-- product 1-->
+                <a href="/User/product/<%= encodeURIComponent(data.productid._id) %>">
+                    <div class="flex p-2 border-2 rounded md:w-full">
+                    <!-- left image -->
+                    <div class="md:w-32 ">
+                        <img src="<%= data.productid.imageurl %>" class="h-24 min-w-[6rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
+                    </div>
+                    <!-- right content -->
+                    <div class="flex justify-between items-center w-full">
+                        <div class="bg-white md:w-80 w-32">
+                            <!-- product name -->
+                            <p class="flex whitespace-normal text-xs md:text-sm font-medium capitalize"><%= data.productid.productname %></p>
+                            <!-- price & offer -->
+                            <p class="font-semibold text-sm md:text-base mt-2"><%= data.productid.saleprice %>/- <span class="text-green-600 text-sm font-semibold"><%= data.productid.discountpercentage %>% off</span></p>
+                            <!-- original price -->
+                            <p class="line-through text-gray-500 font-medium text-xs md:text-sm"><%= data.productid.regularprice %>/-</p>
+                        </div>
+
+                        <!-- days -->
+                        <div class="flex">
+                            <span class="hidden md:block text-xs md:text-sm md:min-w-[4rem] opacity-90">Rent Duration :</span>
+                            <span class="text-xs md:text-sm md:min-w-[4rem] opacity-90"> <%= data.days %> Days</span>
+                        </div>
+
+                        <!-- remove button -->
+                        <form action="/User/cart/removeproduct" method="post">
+                            <input id="" name="productid" value="<%= data.productid._id %>" hidden type="text">
+                            <button  class="w-[70px] text-white bg-[#526D82] font-medium py-[4px] rounded text-xs md:text-sm">Remove</button>
+                        </form>
+                        
+                    </div>
+                    </div>
+                </a>
+                <% }) %>
+                
+            </div>
+
+            <!-- summary -->
+            <div>
+                <div class="border-2 p-3 md:space-y-8">
+                    <p class="font-semibold text-base mb-2 md:font-bold md:text-lg">Cart Details</p>
+                    <div class="flex justify-between text-sm md:text-base">
+                        <div>
+                            <p class=" opacity-60">Price</p>
+                            <p class=" opacity-60">Discount</p>
+                            <p class=" font-bold my-2">Total Amount</p>
+                        </div>
+                        <div class="font-medium">
+                            <p class=" opacity-60"><%= totalRegularPrice %>/-</p>
+                            <p class=" text-green-600">-<%= totalDiscount %>/-</p>
+                            <p class=" font-bold my-2 "><%= totalSalePrice %>/-</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center my-4">
+                        <a href="/User/checkout/cart" class="flex justify-center items-center bg-[#27374D] text-white w-72 py-2 text-sm font-medium rounded">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="flex-grow"></div>
+    <!--footer-->
+    <%- include("partials/footer.ejs") %>
+</body>
+<script src="/javascripts/User/cart.js"></script>
+</html>

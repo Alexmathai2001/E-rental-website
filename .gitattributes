@@ -1,0 +1,12 @@
+controllers/* linguist-vendored=false
+models/* linguist-vendored=false
+routes/* linguist-vendored=false
+utils/* linguist-vendored=false
+views/* linguist-vendored=false
+
+
+controllers/* linguist-documentation=false
+models/* linguist-documentation=false
+routes/* linguist-documentation=false
+utils/* linguist-documentation=false
+views/* linguist-documentation=false

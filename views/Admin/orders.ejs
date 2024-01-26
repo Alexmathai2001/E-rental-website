@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--head-->
+<%- include("partials/head.ejs") %>
+
+<body class="box-border">
+
+
+    <!--header-->
+    <%- include("partials/header.ejs") %>
+
+
+     <div class="flex ">
+        <!--leftside navigation-->
+        <div class="border-e-2  ">
+            <div class="mx-4 mt-10 mb-60">
+                <a href="dashboard"  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                        <div>Dashboard</div>
+                </a>
+                <a href="products"  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Products</div>
+                </a>
+                <a href="customers"  class="hover:bg-gray-100 mb-3 ps-4 text-left w-48 py-2 block">
+                    <div>Customers</div>
+                </a>
+                <a href="orders"  class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
+                    <div class="font-semibold">Orders</div>
+                </a>
+                <a href="categories"  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Category</div>
+                </a>
+                <a href="settings"  class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Settings</div>
+                </a>
+                
+            </div>
+        </div>
+        <!--rightside content-->
+        <div class="mx-7 mt-5 w-screen">
+
+            <div class=" text-2xl font-poppins font-semibold">Order management</div>
+            <!--add product button filter sort-->
+            <div class="flex justify-between my-4">
+                <div class="">
+                    <form action="/admin/orders/search" method="post" id="ordersSearchForm" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="ordersSearch" id="searchValue" placeholder="Search Orders ">
+                            <button  onsubmit="searchOrders()" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="flex items-center">
+                    <form action=""  class="flex items-center text-sm">
+                        <div>Sort:</div>
+                        <select name="product" id="sortSelect" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                            <option value="Date">Date</option>
+                            <option value="Price">Price</option>
+                            
+                        </select>
+
+                        <div class="ms-3">by:</div>
+                        <select name="" id="sortHow" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                        </select>
+                    </form>
+                    <form action="" class="flex items-center text-sm">
+                        <div class="ms-3">Filter by:</div>
+                        <select name="filter" id="filterValues" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                            <option value="All">All</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Out For Delivery">Out For Delivery</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Returned">Returned</option>
+                            
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <!--product table-->
+            <div class="h-[32rem]  mt-8 overflow-y-auto">
+                <table class="w-full text-center">
+                    <tr class="bg-[#526D82] text-white capitalize">
+                        <th class="font-semibold py-1">#</th>
+                        <th class="font-semibold py-1">name</th>
+                        <th class="font-semibold py-1" class="w-1/3">address</th>
+                        <th class="font-semibold py-1" class="w-1/12">phone number</th>
+                        <th class="font-semibold py-1">Date</th>
+                        <th class="font-semibold py-1" class="w-1/5">Price</th>
+                        <th class="font-semibold py-1" class=" " >Status</th>
+                        <th class="font-semibold py-1" >Action</th>
+                    </tr>
+                    <!-- here -->
+                    <tbody id="table-container">
+                        <%- include("partials/orders-table.ejs") %>
+                    </tbody>
+
+                </table> 
+            </div>
+            
+        
+        </div>
+    </div>
+    
+    <!--edit / update order-->
+    
+    
+        <div id="editorder" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 px-6 hidden">
+            <div class="bg-slate-50 py-4 px-8">
+                <div class="flex justify-between">
+                    <div class="font-semibold py-3 text-xl">Update order</div>
+                    <button onclick="canceleditorder()"><img src="/images/close.png" class="h-4" alt=""></button>
+                </div>
+                    <div class="grid grid-cols-2 grid-rows-2 gap-3">
+                        <div class="p-5 border-2 bg-white">
+                            <div class="font-semibold ">Address</div>
+                            <table class="">
+                                <tr>
+                                    <td class="opacity-40 w-60">Name</td>
+                                    <td id="name" class="opacity-80">Alex Mathai</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">House Name</td>
+                                    <td id="houseno" class="pt-3 opacity-80">9400354724</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">Street</td>
+                                    <td id="roadname" class="pt-3 opacity-80">Chelakkara</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">City/town</td>
+                                    <td id="city" class="pt-3 opacity-80">Thrissur</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">State</td>
+                                    <td id="state" class="pt-3 opacity-80">Kerala</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">PIN</td>
+                                    <td id="pin" class="pt-3 opacity-80">980587</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">Phone</td>
+                                    <td id="phone" class="pt-3 opacity-80">9400354724</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="p-5 border-2 bg-white">
+                            <div class="font-semibold ">Product</div>
+                            <div id="product-container" class="whitespace-nowrap flex flex-col overflow-y-auto">
+
+                            </div>
+                        </div>
+                        <div class="p-5 border-2 bg-white">
+                            <div class="font-semibold ">Summary</div>
+                            <table>
+                                <tr class="my-2">
+                                    <td class="opacity-40 w-60">Price</td>
+                                    <td id="price" class="opacity-80">699/-</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">Discount</td>
+                                    <td id="discount" class="pt-3 opacity-80 text-green-700">-146/-</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 opacity-40 w-60">Shipping</td>
+                                    <td class="pt-3 opacity-80 text-green-700">Free</td>
+                                </tr>
+                                <tr>
+                                    <td class="pt-3 font-semibold w-60">Total Amount</td>
+                                    <td id="total" class="pt-3 font-semibold">553</td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                        <form action="/admin/orders/updateorder"  method="post" class="p-5 border-2 bg-white">
+                            <div class="font-semibold ">Status</div>
+                            <div class="flex">
+                                <div  class="pt-3 opacity-40 w-60">Order Status</div>
+                                <div>
+                                    <div>
+                                        <input type="radio" id="confirmed" name="status" value="confirmed">
+                                        <label for="confirmed">Confirmed</label><br>
+                                        <input type="radio" id="shipped" name="status" value="shipped">
+                                        <label for="shipped">Shipped</label><br>
+                                        <input type="radio" id="outfordelivery" name="status" value="out for delivery">
+                                        <label for="outfordelivery">Out for delivery</label><br>
+                                        <input type="radio" id="delivered" name="status" value="delivered">
+                                        <label for="delivered">Delivered</label><br>
+                                        <input type="radio" id="returned" name="status" value="returned">
+                                        <label for="returned">Returned</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-end mt-20">
+                                <button class="bg-blue-600 text-sm text-white font-medium rounded-md py-2 px-4">Update Status</button>
+                            </div>
+                        </form>
+            
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/javascripts/Admin/orders.js"></script>

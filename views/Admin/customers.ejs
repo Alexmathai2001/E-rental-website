@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--head-->
+<%- include("partials/head.ejs") %>
+
+<body class="box-border">
+
+
+    <!--header-->
+    <%- include("partials/header.ejs") %>
+
+
+     <div class="flex ">
+        <!--leftside navigation-->
+        <div class="border-e-2  ">
+            <div class="mx-4 mt-10 mb-60">
+                <a href="dashboard" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                        <div>Dashboard</div>
+                </a>
+                <a href="products" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Products</div>
+                </a>
+                <a href="customers" class="bg-[#DDE6ED] mb-3 ps-4 text-left w-48 py-2 block">
+                    <div class="font-semibold">Customers</div>
+                </a>
+                <a href="orders" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Orders</div>
+                </a>
+                <a href="categories" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Category</div>
+                </a>
+                <a href="settings" class=" mb-3 ps-4 text-left w-48 py-2 hover:bg-gray-100 block">
+                    <div>Settings</div>
+                </a>
+                
+            </div>
+        </div>
+        <!--rightside content-->
+        <div class="mx-7 mt-5 w-screen">
+
+            <div class=" text-2xl font-poppins font-semibold">Customer management</div>
+            <!--add product button filter sort-->
+            <div class="flex justify-between my-4">
+                <div class="">
+                    <form action="/admin/customers/search" method="post" id="customerSearchForm" > <!--search-->
+                        <div class="flex items-center rounded-md bg-[#526D82] text-[#666666] outline outline-[.1px] outline-gray-400">
+                            <input value="" type="text" class="outline-none rounded-md pl-3 text-sm w-80 placeholder:text-sm" name="customerSearch" id="searchValue" placeholder="Search by Customer name.. ">
+                            <button  onsubmit="searchCustomer()" class=" px-1 py-1  h-full cursor-pointer" >
+                                <img src="/images/search-white.png" class="h-6" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="flex items-center">
+                    <form action=""  class="flex items-center text-sm">
+                        <div>Sort:</div>
+                        <select name="product" id="sortSelect" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                            <option value="UserName">UserName</option>
+                            <option value="Orders">No.of rents</option>
+                            
+                        </select>
+
+                        <div class="ms-3">by:</div>
+                        <select name="product" id="sortHow" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                        </select>
+                    </form>
+                    <form action="" class="flex items-center text-sm">
+                        <div class="ms-3">Filter by:</div>
+                        <select name="filter" id="filterValues" class="bg-white outline-none border-2 rounded-full px-2 opacity-50">
+                            <option value="All">All</option>
+                            <option value="active">Active</option>
+                            <option value="blocked">Blocked</option>
+                            
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <!--product table-->
+            <div class="h-[32rem]  mt-8 overflow-y-auto">
+                <table class="w-full text-center">
+                    <tr class="bg-[#526D82] text-white">
+                        <th class="font-semibold py-1">#</th>
+                        <th class="font-semibold py-1">Name</th>
+                        <th class="font-semibold py-1" class="w-1/3">Email</th>
+                        <th class="font-semibold py-1" class="w-1/12">Phone no</th>
+                        <th class="font-semibold py-1">No. of rents</th>
+                        <th class="font-semibold py-1" class="w-1/5">Status</th>
+                        <th class="font-semibold py-1" >Action</th>
+                    </tr>
+                    <!-- here -->
+                    <tbody id="table-container">
+                        <%- include("partials/customer-table.ejs") %>
+                    </tbody>
+                    
+                </table> 
+            </div>
+            
+        
+        </div>
+    </div>
+    
+    <!--update user info-->
+    <div id="updateuserinfo" style="background-color: rgba(0, 0, 0, 0.2);" class="justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 px-6 hidden">
+        <div class="flex justify-center bg-white mt-28 p-10  w-4/12 border-2 border-[#9DB2BF] rounded-md ">
+            <div class=" w-full">
+                <div class="flex justify-between items-center mb-8 ">
+                    <div class="font-bold text-xl">Update user info</div>
+                    <button type="button" onclick="cancelupdateuserinfo()"><img src="/images/close.png" class="h-4" alt="close-button"></button>
+                </div>
+                <form action="/admin/customers/update" method="post">
+                    <div class="mt-4 flex justify-center items-center   ">
+                        <div class="opacity-70 pe-2 text-sm">Email:</div>
+                        <input class="px-2 border-2 text-sm rounded-lg outline-none" id="emailinput" name="email" type="text">
+                    </div>
+                    <div class="flex justify-center items-center py-3">
+                        <div class="opacity-70 pe-2 text-sm">Name:</div>
+                        <input class="px-2 border-2 text-sm rounded-lg outline-none" type="text" name="name" id="nameinput">
+                        <input type="text" hidden name="phone" value="" id="phoneinput">
+                    </div>
+                    <div class="flex justify-center items-center py-3">
+                        <div class="opacity-70 pe-2 text-sm">Status:</div>
+                        <select class="px-2 border-2 text-sm rounded-lg outline-none" name="status" id="statusinput">
+                            <option value="active">Active</option>
+                            <option value="blocked">Blocked</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="bg-[#27374D] px-4 py-2 rounded-lg mt-4 text-white font-medium text-sm">Update</button>
+                    </div>
+            </form>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
+<script src="/javascripts/Admin/customers.js"></script>

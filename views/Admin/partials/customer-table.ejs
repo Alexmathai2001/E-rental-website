@@ -1,0 +1,28 @@
+<% customerDetails.forEach((data) =>{ %>
+    <tr class="text-sm">
+        <td>1</td>
+        <% if(data.name === " "){ %>
+            <td class="capitalize">User</td>
+        <% }else{ %>
+            <td class="capitalize"><%= data.name %></td>
+        <% } %>
+
+        <% if(data.email === " "){ %>
+            <td class="capitalize">Not Provided</td>
+        <% }else{ %>
+            <td ><%= data.email %></td>
+        <% } %>
+        <td><%= data.phone %></td>
+        <td><%= data.orders.length %></td>
+        <% if(data.status === "active"){ %>
+        <td><div class="bg-[#CEFFCE] text-[#00A500] px-1 rounded-full my-1">Active</div>
+        </td>
+        <% }else{ %>
+            <td><div class="bg-red-100 text-red-700 px-1 rounded-full my-1">Blocked</div>
+            </td>
+        <% } %>
+        <td>
+            <button  onclick="editpopup(this)" id="<%= data._id %>"><img src="/images/edit.png" class="h-6" alt=""></button>
+        </td>
+    </tr>
+    <% }) %>

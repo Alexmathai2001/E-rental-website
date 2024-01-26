@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>My orders</title>
+</head>
+<body class="flex flex-col h-screen">
+    <!-- header -->
+    <%- include('partials/header.ejs')  %>
+    <div class="searchResult-Container">
+
+    </div>
+    <!-- main section -->
+    <!-- container -->
+    <main class="px-3 py-2">
+        <!-- top bar -->
+        <div class="flex justify-between px-4 items-center md:mx-24">
+            <div class="font-semibold md:text-2xl md:font-bold">My Orders</div>
+            <input type="text" placeholder="Search your order" class="px-3 outline-none rounded-full w-3/5 md:w-2/6 border-2 text-xs h-10 md:my-3" name="" id="">
+        </div>
+        <p class="text-xs md:text-sm text-gray-400 px-4 my-2  md:mx-24">Total orders : 12</p>
+        <!-- Product 1 -->
+        <% populatedOrders.forEach((data) => { %>
+            <% data.productid.forEach((element) => { %>
+                <a href="/user/ordersummary/<%- data._id %>-<%- element._id %>">
+                    <div class="flex w-full justify-center">
+                        <div class="flex justify-center md:w-3/5 w-10/12 md:space-x-5 items-center my-4 border-2 p-3">
+                            <div class="">
+                                <img src="<%= element.product.imageurl %>" class="h-20 min-w-[5rem] p-2 md:h-32 md:min-w-[8rem]" alt="">
+                            </div>
+                            <div>
+                                <div class="md:flex md:items-center md:space-x-10">
+                                    <div>
+                                        <div class="hidden md:flex md:justify-between bg-slate-200 py-2 px-5 text-xs min-w-[40rem] rounded-lg opacity-60 my-3">
+                                            <div class="flex space-x-5">
+                                                <p>Order placed on : <span class="capitalize font-semibold opacity-100"><%= data.orderdate %></span> </p>
+                                                <p>Shipped to : <span class="capitalize font-semibold opacity-100"><%= data.address.name %></span></p>
+                                            </div>
+                                            <div>
+                                                <p>Order id : #938364</p>
+                                            </div>
+                                        </div>
+                                        <!-- product name -->
+                                        <p class="flex whitespace-normal text-xs md:text-sm capitalize"><%= element.product.productname %></p>
+                                        <!-- price & offer -->
+                                        <p class="font-semibold text-sm md:text-base mt-2"><%= element.product.saleprice %>/- <span class="line-through text-gray-500 font-medium text-xs md:text-sm"><%= element.product.regularprice %>/-</span> </span></p>
+                                    </div>
+                                    
+                                </div>
+                               <div class="hidden flex justify-between w-full items-center bg-blue-400">
+                                    <div>
+                                        <a href="/User/product/<%= encodeURIComponent(element.product._id) %>" class=" bg-yellow-600 py-1 px-3 flex items-center rounded-md my-2 space-x-2 min-w-[3rem]">
+                                            <img src="/images/again.png" class="h-3 w-3" alt="">
+                                            <p class="font-semibold text-xs text-white">Rent again</p>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <p class="opacity-50 text-[8px] md:text-[12px] capitalize">Order Status : <span class="capitalize font-semibold opacity-100"><%= data.status %></span></p>
+                                    </div>
+
+                               </div> 
+                               <div class="flex justify-between items-center w-full">
+                                <div>
+                                    <a href="/User/product/<%= encodeURIComponent(element.product._id) %>" class=" bg-yellow-600 py-1 px-3 flex items-center rounded-md my-2 space-x-2 min-w-[3rem]">
+                                        <img src="/images/again.png" class="h-3 w-3" alt="">
+                                        <p class="font-semibold text-xs text-white">Rent again</p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <p class="opacity-50 text-[8px] md:text-[12px] capitalize">Order Status : <span class="capitalize font-semibold opacity-100"><%= data.status %></span></p>
+                                </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+        <% }) %>
+        <% }) %>
+        
+    </main>
+    <div class="flex flex-grow">
+
+    </div>
+    <footer>
+        <!--footer-->
+    <%- include("partials/footer.ejs") %>
+    </footer>
+    
+</body>
+<script src="/javascripts/User/myorders.js"></script>
+</html>

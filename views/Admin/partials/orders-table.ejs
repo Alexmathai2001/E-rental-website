@@ -1,0 +1,26 @@
+<% orders.forEach((data) => { %>
+    <tr class="text-sm capitalize">
+        <td class=" opacity-70">1</td>
+        <td class=" opacity-70"><%= data.address.name %></td>
+        <td class=" opacity-70 max-w-[12rem] truncate capitalize"><%= data.address.houseno %>,<br><%= data.address.city %>,<%= data.address.state %> <br>Pin : <%= data.address.pin %></td>
+        <td class=" opacity-70 font-medium"><%= data.phone %></td>
+        <td class=" opacity-70"><%= data.date %></td>
+        <td class=" font-bold"><%= data.totalOrderPrice %></td>
+        <td>
+            <% if(data.status == "shipped"){ %>
+            <div class="bg-[#ffb3ba] text-[#27374D] rounded-full py-1"><%= data.status %></div>
+            <% }else if(data.status == "out for delivery"){ %>
+                <div class="bg-[#ffdfba] text-[#27374D] rounded-full py-1"><%= data.status %></div>
+            <% }else if(data.status == "delivered"){ %>
+                <div class="bg-[#bae1ff] text-[#27374D] rounded-full py-1"><%= data.status %></div>
+            <%  }else if(data.status == "returned"){  %>
+                <div class="bg-[#baffc9] text-[#27374D] rounded-full py-1"><%= data.status %></div>
+            <%  }else{  %>
+                <div class="bg-[#DDE6ED] text-[#27374D] rounded-full py-1"><%= data.status %></div>
+            <% } %>
+        </td>
+        <td class=" opacity-70">
+            <button id="<%- data.userId %>-<%- data.orderId %>" onclick="editorder(this)"><img src="/images/edit.png" class="h-6" alt=""></button>
+        </td>
+    </tr>
+<% }) %>
