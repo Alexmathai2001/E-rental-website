@@ -1,5 +1,13 @@
 const userModel = require('../models/customerSchema')
 
+function adminAuth(req,res,next){
+  if(req.session.adminlogin == "true"){
+    next()
+  }else{
+    res.redirect('/admin/login')
+  }
+}
+
 function userAuth(req, res, next) {
   if (req.session && req.session.userid) {
       return res.redirect('/user/landing');
@@ -29,4 +37,4 @@ async function userlogincheck(req,res,next){
 }  
 
 
-  module.exports = {userAuth,userlogincheck,JustLoginCheck};
+  module.exports = {userAuth,userlogincheck,JustLoginCheck,adminAuth};
