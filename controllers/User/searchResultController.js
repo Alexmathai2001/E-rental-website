@@ -28,7 +28,6 @@ module.exports = {
                 return 1;
             }
         });
-        console.log(searchResults);
           res.render('Users/partials/searchResult',{searchResults})
     }
 }

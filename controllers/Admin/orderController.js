@@ -47,7 +47,6 @@ module.exports = {
         )
           globalOrders = []
           let orders = transformedOrders.flat().reverse()
-          console.log(orders);
           globalOrders=orders
         res.render('Admin/orders',{orders})
       } catch (error) {
@@ -70,13 +69,10 @@ module.exports = {
           }
         }))
         order.productid = populatedProducts
-        console.log(order.productid);
         res.json({order:order,userId,orderId})
         
       },
       postEdit : async (req,res) => {
-        console.log(req.body);
-        console.log("orderid : ",orderId,"userid : ",userId);
         let statusUpdate = await Customer.findByIdAndUpdate(
           userId,
           {

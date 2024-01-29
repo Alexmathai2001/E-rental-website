@@ -57,6 +57,6 @@ router.post('/categories/filter',categorycontroller.postFilter)
 router.post('/categories/sort',categorycontroller.postSort)
 
 router.get('/settings',loginAuth.adminAuth,settingcontroller.get)
-router.get('/dashboard',dashboardcontroller.get)
+router.get('/dashboard',loginAuth.adminAuth,dashboardcontroller.get)
 
 module.exports = router

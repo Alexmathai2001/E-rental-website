@@ -36,7 +36,6 @@ module.exports = {
         }else{
           res.locals.title = "Order Checkout"
         const address = await userdata.find({ 'address': { $exists: true, $not: { $size: 0 } } })
-        console.log(address);
         if(address == ""){
             res.redirect('/user/address')
         }else{
@@ -96,7 +95,6 @@ module.exports = {
                 day: '2-digit',
                 year: 'numeric'
               });
-              console.log(formattedDate);
               const details = {
                 productid: fakedata,
                 rentdate: formattedRentDate,
@@ -133,7 +131,6 @@ module.exports = {
            res.render("Users/checkout",{userAddresses,userDetails,totalRegularPrice,totalSalePrice,totalDiscount})
         }
     },payment : async function(req,res){
-      console.log('payment method is '+req.body.paymentMethod);
       if(req.body.paymentMethod==='cash on delivery' ){
           res.json('Cod')
       }
@@ -146,7 +143,6 @@ module.exports = {
             };
           instance.orders.create(options, (err, order) => { 
               if (order) { 
-                  console.log(order, ": order success") 
                   res.status(200).send({ 
                       success: true, 
                       msg: "Order Created", 

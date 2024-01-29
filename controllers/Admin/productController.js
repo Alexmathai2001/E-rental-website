@@ -31,7 +31,6 @@ module.exports = {
                     let discountamount = (req.body.discountpercentage * req.body.regularprice)/100
                     let saleamount =Math.round(req.body.regularprice - discountamount)
                     const list = req.body.specification.split(",")
-                    console.log(list) 
                     const newProduct =new Product( {
                         serialnumber: nextSerialNumber,
                         productname: req.body.productname,
@@ -88,10 +87,8 @@ module.exports = {
                     let editdiscountamount = (req.body.editdiscountpercentage * req.body.editregularprice)/100
                     let saleamount =Math.round(req.body.editregularprice - editdiscountamount)
                     const list = req.body.editspecification.split(",")
-                    console.log(list);
                     
                     if(req.file){
-                        console.log(productForEdit);
                         await cloudinary.uploader.destroy(productForEdit.cloudinaryid);
                         result = await cloudinary.uploader.upload(req.file.path)
                     }
@@ -112,7 +109,6 @@ module.exports = {
                             cloudinaryId : result.public_id || productForEdit.cloudinaryId
                          }
                       }else{
-                        console.log("file not found")
                         reviseddata = {
                             productname : req.body.editproductname || productForEdit.productname,
                             brandname : req.body.editbrandname || productForEdit.brandname,
@@ -155,7 +151,6 @@ module.exports = {
 
     },
     postSort : async function(req,res){
-        console.log(req.body);
         const sorttype = req.body.sort
         const allProduct = await Product.find()
         if( sorttype == "a-z"){
@@ -184,7 +179,6 @@ module.exports = {
         }
     },
     postFilter : async function(req,res){
-        console.log(req.body);
         let filterkey = req.body.filterValue
         let allProducts = await Product.find()
         if( filterkey == "500-1000"){

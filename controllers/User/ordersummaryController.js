@@ -20,8 +20,6 @@ module.exports = {
         }]
         const product = selectedorder.productid[0].product
         const order = selectedorder
-        console.log("order",selectedorder);
-        console.log("product",selectedorder.productid[0].product);
 
         res.render('Users/order-summary',{username:res.locals.username,product,order})
     }

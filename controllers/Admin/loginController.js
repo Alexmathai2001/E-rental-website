@@ -14,17 +14,14 @@ module.exports = {
         const adminCheck = await admin.findOne({ username });
       
         if (!adminCheck) {
-          console.log("Admin not found");
           res.render('Admin/login', { errormessage : "invalid credintials" });
         } else {
           if (adminCheck.password === password) {
             // Passwords match, login successful
-            console.log("Admin found, login successful");
             req.session.adminlogin = "true"
             res.redirect('/admin/dashboard');
           } else {
             // Passwords do not match
-            console.log("Incorrect password");
             errormessage = "Invalid Credentials";
             res.render('Admin/login', { errormessage : "invalid credintials" });
           }

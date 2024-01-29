@@ -22,7 +22,6 @@ module.exports = {
             { $push: { address: newAddress } },
             { new: true } // To return the updated document
           )
-          console.log(req.params);
          
           res.redirect(`/User/checkout/${params}`)
 
@@ -31,11 +30,9 @@ module.exports = {
         let user = await usermodel.findOne({phone : req.session.userid})
         let addresses = user.address.filter(addr => addr._id == req.params.id)
         let address = addresses.length > 0 ? addresses[0] : null ;
-        console.log(address) 
         res.render('Users/address',{username:res.locals.username,address})
     },
     postedit : async(req,res) => {
-        console.log("post edit");
         let address = await usermodel.findOneAndUpdate(
             { phone: req.session.userid, 'address._id': req.params.id },
             {

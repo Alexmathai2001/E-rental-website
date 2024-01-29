@@ -9,7 +9,6 @@ module.exports = {
         res.render('Users/all-products',{products,username:res.locals.username})
     },
     filter : async (req,res) => {
-        console.log(req.body);
         const { price, condition, discount } = req.body;
 
         const query = {};
@@ -37,10 +36,8 @@ module.exports = {
                 query.discountpercentage = { $gte: parseInt(discount) };
             }
         }
-        console.log(query);
         try {
             const searchResults = await prodectModel.find({ category : categoryname, ...query });
-            console.log("search result",searchResults);
             res.render('Users/partials/searchResult',{searchResults})
         } catch (err) {
             console.error(err);

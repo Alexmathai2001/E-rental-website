@@ -53,19 +53,14 @@ module.exports = {
                 }
                 try {
                     let categoryId = req.body.Id.trim()
-                    console.log(categoryId)
                     let categoryForEdit = await category.findById(categoryId);
-                    console.log(categoryForEdit)
                     let result
                     if(req.file){
-                        console.log('file found');
                         await cloudinary.uploader.destroy(categoryForEdit.cloudinaryId);
                         result = await cloudinary.uploader.upload(req.file.path)
                       }
                       let reviseddata = {}
                       if(req.file){
-                        console.log('file found');
-                        console.log(req.body.editcategory_status);
                         reviseddata = {
                             categoryname: req.body.editcategory_name||categoryForEdit.editcategory_name,
                             showstatus: req.body.editcategory_status || categoryForEdit.editcategory_status,
@@ -73,8 +68,6 @@ module.exports = {
                             cloudinaryId:result.public_id || categoryForEdit.cloudinaryId
                           }
                       }else{
-                        console.log('file not found');
-                        console.log(req.body.editcategory_name);
                         reviseddata =  {
                             categoryname: req.body.editcategory_name||categoryForEdit.editcategory_name,
                             showstatus: req.body.editcategory_status || categoryForEdit.editcategory_status
@@ -96,9 +89,7 @@ module.exports = {
         let idfordelete = req.body.deleteId
         let categoryfordelete = await category.findById(idfordelete)
         let productsfordelete = await Product.find({category : categoryfordelete.categoryname})
-        console.log(productsfordelete);
         productsfordelete.forEach(element => {
-            console.log(element.cloudinaryid);
             cloudinary.uploader.destroy(element.cloudinaryid)
         });
         await Product.deleteMany({category : categoryfordelete.categoryname})
@@ -116,7 +107,6 @@ module.exports = {
         let filterkey = req.body.filterValue
         let allCategory = await category.find()
         if( filterkey == "Listed"){
-            console.log("listed");
             const categories = await category.find({showstatus : "Listed"})
             res.render("Admin/partials/category-table",{categories : categories})
         }else if( filterkey == "Unlisted"){
@@ -128,7 +118,6 @@ module.exports = {
         }
     },
     postSort : async function(req,res){
-        console.log(req.body);
         const sorttype = req.body.sort
         const allCategory = await category.find()
         if (sorttype == "z-a"){

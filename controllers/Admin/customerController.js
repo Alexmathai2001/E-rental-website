@@ -5,7 +5,6 @@ module.exports = {
         res.locals.title = "customers"; 
         const data = await customers.find()
         const customerDetails = data.reverse()
-        console.log(customerDetails);
         res.render('Admin/customers',{customerDetails})
       },
     getEdit : async(req,res) => {
@@ -14,9 +13,7 @@ module.exports = {
       res.json(accountdetails)
     },
     postEdit : async(req,res) => {
-      console.log("body content : ",req.body);
       const updateduser = await customers.findOneAndUpdate({phone : req.body.phone},{email:req.body.email,name: req.body.name,status:req.body.status})
-      console.log("updated details :",updateduser);
       res.redirect('/admin/customers')
     },
     search : async (req,res) =>{
