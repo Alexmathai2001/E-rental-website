@@ -19,11 +19,17 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/',(req,res) => {
+    res.redirect('/User/landing')
+})
+
 const adminRoute = require('./routes/admin')
 app.use('/Admin',adminRoute)
 
 const userRoute = require('./routes/user');
 app.use('/User',userRoute)
+
+
 
 
 app.use(express.static(path.join(__dirname,'public')))
