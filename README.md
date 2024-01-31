@@ -66,6 +66,11 @@ User Screens (Mobile view)
 
 </p>
 
+Admin Screens
+
+<p float="left">
+<img src="" width="400" height="200">
+</p>
 
 
 
