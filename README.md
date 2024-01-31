@@ -50,6 +50,12 @@ User Screens (Mobile view)
 
 <img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-144925.png" alt="Image description" width="200" height="400"/>
 
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145007.png" alt="Image description" width="200" height="400"/>
+
+<img src="" alt="Image description" width="200" height="400"/>
+
+<img src="" alt="Image description" width="200" height="400"/>
+
 
 
 
