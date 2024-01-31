@@ -45,5 +45,17 @@ Insert gif or link to demo
 
 ## Screenshots
 
+User Screens (Mobile view)
 ![User home page](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/343eeffa-8067-474c-8bc8-ed15f9fd67d0)
+
+
+![Screenshot_20240131-145355](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/70a17903-afb1-469f-8bc6-61312a73bcb2)
+![Screenshot_20240131-145331](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/21f25f25-9569-4bf5-befc-87a611d1550c)
+![Screenshot_20240131-145250](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/77f5f3c8-47b3-40d0-9073-ce114f8f6717)
+![Screenshot_20240131-145216](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/c5f0717f-dba7-454d-8426-e20d38c99888)
+![Screenshot_20240131-145153](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/be6d7e54-2fb8-4871-8232-1dab8397a2b3)
+![Screenshot_20240131-145036](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/7350d793-acd3-45ae-92cd-337c1d5a3f06)
+![Screenshot_20240131-145007](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/bef29dce-dd48-42a7-9b20-4fddda972c44)
+![Screenshot_20240131-144925](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/3712777c-8f0f-435e-868f-7dc976d7e9fc)
+
 
