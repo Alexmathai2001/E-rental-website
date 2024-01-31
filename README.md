@@ -48,7 +48,7 @@ Insert gif or link to demo
 User Screens (Mobile view)
 ![User home page](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/343eeffa-8067-474c-8bc8-ed15f9fd67d0)
 
-<img src="https://imgs.search.brave.com/u4ixX7LsTC74qulKt4jhuN3SuobTsUvK8yHooixjkT8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE5/NjA1OTEzNi9waG90/by9oZWxsby5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9TklS/Mmp6WlBvSUIxVDdV/c1MwLV9pWFBQNzNm/eENrYXhSMnJyRmwt/ZHAxTT0)https://imgs.search.brave.com/u4ixX7LsTC74qulKt4jhuN3SuobTsUvK8yHooixjkT8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE5/NjA1OTEzNi9waG90/by9oZWxsby5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9TklS/Mmp6WlBvSUIxVDdV/c1MwLV9pWFBQNzNm/eENrYXhSMnJyRmwt/ZHAxTT0" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-144925.png" alt="Image description" width="200" height="400"/>
 
 
 
