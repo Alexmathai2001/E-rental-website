@@ -69,7 +69,7 @@ User Screens (Mobile view)
 Admin Screens
 
 <p float="left">
-<img src="" width="400" height="200">
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/admin%20dashboard.png" width="400" height="200">
 
 <img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/admin%20category.png" width="400" height="200">
 
