@@ -48,7 +48,7 @@ Insert gif or link to demo
 User Screens (Mobile view)
 ![User home page](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/343eeffa-8067-474c-8bc8-ed15f9fd67d0)
 
-<img src="[https://drive.google.com/file/d/1IP_T8RgDR4GrIE0rCknEypojVlVwfMLb/view?usp=sharing]" alt="Image description" width="200" height="400"/>
+<img src="https://drive.google.com/file/d/1IP_T8RgDR4GrIE0rCknEypojVlVwfMLb/view?usp=sharing" alt="Image description" width="200" height="400"/>
 
 
 
