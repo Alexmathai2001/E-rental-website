@@ -46,15 +46,25 @@ Insert gif or link to demo
 ## Screenshots
 
 User Screens (Mobile view)
-![User home page](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/343eeffa-8067-474c-8bc8-ed15f9fd67d0)
 
+<p float="left">
 <img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-144925.png" alt="Image description" width="200" height="400"/>
 
 <img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145007.png" alt="Image description" width="200" height="400"/>
 
-<img src="" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145036.png" alt="Image description" width="200" height="400"/>
 
-<img src="" alt="Image description" width="200" height="400"/>
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145153.png" alt="Image description" width="200" height="400"/>
+
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145216.png" alt="Image description" width="200" height="400"/>
+
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145250.png" alt="Image description" width="200" height="400"/>
+
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145331.png" alt="Image description" width="200" height="400"/>
+
+<img src="https://github.com/Alexmathai2001/E-rental-website/blob/master/images/Screenshot_20240131-145355.png" alt="Image description" width="200" height="400"/>
+
+</p>
 
 
 
