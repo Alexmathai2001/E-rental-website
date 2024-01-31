@@ -45,5 +45,5 @@ Insert gif or link to demo
 
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1qw6MRCKSx6kfTtVcWK6juS8YQbnKou1x/view?usp=drive_link)
+![User home page](https://github.com/Alexmathai2001/E-rental-website/assets/69806852/343eeffa-8067-474c-8bc8-ed15f9fd67d0)
 
